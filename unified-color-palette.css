@@ -1,0 +1,63 @@
+/* =================================
+   UNIFIED COLOR PALETTE
+   Applied across all pages
+   ================================= */
+
+:root {
+  /* Primary Colors */
+  --primary-purple: #667eea;
+  --primary-purple-dark: #5568d3;
+  --primary-purple-light: #8b9cef;
+  
+  /* Accent Colors */
+  --accent-orange: #ff9800;
+  --accent-purple: #7e57c2;
+  --accent-blue: #42a5f5;
+  --accent-green: #27ae60;
+  
+  /* Background Colors */
+  --bg-main: #f5f7fa;
+  --bg-white: #ffffff;
+  --bg-light: #f8f9fa;
+  
+  /* Card Backgrounds - Subtle Gradients */
+  --card-sun: linear-gradient(135deg, #fff3e0 0%, #fafafa 100%);
+  --card-moon: linear-gradient(135deg, #f3e5f5 0%, #fafafa 100%);
+  --card-rising: linear-gradient(135deg, #e3f2fd 0%, #fafafa 100%);
+  
+  /* Text Colors */
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-muted: #999999;
+  
+  /* Border Colors */
+  --border-light: #e0e0e0;
+  --border-medium: #d0d0d0;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+/* Apply to body */
+body {
+  background: var(--bg-main) !important;
+}
+
+/* Dashboard and other pages */
+.dashboard,
+.daily-reading-page,
+.decision-page,
+.history-page,
+.analytics-page,
+.profile-page,
+.cards-page,
+.learn-page,
+.compatibility-page,
+.tests-page,
+.medium-consultation-page {
+  background: var(--bg-main);
+  min-height: 100vh;
+}
+

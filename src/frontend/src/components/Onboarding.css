@@ -1,0 +1,149 @@
+.onboarding-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.onboarding-modal {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.onboarding-progress {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.progress-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  transition: all 0.3s;
+}
+
+.progress-dot.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  width: 32px;
+  border-radius: 6px;
+}
+
+.progress-dot.completed {
+  background: #4caf50;
+}
+
+.onboarding-content {
+  text-align: center;
+  margin-bottom: 32px;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.onboarding-image {
+  font-size: 80px;
+  margin-bottom: 24px;
+  animation: bounce 0.6s ease-out;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.onboarding-content h2 {
+  color: #333;
+  margin: 0 0 16px 0;
+  font-size: 24px;
+}
+
+.onboarding-content p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 16px;
+  margin: 0;
+}
+
+.onboarding-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-skip {
+  background: none;
+  border: none;
+  color: #999;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 8px 12px;
+  transition: color 0.2s;
+}
+
+.btn-skip:hover {
+  color: #666;
+  text-decoration: underline;
+}
+
+.btn-complete {
+  width: 100%;
+  font-size: 18px;
+  padding: 16px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .onboarding-modal {
+    padding: 24px;
+  }
+
+  .onboarding-image {
+    font-size: 60px;
+  }
+
+  .onboarding-content h2 {
+    font-size: 20px;
+  }
+
+  .onboarding-content p {
+    font-size: 14px;
+  }
+
+  .onboarding-content {
+    min-height: 240px;
+  }
+}

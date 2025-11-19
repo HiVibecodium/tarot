@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Tarot</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <!-- Header -->
+    <div class="popup-header">
+      <h1>🔮 AI Tarot</h1>
+      <p class="tagline">Ваш советник при покупках</p>
+    </div>
+
+    <!-- Auth State -->
+    <div id="auth-state" class="hidden">
+      <div class="user-info">
+        <div class="avatar">
+          <span id="user-initials"></span>
+        </div>
+        <div class="user-details">
+          <p class="user-name" id="user-name"></p>
+          <p class="user-email" id="user-email"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Not Authenticated -->
+    <div id="not-authenticated" class="auth-section">
+      <p>Войдите, чтобы использовать расширение</p>
+      <button id="login-btn" class="btn-primary">Войти</button>
+    </div>
+
+    <!-- Stats -->
+    <div id="stats-section" class="stats-section hidden">
+      <h3>Статистика</h3>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-value" id="readings-count">0</span>
+          <span class="stat-label">Раскладов</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" id="saved-count">0</span>
+          <span class="stat-label">Сохранено</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Readings -->
+    <div id="recent-section" class="recent-section hidden">
+      <h3>Последние расклады</h3>
+      <div id="recent-readings" class="recent-readings">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div id="actions-section" class="actions-section hidden">
+      <button id="open-app-btn" class="btn-secondary">
+        Открыть приложение
+      </button>
+      <button id="logout-btn" class="btn-text">
+        Выйти
+      </button>
+    </div>
+
+    <!-- Footer -->
+    <div class="popup-footer">
+      <a href="https://tarot-a2oi.onrender.com" target="_blank">
+        AI Tarot Decision Assistant
+      </a>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+{
+  "name": "AI Tarot Decision Assistant",
+  "short_name": "Tarot Assistant",
+  "description": "Make better decisions with AI-powered tarot guidance",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#667eea",
+  "theme_color": "#667eea",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["lifestyle", "wellness", "productivity"],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Daily Reading",
+      "short_name": "Daily",
+      "description": "Get your daily tarot reading",
+      "url": "/reading/daily",
+      "icons": []
+    },
+    {
+      "name": "Decision Analysis",
+      "short_name": "Decision",
+      "description": "Analyze an important decision",
+      "url": "/decision",
+      "icons": []
+    }
+  ]
+}

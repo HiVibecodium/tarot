@@ -1,0 +1,162 @@
+/* Unified Big Three Card - Beautiful Design */
+
+.big-three-unified-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 32px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+  margin-bottom: 32px;
+}
+
+.big-three-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.big-three-header h2 {
+  margin: 0 0 8px 0;
+  color: white;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.big-three-subtitle {
+  margin: 0;
+  color: rgba(255,255,255,0.9);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.big-three-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.big-three-item {
+  background: white;
+  padding: 28px 20px;
+  border-radius: 16px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.big-three-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, currentColor, transparent);
+}
+
+.big-three-item.sun::before {
+  color: #ff9800;
+}
+
+.big-three-item.moon::before {
+  color: #7e57c2;
+}
+
+.big-three-item.rising::before {
+  color: #42a5f5;
+}
+
+.big-three-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.bt-icon-large {
+  font-size: 48px;
+  margin-bottom: 8px;
+}
+
+.bt-sign-symbol {
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.big-three-item.sun .bt-sign-symbol {
+  background: linear-gradient(135deg, #ff9800 0%, #ff6b6b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.big-three-item.moon .bt-sign-symbol {
+  background: linear-gradient(135deg, #7e57c2 0%, #9c27b0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.big-three-item.rising .bt-sign-symbol {
+  background: linear-gradient(135deg, #42a5f5 0%, #2196f3 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bt-title {
+  margin: 0 0 8px 0;
+  font-size: 12px;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+}
+
+.bt-sign-name {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.bt-element {
+  font-size: 13px;
+  color: #667eea;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.bt-meaning {
+  font-size: 12px;
+  color: #666;
+  font-style: italic;
+  margin-bottom: 8px;
+  padding: 8px;
+  background: #f8f9fa;
+  border-radius: 6px;
+}
+
+.bt-ruler {
+  font-size: 11px;
+  color: #999;
+  margin-top: 8px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .big-three-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .big-three-unified-card {
+    padding: 24px;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  .big-three-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

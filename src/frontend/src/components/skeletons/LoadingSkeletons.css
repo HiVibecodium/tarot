@@ -1,0 +1,139 @@
+/* Loading Skeleton Styles */
+
+.card-skeleton {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.three-cards-skeleton {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.history-item-skeleton {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: white;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.history-content {
+  flex: 1;
+}
+
+.history-list-skeleton {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.chart-skeleton {
+  margin-bottom: 30px;
+}
+
+.chart-legend {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.analytics-skeleton {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.skeleton-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.skeleton-section {
+  margin-bottom: 40px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.profile-stats-skeleton {
+  padding: 20px;
+}
+
+.stats-row {
+  display: flex;
+  gap: 15px;
+  justify-content: space-around;
+}
+
+.card-grid-skeleton {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.card-grid-item {
+  text-align: center;
+}
+
+.dashboard-skeleton {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.welcome-section {
+  margin-bottom: 30px;
+}
+
+.actions-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.streak-section {
+  margin-top: 30px;
+}
+
+.content-skeleton {
+  padding: 20px;
+}
+
+.table-skeleton {
+  width: 100%;
+}
+
+.table-row-skeleton {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .three-cards-skeleton {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stats-row {
+    flex-direction: column;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,104 @@
+/* Natal Chart Wheel Styles */
+
+.natal-chart-wheel {
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.chart-svg {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 2px 8px rgba(102, 126, 234, 0.2));
+}
+
+.chart-legend {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  background: #f9f9ff;
+  border-radius: 8px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.legend-symbol {
+  font-size: 20px;
+  width: 30px;
+  text-align: center;
+}
+
+.legend-text {
+  color: #333;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .natal-chart-wheel {
+    padding: 15px;
+  }
+
+  .legend-item {
+    font-size: 13px;
+  }
+}
+
+/* Enhanced Chart Wheel */
+.natal-chart-wheel {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.chart-svg {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 4px 12px rgba(102, 126, 234, 0.15));
+  background: white;
+  border-radius: 50%;
+}
+
+/* Legend enhancements */
+.chart-legend {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 24px;
+  padding: 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border-radius: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.legend-symbol {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.legend-text {
+  font-size: 13px;
+  color: #666;
+  font-weight: 500;
+}
+

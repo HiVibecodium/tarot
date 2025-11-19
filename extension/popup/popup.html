@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Таро Совет</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup-container">
+    <header>
+      <h1>🔮 Таро Совет</h1>
+    </header>
+
+    <div id="content">
+      <div id="loading" style="display: none;">
+        <div class="spinner"></div>
+        <p>Вытягиваем карту...</p>
+      </div>
+
+      <div id="result" style="display: none;">
+        <div class="card-display">
+          <div class="card-icon">🔮</div>
+          <div id="card-name"></div>
+        </div>
+        <div class="interpretation" id="interpretation"></div>
+        <div class="recommendation" id="recommendation"></div>
+      </div>
+
+      <div id="start">
+        <p>Получите совет Таро перед покупкой</p>
+        <button id="get-guidance" class="btn-primary">
+          Получить Совет
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

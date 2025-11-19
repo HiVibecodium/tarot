@@ -1,0 +1,466 @@
+/**
+ * Accessibility Styles
+ * WCAG 2.1 AA Compliant
+ */
+
+/* ======================
+   SCREEN READER ONLY
+   ====================== */
+
+.sr-only,
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only-focusable:focus,
+.sr-only-focusable:active {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* ======================
+   FOCUS INDICATORS
+   ====================== */
+
+/* Remove default outline and add custom focus styles */
+*:focus {
+  outline: none;
+}
+
+/* Visible focus indicator for keyboard navigation */
+*:focus-visible {
+  outline: 3px solid var(--focus-color, #4A90E2);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* High contrast focus for buttons and links */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--focus-color, #4A90E2);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.2);
+}
+
+/* Focus ring for interactive cards */
+.accessible-tarot-card:focus-visible {
+  outline: 3px solid var(--focus-color, #4A90E2);
+  transform: scale(1.02);
+  z-index: 10;
+}
+
+.focus-ring {
+  position: absolute;
+  inset: -4px;
+  border: 3px solid var(--focus-color, #4A90E2);
+  border-radius: 8px;
+  pointer-events: none;
+  animation: pulse-focus 2s infinite;
+}
+
+@keyframes pulse-focus {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ======================
+   SKIP LINKS
+   ====================== */
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--primary-color, #4A90E2);
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 0 0 4px 0;
+  z-index: 10000;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid white;
+  outline-offset: 2px;
+}
+
+/* ======================
+   ARIA LIVE REGIONS
+   ====================== */
+
+[aria-live="polite"],
+[aria-live="assertive"] {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.status-message {
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.status-message[role="status"] {
+  background: #E3F2FD;
+  color: #1565C0;
+  border-left: 4px solid #1565C0;
+}
+
+.status-message[role="alert"] {
+  background: #FFEBEE;
+  color: #C62828;
+  border-left: 4px solid #C62828;
+}
+
+/* ======================
+   ACCESSIBLE BUTTONS
+   ====================== */
+
+.accessible-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.accessible-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.accessible-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.accessible-btn--primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.accessible-btn--secondary {
+  background: #E0E0E0;
+  color: #333;
+}
+
+.accessible-btn--danger {
+  background: #E53935;
+  color: white;
+}
+
+.accessible-btn--success {
+  background: #43A047;
+  color: white;
+}
+
+.accessible-btn--outline {
+  background: transparent;
+  border: 2px solid currentColor;
+  color: var(--primary-color, #4A90E2);
+}
+
+.accessible-btn--small {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.accessible-btn--large {
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+}
+
+.accessible-btn--disabled,
+.accessible-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.accessible-btn--loading {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.accessible-btn__spinner {
+  display: inline-block;
+  margin-left: 0.5rem;
+}
+
+.spinner {
+  animation: rotate 2s linear infinite;
+}
+
+.spinner .path {
+  stroke: currentColor;
+  stroke-linecap: round;
+  animation: dash 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}
+
+/* ======================
+   FORM ACCESSIBILITY
+   ====================== */
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+label[for] {
+  cursor: pointer;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+  min-height: 44px;
+  padding: 0.75rem;
+  font-size: 16px; /* Prevents iOS zoom */
+  border: 2px solid #E0E0E0;
+  border-radius: 4px;
+  transition: border-color 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--focus-color, #4A90E2);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+}
+
+input[aria-invalid="true"],
+select[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+  border-color: #E53935;
+}
+
+.form-error {
+  color: #E53935;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.form-error::before {
+  content: "⚠";
+}
+
+/* Required field indicator */
+.required::after {
+  content: "*";
+  color: #E53935;
+  margin-left: 0.25rem;
+  font-weight: bold;
+}
+
+/* ======================
+   LANDMARK REGIONS
+   ====================== */
+
+main[role="main"] {
+  outline: none;
+}
+
+nav[role="navigation"] {
+  outline: none;
+}
+
+/* ======================
+   HIGH CONTRAST MODE
+   ====================== */
+
+@media (prefers-contrast: high) {
+  * {
+    border-width: 2px !important;
+  }
+
+  button,
+  a {
+    text-decoration: underline;
+  }
+
+  .accessible-btn {
+    border: 2px solid currentColor;
+  }
+
+  .focus-ring,
+  *:focus-visible {
+    outline-width: 4px;
+    outline-color: currentColor;
+  }
+}
+
+/* ======================
+   REDUCED MOTION
+   ====================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .spinner {
+    animation: none;
+    opacity: 0.5;
+  }
+}
+
+/* ======================
+   TOOLTIPS (Accessible)
+   ====================== */
+
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]:hover::after,
+[data-tooltip]:focus::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  z-index: 1000;
+  margin-bottom: 0.5rem;
+  pointer-events: none;
+}
+
+/* ======================
+   KEYBOARD NAVIGATION
+   ====================== */
+
+.keyboard-user *:focus {
+  outline: 3px solid var(--focus-color, #4A90E2);
+  outline-offset: 2px;
+}
+
+/* Hide focus for mouse users, show for keyboard users */
+body:not(.keyboard-user) *:focus {
+  outline: none;
+}
+
+/* ======================
+   COLOR CONTRAST
+   ====================== */
+
+/* Ensure minimum 4.5:1 contrast ratio for normal text */
+.text-primary {
+  color: #212121; /* AAA on white background */
+}
+
+.text-secondary {
+  color: #424242; /* AA on white background */
+}
+
+.text-on-dark {
+  color: #FFFFFF; /* AAA on dark backgrounds */
+}
+
+.text-link {
+  color: #1565C0; /* AA on white background */
+  text-decoration: underline;
+}
+
+.text-link:hover {
+  color: #0D47A1;
+  text-decoration: underline;
+}
+
+/* ======================
+   TOUCH TARGETS
+   ====================== */
+
+/* Ensure all interactive elements are at least 44x44px (WCAG 2.1 AA) */
+button,
+a,
+input[type="checkbox"],
+input[type="radio"],
+.clickable {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+/* Larger tap targets on mobile */
+@media (max-width: 768px) {
+  button,
+  a.btn,
+  input[type="submit"] {
+    min-height: 48px;
+    padding: 0.875rem 1.5rem;
+  }
+}

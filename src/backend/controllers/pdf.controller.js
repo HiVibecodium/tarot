@@ -1,0 +1,250 @@
+const htmlPdf = require('html-pdf-node');
+const Reading = require('../models/Reading.json-model');
+
+/**
+ * @desc    Export reading as PDF
+ * @route   GET /api/readings/:id/pdf
+ * @access  Private
+ */
+exports.exportReadingPDF = async (req, res) => {
+  try {
+    const readingId = req.params.id;
+    const userId = req.user.userId;
+
+    // Find reading
+    const reading = await Reading.findById(readingId);
+
+    if (!reading) {
+      return res.status(404).json({
+        success: false,
+        error: { code: 'NOT_FOUND', message: 'Reading not found' }
+      });
+    }
+
+    // Check ownership
+    if (reading.userId !== userId) {
+      return res.status(403).json({
+        success: false,
+        error: { code: 'FORBIDDEN', message: 'Not your reading' }
+      });
+    }
+
+    // Type labels
+    const typeLabels = {
+      daily: 'Расклад Дня',
+      decision: 'Анализ Решения',
+      purchase: 'Совет по Покупке'
+    };
+
+    // Generate HTML content with proper UTF-8 encoding
+    const htmlContent = `
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Таро Расклад</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+      padding: 40px;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 3px solid #667eea;
+    }
+
+    .header h1 {
+      color: #667eea;
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .meta {
+      margin-bottom: 30px;
+      padding: 15px;
+      background: #f9f9ff;
+      border-radius: 8px;
+    }
+
+    .meta-item {
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .meta-label {
+      font-weight: 600;
+      color: #667eea;
+    }
+
+    .section {
+      margin-bottom: 25px;
+    }
+
+    .section-title {
+      color: #667eea;
+      font-size: 20px;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #e0e0ff;
+      padding-bottom: 5px;
+    }
+
+    .card {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: #ffffff;
+      border-left: 4px solid #667eea;
+      page-break-inside: avoid;
+    }
+
+    .card-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    .card-position {
+      font-size: 13px;
+      color: #666;
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+
+    .card-interpretation {
+      font-size: 12px;
+      color: #444;
+      line-height: 1.5;
+    }
+
+    .interpretation-box {
+      padding: 20px;
+      background: #f9f9ff;
+      border-radius: 8px;
+      border: 1px solid #e0e0ff;
+      margin-top: 20px;
+    }
+
+    .interpretation-text {
+      font-size: 14px;
+      color: #333;
+      text-align: justify;
+    }
+
+    .footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid #e0e0e0;
+      text-align: center;
+      font-size: 11px;
+      color: #999;
+    }
+
+    .reversed-badge {
+      display: inline-block;
+      background: #e74c3c;
+      color: white;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      margin-left: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🔮 Таро Расклад</h1>
+  </div>
+
+  <div class="meta">
+    <div class="meta-item">
+      <span class="meta-label">Тип:</span> ${typeLabels[reading.type] || reading.type}
+    </div>
+    <div class="meta-item">
+      <span class="meta-label">Дата:</span> ${new Date(reading.createdAt).toLocaleString('ru-RU')}
+    </div>
+    ${reading.type === 'decision' && reading.context?.question ? `
+    <div class="meta-item">
+      <span class="meta-label">Вопрос:</span> ${reading.context.question}
+    </div>
+    ` : ''}
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Карты</h2>
+    ${reading.cards.map((card, idx) => `
+      <div class="card">
+        <div class="card-name">
+          ${idx + 1}. ${card.cardName || card.name}
+          ${card.reversed ? '<span class="reversed-badge">Перевёрнутая</span>' : ''}
+        </div>
+        ${card.positionName ? `
+          <div class="card-position">Позиция: ${card.positionName}</div>
+        ` : ''}
+        ${card.interpretation ? `
+          <div class="card-interpretation">${card.interpretation}</div>
+        ` : ''}
+      </div>
+    `).join('')}
+  </div>
+
+  ${reading.interpretation?.text ? `
+  <div class="section">
+    <h2 class="section-title">Общая Интерпретация</h2>
+    <div class="interpretation-box">
+      <div class="interpretation-text">${reading.interpretation.text}</div>
+    </div>
+  </div>
+  ` : ''}
+
+  <div class="footer">
+    <p>Generated by AI Tarot Decision Assistant</p>
+    <p style="margin-top: 5px;">🔮 Для большего количества раскладов посетите наш сайт</p>
+  </div>
+</body>
+</html>
+    `;
+
+    // PDF generation options
+    const options = {
+      format: 'A4',
+      printBackground: true,
+      margin: {
+        top: '20mm',
+        right: '15mm',
+        bottom: '20mm',
+        left: '15mm'
+      }
+    };
+
+    // Generate PDF from HTML
+    const file = { content: htmlContent };
+    const pdfBuffer = await htmlPdf.generatePdf(file, options);
+
+    // Set response headers
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', `attachment; filename=tarot-reading-${readingId}.pdf`);
+    res.setHeader('Content-Length', pdfBuffer.length);
+
+    // Send PDF
+    res.send(pdfBuffer);
+
+  } catch (error) {
+    console.error('PDF export error:', error);
+    res.status(500).json({
+      success: false,
+      error: { code: 'PDF_ERROR', message: error.message }
+    });
+  }
+};

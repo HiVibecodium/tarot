@@ -1,0 +1,260 @@
+{
+  "timestamp": "2025-11-18T13:43:26.806Z",
+  "results": {
+    "performance": [
+      {
+        "status": "pass",
+        "message": "Code splitting with lazy() implemented",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "PWA manifest.json exists",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "Service Worker exists for offline support",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "Build script configured",
+        "recommendation": ""
+      }
+    ],
+    "security": [
+      {
+        "status": "pass",
+        "message": ".env.example exists for safe config",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": ".env is gitignored",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "helmet installed for security",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "express-rate-limit installed for security",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "express-mongo-sanitize installed for security",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "xss-clean installed for security",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "Helmet middleware configured",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "Rate limiting implemented",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "CORS configured",
+        "recommendation": ""
+      }
+    ],
+    "features": [
+      {
+        "status": "pass",
+        "message": "DailyReadingPage implemented",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "DecisionPage implemented",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "HistoryPage implemented",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "AnalyticsPage implemented",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "ProfilePage implemented",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "PremiumPage implemented",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "QuizPage implemented",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "JournalPage implemented",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "AchievementsPage implemented",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "CelticCrossPage spread available",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "RelationshipSpreadPage spread available",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "CareerPathPage spread available",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "YearSpreadPage spread available",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "MoodSelector component exists",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "GuidedInterpretation component exists",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "AchievementBadge component exists",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "PersonalizedInsights component exists",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "VoiceReader component exists",
+        "recommendation": ""
+      }
+    ],
+    "ux": [
+      {
+        "status": "pass",
+        "message": "Loading skeleton components found",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "Error display component exists",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "Toast notifications available",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "Onboarding flow implemented",
+        "recommendation": ""
+      },
+      {
+        "status": "warn",
+        "message": "No media queries in App.css",
+        "recommendation": "Add responsive breakpoints for mobile/tablet"
+      },
+      {
+        "status": "pass",
+        "message": "ARIA labels found for accessibility",
+        "recommendation": ""
+      }
+    ],
+    "monetization": [
+      {
+        "status": "pass",
+        "message": "Stripe package installed",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "Payment routes exist",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "Premium page exists",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "Premium page has payment integration",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "Premium feature gating implemented",
+        "recommendation": ""
+      }
+    ],
+    "analytics": [
+      {
+        "status": "pass",
+        "message": "Analytics page implemented",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "Charts/visualizations in analytics",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "@sentry/node tracking available",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "Stats/analytics API endpoints exist",
+        "recommendation": ""
+      },
+      {
+        "status": "pass",
+        "message": "PersonalizedInsights component exists",
+        "recommendation": ""
+      }
+    ]
+  },
+  "scores": {
+    "performance": 40,
+    "security": 90,
+    "features": 180,
+    "ux": 55,
+    "monetization": 50,
+    "analytics": 50
+  }
+}

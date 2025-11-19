@@ -1,0 +1,54 @@
+# Dependencies
+node_modules/
+src/frontend/node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# Build artifacts
+src/frontend/dist/
+build/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Testing
+coverage/
+.nyc_output/
+
+# Documentation
+*.md
+!README.md
+CASCADE/
+docs/
+
+# Database (if using JSON storage in dev)
+src/backend/db/data/
+*.json
+
+# Temporary files
+tmp/
+temp/
+.cache/

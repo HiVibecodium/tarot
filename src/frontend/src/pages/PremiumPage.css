@@ -1,0 +1,283 @@
+.premium-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding-bottom: 40px;
+}
+
+.premium-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Premium Active State */
+.premium-active {
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.success-badge {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.badge-icon {
+  font-size: 64px;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.success-badge h2 {
+  color: #667eea;
+  margin: 0 0 8px 0;
+}
+
+.success-badge p {
+  color: #666;
+  margin: 0;
+}
+
+.subscription-info {
+  background: #f7f9fc;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.subscription-info h3 {
+  margin: 0 0 16px 0;
+  color: #333;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.status-active {
+  color: #4caf50;
+  font-weight: 600;
+}
+
+.premium-features {
+  background: #f7f9fc;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.premium-features h3 {
+  margin: 0 0 16px 0;
+  color: #333;
+}
+
+.premium-features ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.premium-features li {
+  padding: 8px 0;
+  color: #555;
+}
+
+/* Pricing Card */
+.premium-offer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.pricing-card {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.card-header {
+  margin-bottom: 32px;
+}
+
+.card-header h2 {
+  color: #667eea;
+  margin: 0 0 16px 0;
+  font-size: 32px;
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+}
+
+.price .amount {
+  font-size: 48px;
+  font-weight: 700;
+  color: #333;
+}
+
+.price .period {
+  font-size: 20px;
+  color: #666;
+}
+
+.features-list {
+  text-align: left;
+  margin-bottom: 32px;
+}
+
+.features-list h3 {
+  text-align: center;
+  margin: 0 0 24px 0;
+  color: #333;
+}
+
+.features-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.features-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.features-list li:last-child {
+  border-bottom: none;
+}
+
+.features-list .icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.btn-premium {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-premium:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-premium:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.guarantee {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e0e0e0;
+  color: #666;
+  font-size: 14px;
+}
+
+.guarantee p {
+  margin: 8px 0;
+}
+
+/* Comparison Table */
+.comparison {
+  background: white;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.comparison h3 {
+  text-align: center;
+  margin: 0 0 24px 0;
+  color: #333;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.comparison-table th {
+  background: #f7f9fc;
+  font-weight: 600;
+  color: #333;
+}
+
+.comparison-table tr:last-child td {
+  border-bottom: none;
+}
+
+.comparison-table td:nth-child(2) {
+  color: #999;
+}
+
+.comparison-table td:nth-child(3) {
+  color: #4caf50;
+  font-weight: 600;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .premium-content {
+    padding: 16px;
+  }
+
+  .pricing-card {
+    padding: 24px;
+  }
+
+  .card-header h2 {
+    font-size: 24px;
+  }
+
+  .price .amount {
+    font-size: 36px;
+  }
+
+  .features-list li {
+    font-size: 14px;
+  }
+
+  .comparison {
+    padding: 20px;
+  }
+
+  .comparison-table {
+    font-size: 14px;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 8px 4px;
+  }
+}

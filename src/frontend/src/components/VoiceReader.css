@@ -1,0 +1,16 @@
+.voice-reader { margin: 16px 0; padding: 16px; background: #f8f9fa; border-radius: 8px; }
+.voice-controls { display: flex; gap: 8px; justify-content: center; }
+.voice-btn { padding: 10px 20px; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; color: white; }
+.voice-play { background: #4caf50; }
+.voice-play:hover { background: #45a049; }
+.voice-pause { background: #ff9800; }
+.voice-pause:hover { background: #f57c00; }
+.voice-resume { background: #2196f3; }
+.voice-resume:hover { background: #1976d2; }
+.voice-stop { background: #f44336; }
+.voice-stop:hover { background: #d32f2f; }
+.voice-indicator { display: flex; gap: 4px; justify-content: center; align-items: center; margin-top: 12px; height: 24px; }
+.wave { width: 4px; background: #667eea; border-radius: 2px; animation: wave 0.6s ease-in-out infinite; }
+.wave:nth-child(2) { animation-delay: 0.2s; }
+.wave:nth-child(3) { animation-delay: 0.4s; }
+@keyframes wave { 0%, 100% { height: 8px; } 50% { height: 24px; } }

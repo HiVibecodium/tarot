@@ -1,0 +1,55 @@
+# Robots.txt for AI Tarot Decision Assistant
+
+User-agent: *
+
+# Allow all public pages
+Allow: /
+Allow: /reading/daily
+Allow: /reading/decision
+Allow: /cards
+Allow: /premium
+Allow: /analytics
+Allow: /learn
+Allow: /natal-chart
+
+# Disallow private/sensitive pages
+Disallow: /api/
+Disallow: /admin
+Disallow: /admin/*
+Disallow: /profile
+Disallow: /profile/*
+Disallow: /history
+Disallow: /history/*
+
+# Disallow authentication pages (no SEO value)
+Disallow: /login
+Disallow: /register
+
+# Allow assets
+Allow: /images/
+Allow: /*.css
+Allow: /*.js
+Allow: /*.webp
+Allow: /*.jpg
+Allow: /*.png
+
+# Crawl delay (be nice to server)
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://tarot-assistant.com/sitemap.xml
+
+# Specific bot rules
+User-agent: Googlebot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+Crawl-delay: 2
+
+# Block bad bots
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10

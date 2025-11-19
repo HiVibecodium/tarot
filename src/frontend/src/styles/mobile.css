@@ -1,0 +1,380 @@
+/**
+ * Mobile-First Optimizations
+ * Touch-friendly UI and better mobile experience
+ */
+
+/* ==========================================
+   TOUCH-FRIENDLY TARGETS
+   ========================================== */
+
+/* All clickable elements should be at least 44x44px for touch */
+button,
+a,
+.clickable {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Bigger tap targets on mobile */
+@media (max-width: 768px) {
+  button,
+  .btn-primary,
+  .btn-secondary {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  input,
+  select,
+  textarea {
+    min-height: 48px;
+    font-size: 16px; /* Prevents iOS zoom */
+  }
+}
+
+/* ==========================================
+   MOBILE NAVIGATION
+   ========================================== */
+
+@media (max-width: 768px) {
+  /* Sticky header on mobile */
+  .dashboard-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--card-bg);
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .dashboard-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .user-info {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .user-info button {
+    font-size: 0.85rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
+/* ==========================================
+   MOBILE CARDS GRID
+   ========================================== */
+
+@media (max-width: 768px) {
+  .dashboard-content {
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+  }
+
+  .numbers-grid,
+  .calendar-grid,
+  .entries-list {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Featured cards on mobile - make them stand out */
+  .dashboard-card.featured {
+    border: 2px solid var(--primary-color);
+  }
+
+  .card-badge {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+}
+
+/* ==========================================
+   MOBILE FORMS
+   ========================================== */
+
+@media (max-width: 768px) {
+  .numerology-form,
+  .compatibility-form {
+    padding: 1.5rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+  }
+
+  .form-group label {
+    font-size: 0.9rem;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 0.85rem;
+  }
+}
+
+/* ==========================================
+   MOBILE MODALS
+   ========================================== */
+
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95% !important;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .modal-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .modal-body {
+    padding: 1rem;
+  }
+}
+
+/* ==========================================
+   SWIPE GESTURES HINT
+   ========================================== */
+
+.swipeable-hint {
+  display: none;
+}
+
+@media (max-width: 768px) and (hover: none) {
+  .swipeable-hint {
+    display: block;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .swipeable-hint::before {
+    content: '👆 ';
+  }
+}
+
+/* ==========================================
+   MOBILE TABS
+   ========================================== */
+
+@media (max-width: 768px) {
+  .numerology-tabs,
+  .tab-buttons {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .numerology-tabs::-webkit-scrollbar,
+  .tab-buttons::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab-button {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}
+
+/* ==========================================
+   MOBILE SPACING
+   ========================================== */
+
+@media (max-width: 768px) {
+  /* Reduce spacing on mobile */
+  .journal-page,
+  .numerology-page,
+  .moon-calendar-page {
+    padding: 1rem;
+  }
+
+  /* Headers */
+  h1 {
+    font-size: 1.75rem !important;
+  }
+
+  h2 {
+    font-size: 1.35rem !important;
+  }
+
+  h3 {
+    font-size: 1.1rem !important;
+  }
+
+  /* Sections */
+  .recommendations-section,
+  .reflection-section {
+    padding: 1.5rem;
+  }
+}
+
+/* ==========================================
+   TOUCH FEEDBACK
+   ========================================== */
+
+/* Add subtle feedback on touch */
+@media (hover: none) {
+  button:active,
+  .dashboard-card:active,
+  .clickable:active {
+    opacity: 0.8;
+    transform: scale(0.98);
+  }
+
+  /* Prevent double-tap zoom */
+  button,
+  a,
+  input,
+  select {
+    touch-action: manipulation;
+  }
+}
+
+/* ==========================================
+   SAFE AREAS (iOS notch)
+   ========================================== */
+
+@supports (padding: env(safe-area-inset-top)) {
+  .dashboard-header {
+    padding-top: calc(1rem + env(safe-area-inset-top));
+  }
+
+  .app-footer {
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+  }
+}
+
+/* ==========================================
+   MOBILE LANDSCAPE
+   ========================================== */
+
+@media (max-width: 768px) and (orientation: landscape) {
+  .dashboard-content {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .numbers-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* ==========================================
+   PULL TO REFRESH (visual only)
+   ========================================== */
+
+.pull-to-refresh-indicator {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1rem;
+  background: white;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  animation: slide-down 0.3s ease;
+}
+
+@keyframes slide-down {
+  from {
+    transform: translateX(-50%) translateY(-100%);
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* ==========================================
+   BOTTOM NAVIGATION FRIENDLY
+   ========================================== */
+
+@media (max-width: 768px) {
+  /* Add bottom padding to prevent content hiding behind bottom nav */
+  .app {
+    padding-bottom: 80px;
+  }
+
+  /* Floating action button on mobile */
+  .fab-mobile {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    z-index: 999;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .fab-mobile:active {
+    transform: scale(0.9);
+  }
+}
+
+/* ==========================================
+   HORIZONTAL SCROLL
+   ========================================== */
+
+.horizontal-scroll {
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  gap: 1rem;
+  padding: 1rem 0;
+  scrollbar-width: none;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.horizontal-scroll > * {
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+/* Scroll indicators */
+.horizontal-scroll::after {
+  content: '→';
+  position: sticky;
+  right: 0;
+  padding: 0.5rem;
+  background: linear-gradient(to left, var(--bg-color), transparent);
+  color: var(--text-secondary);
+  font-size: 1.5rem;
+}
+
+/* ==========================================
+   ACCESSIBILITY
+   ========================================== */
+
+/* Focus visible for keyboard navigation */
+@media (hover: hover) {
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  button,
+  .dashboard-card,
+  input {
+    border: 2px solid currentColor;
+  }
+}

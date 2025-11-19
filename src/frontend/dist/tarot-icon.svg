@@ -1,0 +1,44 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="512" height="512" fill="#667eea" rx="80"/>
+
+  <!-- Outer glow -->
+  <circle cx="256" cy="256" r="180" fill="url(#glow)" opacity="0.3"/>
+
+  <!-- Tarot card shape -->
+  <rect x="156" y="86" width="200" height="340" rx="20" fill="#ffffff" stroke="#f3f0ff" stroke-width="4"/>
+
+  <!-- Mystical symbol - Star/Sun -->
+  <circle cx="256" cy="180" r="45" fill="#667eea"/>
+  <path d="M 256 135 L 261 165 L 290 170 L 261 175 L 256 205 L 251 175 L 222 170 L 251 165 Z" fill="#ffd700"/>
+
+  <!-- Inner star points -->
+  <circle cx="256" cy="180" r="12" fill="#ffd700"/>
+
+  <!-- Mystical rays -->
+  <line x1="256" y1="150" x2="256" y2="130" stroke="#ffd700" stroke-width="3" stroke-linecap="round"/>
+  <line x1="256" y1="210" x2="256" y2="230" stroke="#ffd700" stroke-width="3" stroke-linecap="round"/>
+  <line x1="226" y1="180" x2="206" y2="180" stroke="#ffd700" stroke-width="3" stroke-linecap="round"/>
+  <line x1="286" y1="180" x2="306" y2="180" stroke="#ffd700" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Moon crescent -->
+  <path d="M 220 270 Q 200 290 220 310 Q 210 290 220 270 Z" fill="#e0c3fc" stroke="#667eea" stroke-width="2"/>
+  <path d="M 292 270 Q 312 290 292 310 Q 302 290 292 270 Z" fill="#e0c3fc" stroke="#667eea" stroke-width="2"/>
+
+  <!-- Decorative elements -->
+  <circle cx="196" cy="250" r="6" fill="#667eea" opacity="0.6"/>
+  <circle cx="316" cy="250" r="6" fill="#667eea" opacity="0.6"/>
+  <circle cx="256" cy="360" r="8" fill="#667eea" opacity="0.6"/>
+
+  <!-- Mystical pattern at bottom -->
+  <path d="M 196 380 Q 256 370 316 380" stroke="#667eea" stroke-width="2" fill="none" opacity="0.6"/>
+  <path d="M 196 390 Q 256 380 316 390" stroke="#667eea" stroke-width="2" fill="none" opacity="0.4"/>
+
+  <!-- Gradient definition -->
+  <defs>
+    <radialGradient id="glow">
+      <stop offset="0%" style="stop-color:#ffd700;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#667eea;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+</svg>

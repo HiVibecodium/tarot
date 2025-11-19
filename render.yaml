@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: tarot-assistant
+    env: node
+    region: frankfurt
+    plan: free
+    buildCommand: npm install && npm run build:render
+    startCommand: npm run start:prod
+    # Persistent disk for JSON database
+    disk:
+      name: tarot-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 4000
+      - key: DATA_DIR
+        value: /data
+      - key: AI_ENABLED
+        value: false
+      - key: PREMIUM_ENABLED
+        value: true
+      - key: CORS_ORIGIN
+        value: https://tarot-a2oi.onrender.com
+      - key: FRONTEND_URL
+        value: https://tarot-a2oi.onrender.com
+      - key: API_BASE_URL
+        value: https://tarot-a2oi.onrender.com

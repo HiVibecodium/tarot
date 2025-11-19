@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="300" height="450" viewBox="0 0 300 450" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="bg-wands-09" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e74c3c;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e74c3cdd;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Card background -->
+  <rect width="300" height="450" rx="15" fill="url(#bg-wands-09)"/>
+
+  <!-- Border -->
+  <rect x="10" y="10" width="280" height="430" rx="10" fill="none" stroke="#f39c12" stroke-width="3"/>
+
+  <!-- Top symbol -->
+  <text x="30" y="50" font-size="40" fill="#ffffff">🔥</text>
+
+  <!-- Card number/type (top right) -->
+  <text x="270" y="50" font-size="24" fill="#ffffff" text-anchor="end">9</text>
+
+  <!-- Card name (center) -->
+  <text x="150" y="200" font-size="28" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    Девятка Жезлов
+  </text>
+
+  <!-- Arcana type -->
+  <text x="150" y="235" font-size="16" fill="#f39c12" text-anchor="middle">
+    WANDS
+  </text>
+
+  <!-- Keywords -->
+  
+  <rect x="30" y="280" width="240" height="28" rx="14" fill="#f39c12" opacity="0.3"/>
+  <text x="150" y="300" font-size="14" fill="#ffffff" text-anchor="middle">стойкость</text>
+  
+  <rect x="30" y="315" width="240" height="28" rx="14" fill="#f39c12" opacity="0.3"/>
+  <text x="150" y="335" font-size="14" fill="#ffffff" text-anchor="middle">защита границ</text>
+  
+
+  <!-- Bottom symbol -->
+  <text x="270" y="430" font-size="40" fill="#ffffff" text-anchor="end">🔥</text>
+
+  <!-- Decorative corners -->
+  <circle cx="30" cy="30" r="8" fill="#f39c12" opacity="0.5"/>
+  <circle cx="270" cy="30" r="8" fill="#f39c12" opacity="0.5"/>
+  <circle cx="30" cy="420" r="8" fill="#f39c12" opacity="0.5"/>
+  <circle cx="270" cy="420" r="8" fill="#f39c12" opacity="0.5"/>
+</svg>

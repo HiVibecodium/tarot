@@ -1,0 +1,3 @@
+Adding Mercury and Venus interpretation blocks after Rising...
+Using existing MERCURY_IN_SIGNS and VENUS_IN_SIGNS data
+Same structure as Sun/Moon/Rising but labeled as 4th and 5th points
