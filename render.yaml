@@ -22,9 +22,25 @@ services:
         value: false
       - key: PREMIUM_ENABLED
         value: true
+      # Updated CORS for Vercel frontend
       - key: CORS_ORIGIN
-        value: https://tarot-a2oi.onrender.com
+        value: https://ai-tarot-assistant-1viqrjm5j-vibecodium.vercel.app
       - key: FRONTEND_URL
-        value: https://tarot-a2oi.onrender.com
+        value: https://ai-tarot-assistant-1viqrjm5j-vibecodium.vercel.app
       - key: API_BASE_URL
         value: https://tarot-a2oi.onrender.com
+      # JWT Secrets (set these in Render Dashboard as secrets)
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_REFRESH_SECRET
+        sync: false
+      - key: JWT_EXPIRES_IN
+        value: 24h
+      - key: JWT_REFRESH_EXPIRES_IN
+        value: 7d
+      - key: RATE_LIMIT_WINDOW_MS
+        value: 900000
+      - key: RATE_LIMIT_MAX_REQUESTS
+        value: 100
+      - key: LOG_LEVEL
+        value: info
