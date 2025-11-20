@@ -43,7 +43,9 @@
       "Bash(git branch:*)",
       "Bash(vercel --version:*)",
       "Bash(vercel:*)",
-      "Bash(echo:*)"
+      "Bash(echo:*)",
+      "Bash(railway:*)",
+      "Bash(.env.railway.template)"
     ],
     "deny": [],
     "ask": []
