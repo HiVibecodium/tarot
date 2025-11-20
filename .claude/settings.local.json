@@ -39,7 +39,8 @@
       "Bash(npx web-push generate-vapid-keys)",
       "Bash(gh repo list:*)",
       "Bash(gh repo create:*)",
-      "Bash(git remote set-url:*)"
+      "Bash(git remote set-url:*)",
+      "Bash(git branch:*)"
     ],
     "deny": [],
     "ask": []
