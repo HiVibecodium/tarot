@@ -1,7 +1,9 @@
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useEffect } from 'react'
+import analytics from './utils/analytics'
 import Footer from './components/Footer'
+import FeedbackButton from './components/FeedbackButton'
 import LandingPage from './pages/LandingPage'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
@@ -45,9 +47,68 @@ import AboutPage from './pages/AboutPage'
 import AchievementsPage from './pages/AchievementsPage'
 import './App.css'
 
+// Helper function to get readable page name from path
+function getPageName(pathname) {
+  const pageNames = {
+    '/': 'Landing',
+    '/landing': 'Landing',
+    '/login': 'Login',
+    '/register': 'Register',
+    '/dashboard': 'Dashboard',
+    '/reading/daily': 'Daily Reading',
+    '/reading/decision': 'Decision Reading',
+    '/spread/celtic-cross': 'Celtic Cross',
+    '/spread/relationship': 'Relationship',
+    '/spread/love': 'Love Spread',
+    '/spread/career': 'Career Path',
+    '/spread/finance': 'Finance Spread',
+    '/spread/year-ahead': 'Year Ahead',
+    '/spread/year': 'Year Spread',
+    '/spread/yes-no': 'Yes/No',
+    '/spread/birthday': 'Birthday Spread',
+    '/spread/past-present-future': 'Past Present Future',
+    '/history': 'History',
+    '/analytics': 'Analytics',
+    '/natal-chart': 'Natal Chart',
+    '/numerology': 'Numerology',
+    '/moon-calendar': 'Moon Calendar',
+    '/journal': 'Journal',
+    '/cards': 'Cards Library',
+    '/learn': 'Learn Tarot',
+    '/quiz': 'Tarot Quiz',
+    '/profile': 'Profile',
+    '/premium': 'Premium',
+    '/admin': 'Admin',
+    '/privacy': 'Privacy Policy',
+    '/terms': 'Terms of Service',
+    '/compatibility': 'Compatibility',
+    '/personality-tests': 'Personality Tests',
+    '/medium-consultation': 'Medium Consultation',
+    '/about': 'About',
+    '/achievements': 'Achievements'
+  };
+
+  return pageNames[pathname] || `Page: ${pathname}`;
+}
+
 function App() {
   const { user, isAuthenticated } = useSelector((state) => state.auth)
   const location = useLocation()
+
+  // Track page views on route changes
+  useEffect(() => {
+    const pageName = getPageName(location.pathname);
+    analytics.trackPageView(location.pathname, pageName);
+
+    // Set user properties if authenticated
+    if (isAuthenticated && user) {
+      analytics.setUserProperties({
+        user_id: user.userId,
+        is_premium: user.isPremium || false,
+        user_type: user.role || 'user'
+      });
+    }
+  }, [location, isAuthenticated, user]);
 
   // Hide footer on login/register/landing pages
   const showFooter = !['/login', '/register', '/landing'].includes(location.pathname)
@@ -142,6 +203,9 @@ function App() {
       </Suspense>
 
       {showFooter && <Footer />}
+
+      {/* Feedback Button - показывается на всех страницах кроме landing/login/register */}
+      {showFooter && <FeedbackButton />}
     </div>
   )
 }

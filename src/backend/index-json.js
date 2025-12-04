@@ -161,6 +161,7 @@ const astrologyRoutes = require('./routes/astrology.routes');
 const paymentRoutes = require('./api/routes/payment');
 const analyticsRoutes = require('./api/routes/analytics');
 const socialRoutes = require('./api/routes/social');
+const feedbackRoutes = require('./routes/feedback.routes');
 
 // Mount routes
 app.use('/api/auth', authRoutes);
@@ -176,6 +177,7 @@ app.use('/api/payment', paymentRoutes);
 app.use('/api/analytics', analyticsRoutes);
 app.use('/api/social', socialRoutes);
 app.use('/api/astrology', astrologyRoutes);
+app.use('/api/feedback', feedbackRoutes);
 
 // Stripe routes
 const stripeRoutes = require('./routes/stripe.routes');

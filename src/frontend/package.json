@@ -23,7 +23,8 @@
     "react-loading-skeleton": "^3.5.0",
     "react-redux": "^9.0.4",
     "react-router-dom": "^6.20.1",
-    "vite": "^5.0.8"
+    "vite": "^5.0.8",
+    "web-vitals": "^5.1.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

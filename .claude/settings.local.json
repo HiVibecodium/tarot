@@ -51,7 +51,10 @@
       "Bash(test:*)",
       "Bash(npm run lint:*)",
       "Bash(npm run test:*)",
-      "Bash(npm audit:*)"
+      "Bash(npm audit:*)",
+      "Bash(node scripts/apply-seo-to-pages.js:*)",
+      "Bash(node scripts/apply-seo-improved.js:*)",
+      "Bash(node scripts/apply-seo-simple.js:*)"
     ],
     "deny": [],
     "ask": []

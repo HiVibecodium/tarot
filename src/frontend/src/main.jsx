@@ -7,6 +7,8 @@ import { ThemeProvider } from './context/ThemeContext'
 import { store } from './store/store'
 import { initSentry, SentryErrorBoundary } from './config/sentry'
 import { registerServiceWorker } from './utils/registerServiceWorker'
+import analytics from './utils/analytics'
+import { initWebVitals } from './utils/webVitals'
 import './utils/logger' // Import logger to suppress console in production
 import App from './App'
 import './index.css'
@@ -18,6 +20,18 @@ import './styles/accessibility.css'
 
 // Initialize Sentry (must be before rendering)
 initSentry()
+
+// Initialize Analytics (GA4 + Yandex.Metrika)
+analytics.init({
+  ga4MeasurementId: import.meta.env.VITE_GA4_MEASUREMENT_ID,
+  yandexMetrikaId: import.meta.env.VITE_YM_COUNTER_ID,
+  enableInDev: false // Only track in production
+})
+
+// Initialize Web Vitals monitoring
+if (import.meta.env.PROD) {
+  initWebVitals()
+}
 
 // Register Service Worker for PWA functionality
 if (import.meta.env.PROD) {
