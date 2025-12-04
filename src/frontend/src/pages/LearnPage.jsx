@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { LearnSEO } from '../components/SEO'
 import './LearnPage.css'
 
 const QUIZ_QUESTIONS = [
@@ -109,13 +110,15 @@ function LearnPage() {
   }
 
   return (
-    <div className="learn-page">
-      <header className="reading-header">
-        <button onClick={() => navigate('/dashboard')} className="btn-back">
-          ← Назад
-        </button>
-        <h1>📚 Обучение Таро - Квиз</h1>
-      </header>
+    <>
+      <LearnSEO />
+      <div className="learn-page">
+        <header className="reading-header">
+          <button onClick={() => navigate('/dashboard')} className="btn-back">
+            ← Назад
+          </button>
+          <h1>📚 Обучение Таро - Квиз</h1>
+        </header>
 
       <main className="learn-content">
         <div className="quiz-progress">
@@ -158,6 +161,7 @@ function LearnPage() {
         </div>
       </main>
     </div>
+    </>
   )
 }
 
