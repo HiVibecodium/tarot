@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { NumerologySEO } from '../components/SEO'
 import './NumerologyPage.css';
 
 const NumerologyPage = () => {
@@ -121,6 +122,7 @@ const NumerologyPage = () => {
 
     return (
       <div className="number-card" style={{ borderColor: interpretation.color }}>
+        <NumerologySEO />
         <div className="number-card-header">
           <span className="number-icon">{icon}</span>
           <h3>{title}</h3>

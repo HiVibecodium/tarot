@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { YearAheadSEO } from '../components/SEO'
 import './YearSpreadPage.css'
 
 const MONTHS = [
@@ -44,6 +45,7 @@ function YearSpreadPage() {
 
   return (
     <div className="year-spread-page">
+      <YearAheadSEO />
       <div className="year-spread-header">
         <button onClick={() => navigate('/dashboard')} className="btn-back">
           ← Назад

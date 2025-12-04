@@ -7,6 +7,7 @@ import Toast from '../components/Toast'
 import AchievementBadge, { checkAchievements, ACHIEVEMENTS } from '../components/AchievementBadge'
 import { ProfileStatsSkeleton } from '../components/skeletons/LoadingSkeletons'
 import ErrorDisplay from '../components/ErrorDisplay'
+import { ProfileSEO } from '../components/SEO'
 import './ProfilePage.css'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000/api'
@@ -148,6 +149,7 @@ function ProfilePage() {
 
   return (
     <div className="profile-page">
+      <ProfileSEO />
       {/* Toast notifications */}
       {toast.toasts.map(t => (
         <Toast

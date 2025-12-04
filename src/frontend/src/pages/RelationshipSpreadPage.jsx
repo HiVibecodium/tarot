@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import axios from 'axios'
 import SpreadEngine from '../components/SpreadEngine'
+import { RelationshipSEO } from '../components/SEO'
 import './RelationshipSpreadPage.css'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000/api'
@@ -107,6 +108,7 @@ function RelationshipSpreadPage() {
 
   return (
     <div className="relationship-spread-page">
+      <RelationshipSEO />
       <header className="reading-header">
         <button onClick={() => navigate('/dashboard')} className="btn-back">
           ← Назад

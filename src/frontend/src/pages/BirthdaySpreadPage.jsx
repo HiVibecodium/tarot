@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { BirthdaySEO } from '../components/SEO'
 import './BirthdaySpreadPage.css'
 
 const SAMPLE_CARDS = [
@@ -70,6 +71,7 @@ function BirthdaySpreadPage() {
 
   return (
     <div className="birthday-spread-page">
+      <BirthdaySEO />
       <div className="birthday-header">
         <button onClick={() => navigate('/dashboard')} className="btn-back">
           ← Назад

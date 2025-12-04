@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { FinanceSEO } from '../components/SEO'
 import './FinanceSpreadPage.css'
 
 const SAMPLE_CARDS = [
@@ -53,6 +54,7 @@ function FinanceSpreadPage() {
 
   return (
     <div className="finance-spread-page">
+      <FinanceSEO />
       <div className="finance-header">
         <button onClick={() => navigate('/dashboard')} className="btn-back">
           ← Назад

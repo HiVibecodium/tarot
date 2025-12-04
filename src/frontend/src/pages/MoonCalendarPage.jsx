@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import MoonPhase from '../components/MoonPhase';
+import { MoonCalendarSEO } from '../components/SEO'
 import './MoonCalendarPage.css';
 
 const MoonCalendarPage = () => {
@@ -52,6 +53,7 @@ const MoonCalendarPage = () => {
 
   return (
     <div className="moon-calendar-page">
+      <MoonCalendarSEO />
       <div className="moon-header">
         <h1>🌙 Лунный Календарь</h1>
         <p>Узнайте благоприятные дни для раскладов и ритуалов</p>

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import axios from 'axios'
 import SpreadEngine from '../components/SpreadEngine'
+import { YearAheadSEO } from '../components/SEO'
 import './YearAheadPage.css'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000/api'
@@ -97,6 +98,7 @@ function YearAheadPage() {
 
   return (
     <div className="year-ahead-page">
+      <YearAheadSEO />
       <header className="reading-header">
         <button onClick={() => navigate('/dashboard')} className="btn-back">
           ← Назад

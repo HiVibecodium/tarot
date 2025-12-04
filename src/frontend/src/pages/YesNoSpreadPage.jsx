@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { YesNoSEO } from '../components/SEO'
 import './YesNoSpreadPage.css'
 
 const SAMPLE_CARDS = [
@@ -154,6 +155,7 @@ function YesNoSpreadPage() {
 
   return (
     <div className="yes-no-page">
+      <YesNoSEO />
       <div className="yes-no-header">
         <button onClick={() => navigate('/dashboard')} className="btn-back">
           ← Назад

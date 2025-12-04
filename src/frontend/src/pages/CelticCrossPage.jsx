@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import axios from 'axios'
 import SpreadEngine from '../components/SpreadEngine'
+import { CelticCrossSEO } from '../components/SEO'
 import './CelticCrossPage.css'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000/api'
@@ -121,6 +122,7 @@ function CelticCrossPage() {
 
   return (
     <div className="celtic-cross-page">
+      <CelticCrossSEO />
       <header className="reading-header">
         <button onClick={() => navigate('/dashboard')} className="btn-back">
           ← Назад

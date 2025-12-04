@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import SimpleChart from '../components/SimpleChart'
 import { AnalyticsSkeleton } from '../components/skeletons/LoadingSkeletons'
+import { AnalyticsSEO } from '../components/SEO'
 import './AnalyticsPage.css'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000/api'
@@ -107,6 +108,7 @@ function AnalyticsPage() {
 
   return (
     <div className="analytics-page">
+      <AnalyticsSEO />
       <header className="reading-header">
         <button onClick={() => navigate('/dashboard')} className="btn-back">
           ← Назад

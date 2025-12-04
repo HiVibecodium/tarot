@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { JournalSEO } from '../components/SEO'
 import './JournalPage.css';
 
 const JournalPage = () => {
@@ -121,6 +122,7 @@ const JournalPage = () => {
 
   return (
     <div className="journal-page">
+      <JournalSEO />
       <div className="journal-header">
         <h1>📔 Дневник Таро</h1>
         <p>Ваши записи, мысли и инсайты о раскладах</p>

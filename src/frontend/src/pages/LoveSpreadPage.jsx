@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { LoveSpreadSEO } from '../components/SEO'
 import './LoveSpreadPage.css'
 
 const MONTHS = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
@@ -56,6 +57,7 @@ function LoveSpreadPage() {
 
   return (
     <div className="love-spread-page">
+      <LoveSpreadSEO />
       <div className="love-header">
         <button onClick={() => navigate('/dashboard')} className="btn-back">
           ← Назад

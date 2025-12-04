@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import axios from 'axios'
 import TarotCard from '../components/TarotCard'
 import ShareButtons from '../components/ShareButtons'
+import { DecisionSEO } from '../components/SEO'
 import './PastPresentFuturePage.css'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000/api'
@@ -410,6 +411,7 @@ function PastPresentFuturePage() {
 
   return (
     <div className="ppf-page-new">
+      <DecisionSEO />
       <header className="ppf-header">
         <button onClick={() => navigate('/dashboard')} className="btn-back">
           ← Назад к Dashboard

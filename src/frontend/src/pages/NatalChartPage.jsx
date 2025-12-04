@@ -10,6 +10,7 @@ import { ZODIAC_DETAILED, PLANET_MEANINGS, HOUSE_MEANINGS, ASPECT_INTERPRETATION
 import { MERCURY_IN_SIGNS, VENUS_IN_SIGNS, MARS_IN_SIGNS, JUPITER_IN_SIGNS, SATURN_IN_SIGNS, URANUS_IN_SIGNS, NEPTUNE_IN_SIGNS, PLUTO_IN_SIGNS } from '../utils/planetsInSigns'
 import { ASPECT_INTERPRETATIONS as DETAILED_ASPECTS, getAspectInterpretation } from '../utils/aspectInterpretations'
 import { ELEMENT_DETAILED, getElementBalanceAnalysis } from '../utils/elementMeanings'
+import { NatalChartSEO } from '../components/SEO'
 import './NatalChartPage.css'
 
 // Simple zodiac info for quick access
@@ -169,6 +170,7 @@ function NatalChartPage() {
 
   return (
     <div className="natal-chart-page">
+      <NatalChartSEO />
       {toast.toasts.map(t => (
         <Toast key={t.id} message={t.message} type={t.type} duration={t.duration} onClose={() => toast.hideToast(t.id)} />
       ))}

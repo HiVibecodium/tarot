@@ -5,6 +5,7 @@ import axios from 'axios'
 import { HistoryListSkeleton } from '../components/skeletons/LoadingSkeletons'
 import ErrorDisplay from '../components/ErrorDisplay'
 import SpreadModal from '../components/SpreadModal'
+import { HistorySEO } from '../components/SEO'
 import './HistoryPage.css'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000/api'
@@ -88,6 +89,7 @@ function HistoryPage() {
 
   return (
     <div className="history-page">
+      <HistorySEO />
       <header className="reading-header">
         <button onClick={() => navigate('/dashboard')} className="btn-back">
           ← Назад
