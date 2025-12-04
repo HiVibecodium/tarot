@@ -45,7 +45,13 @@
       "Bash(vercel:*)",
       "Bash(echo:*)",
       "Bash(railway:*)",
-      "Bash(.env.railway.template)"
+      "Bash(.env.railway.template)",
+      "Bash(npm outdated:*)",
+      "Bash(node -c:*)",
+      "Bash(test:*)",
+      "Bash(npm run lint:*)",
+      "Bash(npm run test:*)",
+      "Bash(npm audit:*)"
     ],
     "deny": [],
     "ask": []
