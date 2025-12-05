@@ -1,3 +1,4 @@
+/* eslint-env serviceworker */
 /**
  * Service Worker for AI Tarot Decision Assistant
  * Provides offline caching and PWA functionality

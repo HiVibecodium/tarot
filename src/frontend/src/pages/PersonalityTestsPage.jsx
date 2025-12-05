@@ -1,7 +1,23 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PersonalityTest from '../components/PersonalityTest';
-import { ELEMENT_TEST, TAROT_ARCHETYPE_TEST } from '../data/personalityTests';
+import {
+  ELEMENT_TEST,
+  TAROT_ARCHETYPE_TEST,
+  INTUITION_TEST,
+  CHAKRA_TEST,
+  MBTI_TEST,
+  ENERGY_TYPE_TEST,
+  SOUL_GIFT_TEST,
+  TOTEM_ANIMAL_TEST,
+  LIFE_PURPOSE_TEST,
+  CRYSTAL_GUARDIAN_TEST,
+  LUNAR_NODES_TEST,
+  VOCATION_TEST,
+  SPIRITUAL_LEVEL_TEST,
+  KARMIC_LESSONS_TEST,
+  YIN_YANG_TEST
+} from '../data/personalityTests';
 import './PersonalityTestsPage.css';
 
 function PersonalityTestsPage() {
@@ -19,22 +35,56 @@ function PersonalityTestsPage() {
       available: true
     },
     {
-      id: 'intuition-level',
-      title: 'Уровень Интуиции',
-      icon: '🔮',
-      description: 'Насколько развита ваша интуиция? Проверьте свои экстрасенсорные способности',
-      duration: '10 мин',
-      questions: 30,
-      available: false
+      data: INTUITION_TEST,
+      available: true
     },
     {
-      id: 'chakra-balance',
-      title: 'Баланс Чакр',
-      icon: '🌈',
-      description: 'Узнайте какие чакры у вас активны, а какие нуждаются в гармонизации',
-      duration: '8 мин',
-      questions: 21,
-      available: false
+      data: CHAKRA_TEST,
+      available: true
+    },
+    {
+      data: MBTI_TEST,
+      available: true
+    },
+    {
+      data: ENERGY_TYPE_TEST,
+      available: true
+    },
+    {
+      data: SOUL_GIFT_TEST,
+      available: true
+    },
+    {
+      data: TOTEM_ANIMAL_TEST,
+      available: true
+    },
+    {
+      data: LIFE_PURPOSE_TEST,
+      available: true
+    },
+    {
+      data: CRYSTAL_GUARDIAN_TEST,
+      available: true
+    },
+    {
+      data: LUNAR_NODES_TEST,
+      available: true
+    },
+    {
+      data: VOCATION_TEST,
+      available: true
+    },
+    {
+      data: SPIRITUAL_LEVEL_TEST,
+      available: true
+    },
+    {
+      data: KARMIC_LESSONS_TEST,
+      available: true
+    },
+    {
+      data: YIN_YANG_TEST,
+      available: true
     }
   ];
 

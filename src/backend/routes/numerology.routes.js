@@ -206,10 +206,11 @@ router.post('/quick-calculate', (req, res) => {
     let result;
 
     switch (type) {
-      case 'lifePath':
+      case 'lifePath': {
         const [day, month, year] = value.split('.').map(Number);
         result = numerologyService.calculateLifePath(day, month, year);
         break;
+      }
       case 'destiny':
         result = numerologyService.calculateDestiny(value);
         break;
@@ -219,11 +220,12 @@ router.post('/quick-calculate', (req, res) => {
       case 'personality':
         result = numerologyService.calculatePersonality(value);
         break;
-      case 'personalYear':
+      case 'personalYear': {
         const [d, m] = value.split('.').map(Number);
         const year2 = value2 || new Date().getFullYear();
         result = numerologyService.calculatePersonalYear(d, m, year2);
         break;
+      }
       default:
         return res.status(400).json({
           success: false,

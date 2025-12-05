@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-11-18T13:43:26.806Z",
+  "timestamp": "2025-12-04T08:36:51.254Z",
   "results": {
     "performance": [
       {
@@ -184,9 +184,9 @@
         "recommendation": ""
       },
       {
-        "status": "warn",
-        "message": "No media queries in App.css",
-        "recommendation": "Add responsive breakpoints for mobile/tablet"
+        "status": "pass",
+        "message": "Responsive design media queries found",
+        "recommendation": ""
       },
       {
         "status": "pass",
@@ -253,7 +253,7 @@
     "performance": 40,
     "security": 90,
     "features": 180,
-    "ux": 55,
+    "ux": 60,
     "monetization": 50,
     "analytics": 50
   }

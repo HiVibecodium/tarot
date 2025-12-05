@@ -8,7 +8,24 @@ const PersonalityTest = ({ test, onComplete }) => {
   const [result, setResult] = useState(null);
 
   const handleAnswer = (option) => {
-    const newAnswers = [...answers, option];
+    const question = test.questions[currentQuestion];
+
+    // Создаем ответ, добавляя категорию из вопроса, если её нет в опции
+    const answer = { ...option };
+
+    // Если опция не содержит категорию, берем её из вопроса
+    const categoryKey = Object.keys(option).find(k => k !== 'text' && k !== 'points');
+    if (!categoryKey) {
+      // Ищем ключ категории в вопросе (chakra, element и т.д.)
+      const questionCategoryKey = Object.keys(question).find(k =>
+        k !== 'id' && k !== 'text' && k !== 'options'
+      );
+      if (questionCategoryKey) {
+        answer[questionCategoryKey] = question[questionCategoryKey];
+      }
+    }
+
+    const newAnswers = [...answers, answer];
     setAnswers(newAnswers);
 
     if (currentQuestion < test.questions.length - 1) {
@@ -21,10 +38,80 @@ const PersonalityTest = ({ test, onComplete }) => {
 
   const calculateResult = (finalAnswers) => {
     try {
+      // Проверяем, является ли это многомерным тестом (например, MBTI)
+      const isMultiDimensional = test.questions.some(q => q.dimension);
+
+      if (isMultiDimensional) {
+        // Специальная логика для многомерных тестов (MBTI)
+        const dimensionScores = {};
+
+        finalAnswers.forEach((answer, index) => {
+          const question = test.questions[index];
+          const dimension = question.dimension;
+
+          if (!dimensionScores[dimension]) {
+            dimensionScores[dimension] = {};
+          }
+
+          const type = answer.type;
+          if (!dimensionScores[dimension][type]) {
+            dimensionScores[dimension][type] = 0;
+          }
+          dimensionScores[dimension][type] += answer.points;
+        });
+
+        // Определяем доминирующую букву в каждом измерении
+        let personalityType = '';
+        Object.keys(dimensionScores).sort().forEach(dimension => {
+          const types = dimensionScores[dimension];
+          const maxScore = Math.max(...Object.values(types));
+          const dominant = Object.keys(types).find(key => types[key] === maxScore);
+          personalityType += dominant;
+        });
+
+        const resultDetails = test.results?.[personalityType];
+
+        if (!resultDetails) {
+          console.error('Result not found for:', personalityType, 'Available results:', Object.keys(test.results || {}));
+          alert('Ошибка при расчёте результата. Попробуйте пройти тест снова.');
+          return;
+        }
+
+        setResult({
+          dominant: personalityType,
+          scores: dimensionScores,
+          percentage: 100,
+          details: resultDetails
+        });
+
+        setShowResult(true);
+
+        if (onComplete) {
+          onComplete({
+            testId: test.id,
+            result: personalityType,
+            scores: dimensionScores,
+            percentage: 100,
+            completedAt: new Date().toISOString()
+          });
+        }
+
+        return;
+      }
+
+      // Стандартная логика для одномерных тестов
       const scores = {};
 
       finalAnswers.forEach(answer => {
-        const key = answer.element || answer.archetype;
+        // Динамически находим ключ категории (исключая text и points)
+        const categoryKey = Object.keys(answer).find(k => k !== 'text' && k !== 'points');
+        const key = answer[categoryKey];
+
+        if (!key) {
+          console.error('No category key found in answer:', answer);
+          return;
+        }
+
         if (!scores[key]) {
           scores[key] = 0;
         }
@@ -33,7 +120,10 @@ const PersonalityTest = ({ test, onComplete }) => {
 
       const maxScore = Math.max(...Object.values(scores));
       const dominant = Object.keys(scores).find(key => scores[key] === maxScore);
-      const percentage = Math.round((maxScore / (test.questions.length * 3)) * 100);
+
+      // Вычисляем реальный максимум баллов для теста
+      const totalMaxPoints = finalAnswers.reduce((sum, answer) => sum + answer.points, 0);
+      const percentage = Math.round((maxScore / totalMaxPoints) * 100);
 
       // Проверяем что результат существует
       const resultDetails = test.results?.[dominant];

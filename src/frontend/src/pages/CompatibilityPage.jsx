@@ -374,6 +374,11 @@ function CompatibilityPage() {
     if (yourBirthDate && partnerBirthDate) {
       await calculateNumerologyCompatibility()
     }
+
+    // Прокрутка к верху страницы после расчёта
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }, 100)
   }
 
   const reset = () => {
@@ -877,7 +882,7 @@ function CompatibilityPage() {
           <div className="result-section">
             <div className="result-header">
               <h3>{result.yourName} 💖 {result.partnerName}</h3>
-              <p>{result.yourSign} × {result.partnerSign}</p>
+              <p>{result.yourName || 'Вы'} ({result.yourSign}) × {result.partnerName || 'Партнёр'} ({result.partnerSign})</p>
             </div>
 
             {/* Integrated Analysis - ПЕРВЫМ */}
@@ -970,83 +975,6 @@ function CompatibilityPage() {
             <div className="section-divider">
               <span>Детальный Анализ по Методам</span>
             </div>
-
-            {/* Tarot Cards Section - ПЕРВЫМ в детальном анализе */}
-            {result.yourCard && result.partnerCard && (
-              <div className="tarot-section">
-                <h3 className="tarot-title">🎴 Карты Таро Раскрывают</h3>
-                <p className="tarot-subtitle">Энергии каждого в отношениях</p>
-
-                <div className="tarot-cards-grid">
-                  <div className="partner-card-display">
-                    <div className="partner-label">👤 {result.yourName}</div>
-                    <div className="tarot-card-big">
-                      <div className="card-icon-huge">🎴</div>
-                      <h3>{result.yourCard.name}</h3>
-                      <p className="card-meaning-snippet">{result.yourCard.meaning}</p>
-                    </div>
-                  </div>
-
-                  <div className="heart-divider-big">
-                    💗
-                  </div>
-
-                  <div className="partner-card-display">
-                    <div className="partner-label">💑 {result.partnerName}</div>
-                    <div className="tarot-card-big">
-                      <div className="card-icon-huge">🎴</div>
-                      <h3>{result.partnerCard.name}</h3>
-                      <p className="card-meaning-snippet">{result.partnerCard.meaning}</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="card-interpretations">
-                  <div className="card-interp-section">
-                    <h5>👤 {result.yourName}: {result.yourCard.name}</h5>
-                    <p className="card-role"><strong>Ваша Роль в Отношениях:</strong></p>
-                    <p>{result.yourCard.inRelation}</p>
-                    <p className="card-strength"><strong>Ваша Сила:</strong> {result.yourCard.strength}</p>
-                  </div>
-
-                  <div className="card-interp-divider"></div>
-
-                  <div className="card-interp-section">
-                    <h5>💑 {result.partnerName}: {result.partnerCard.name}</h5>
-                    <p className="card-role"><strong>Роль Партнёра в Отношениях:</strong></p>
-                    <p>{result.partnerCard.inRelation}</p>
-                    <p className="card-strength"><strong>Сила Партнёра:</strong> {result.partnerCard.strength}</p>
-                  </div>
-
-                  <div className="card-interp-divider"></div>
-
-                  <div className="combined-interp">
-                    <h5>💫 Динамика Пары</h5>
-                    <p>
-                      {result.yourCard.energy === 'positive' && result.partnerCard.energy === 'positive' &&
-                        `Обе карты несут позитивную энергию! ${result.yourName} привносит ${result.yourCard.strength.toLowerCase()},
-                        а ${result.partnerName} - ${result.partnerCard.strength.toLowerCase()}. Вместе вы создаёте гармоничную,
-                        поддерживающую атмосферу где оба могут процветать. Ваши энергии усиливают друг друга, создавая мощный
-                        синергетический эффект в отношениях.`}
-
-                      {result.yourCard.energy === 'challenging' && result.partnerCard.energy === 'challenging' &&
-                        `Обе карты указывают на вызовы роста. ${result.yourName} работает с темой ${result.yourCard.meaning.toLowerCase()},
-                        ${result.partnerName} - с ${result.partnerCard.meaning.toLowerCase()}. Это не плохо - трудности закаляют!
-                        Ключ в том, чтобы поддерживать друг друга в преодолении этих паттернов, а не усиливать их. Вы можете стать
-                        целителями друг для друга, если готовы работать над собой.`}
-
-                      {result.yourCard.energy !== result.partnerCard.energy &&
-                        `Разные энергии создают динамичный баланс.
-                        ${result.yourCard.energy === 'positive' ? result.yourName : result.partnerName} привносит лёгкость,
-                        позитив и поддержку, помогая
-                        ${result.yourCard.energy === 'challenging' ? result.yourName : result.partnerName} проходить через вызовы.
-                        Один освещает путь, другой углубляет понимание. Это может быть очень продуктивная динамика, где оба учатся
-                        и растут благодаря различиям.`}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )}
 
             {/* Astrology Section - с заголовком */}
             <div className="method-detail-section">
@@ -1241,9 +1169,325 @@ function CompatibilityPage() {
                   )
                 })()}
               </div>
+            </div>
 
-              {/* Life Areas Compatibility */}
-              <div className="life-areas-section">
+            {/* Numerology Section */}
+            {numerologyResult && (
+              <div className="numerology-section">
+                <h3 style={{
+                  textAlign: 'center',
+                  fontSize: '1.8rem',
+                  marginBottom: '1.5rem',
+                  fontWeight: '700',
+                  color: '#ffffff',
+                  textShadow: 'none',
+                  opacity: 1,
+                  background: 'none'
+                }}>🔢 Нумерологическая Совместимость</h3>
+                <p className="method-section-subtitle" style={{ textAlign: 'center', marginBottom: '1.5rem', color: 'white' }}>
+                  Анализ по числам жизненного пути
+                </p>
+                <div className="numerology-content">
+                  <div className="numerology-numbers">
+                    <div className="num-person">
+                      <span className="num-label">Вы</span>
+                      <span className="num-value">{numerologyResult.yourLifePath}</span>
+                    </div>
+                    <span className="num-heart">💕</span>
+                    <div className="num-person">
+                      <span className="num-label">Партнёр</span>
+                      <span className="num-value">{numerologyResult.partnerLifePath}</span>
+                    </div>
+                  </div>
+                  <div className="numerology-score">
+                    <div className="num-score-bar">
+                      <div className="num-score-fill" style={{ width: `${numerologyResult.percentage}%` }}></div>
+                    </div>
+                    <p className="num-score-text">{numerologyResult.score}/10 - {numerologyResult.level}</p>
+                    <p className="num-description">{numerologyResult.description}</p>
+                  </div>
+                </div>
+
+                {/* Дополнительная информация о нумерологии */}
+                <div className="num-details">
+                  <div className="num-detail-card">
+                    <h4>🔮 Значение Чисел</h4>
+                    <p><strong>Число {numerologyResult.yourLifePath}:</strong> {getLifePathMeaning(numerologyResult.yourLifePath)}</p>
+                    <p style={{marginTop: '1rem'}}><strong>Число {numerologyResult.partnerLifePath}:</strong> {getLifePathMeaning(numerologyResult.partnerLifePath)}</p>
+                  </div>
+                  <div className="num-detail-card">
+                    <h4>✨ Взаимодействие</h4>
+                    <p>{getNumerologyInteraction(numerologyResult.yourLifePath, numerologyResult.partnerLifePath, numerologyResult.score)}</p>
+                  </div>
+                </div>
+
+                {/* Расширенный анализ совместимости */}
+                <div className="num-extended-analysis">
+                  <h3 style={{ textAlign: 'center', marginBottom: '2rem', color: 'white' }}>
+                    📊 Детальный Нумерологический Анализ
+                  </h3>
+
+                  {/* Сильные стороны и вызовы */}
+                  <div className="num-analysis-grid">
+                    {numerologyResult.score >= 7 ? (
+                      <>
+                        <div className="num-analysis-card strength">
+                          <h4>💪 Сильные Стороны Пары</h4>
+                          <ul>
+                            <li>Естественное понимание целей друг друга</li>
+                            <li>Схожие жизненные ценности и приоритеты</li>
+                            <li>Способность расти вместе без потери индивидуальности</li>
+                            <li>Взаимное вдохновение на развитие</li>
+                            <li>Гармоничная энергетическая совместимость</li>
+                          </ul>
+                        </div>
+                        <div className="num-analysis-card advice">
+                          <h4>💡 Рекомендации</h4>
+                          <ul>
+                            <li>Используйте синергию ваших чисел для общих проектов</li>
+                            <li>Поддерживайте личные цели партнёра - это укрепит союз</li>
+                            <li>Не принимайте гармонию как должное - развивайте её</li>
+                            <li>Делитесь своими мечтами и амбициями друг с другом</li>
+                          </ul>
+                        </div>
+                      </>
+                    ) : numerologyResult.score >= 5 ? (
+                      <>
+                        <div className="num-analysis-card strength">
+                          <h4>💪 Сильные Стороны Пары</h4>
+                          <ul>
+                            <li>Разные подходы дают широкую перспективу</li>
+                            <li>Возможность учиться друг у друга</li>
+                            <li>Баланс между схожестью и различием</li>
+                            <li>Потенциал для взаимного роста через различия</li>
+                          </ul>
+                        </div>
+                        <div className="num-analysis-card challenge">
+                          <h4>⚠️ Области для Работы</h4>
+                          <ul>
+                            <li>Разные темпы достижения целей</li>
+                            <li>Необходимость компромиссов в планировании</li>
+                            <li>Различия в понимании успеха</li>
+                            <li>Важность уважения к пути партнёра</li>
+                          </ul>
+                        </div>
+                        <div className="num-analysis-card advice">
+                          <h4>💡 Рекомендации</h4>
+                          <ul>
+                            <li>Найдите общие цели, которые объединяют ваши числа</li>
+                            <li>Празднуйте достижения партнёра, даже если они отличаются от ваших</li>
+                            <li>Обсуждайте долгосрочные планы регулярно</li>
+                            <li>Ищите точки соприкосновения в ценностях</li>
+                          </ul>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="num-analysis-card challenge">
+                          <h4>⚠️ Основные Вызовы</h4>
+                          <ul>
+                            <li>Существенные различия в жизненных приоритетах</li>
+                            <li>Разные представления о счастье и успехе</li>
+                            <li>Сложности в понимании мотивов партнёра</li>
+                            <li>Необходимость значительных компромиссов</li>
+                            <li>Риск движения в разных направлениях</li>
+                          </ul>
+                        </div>
+                        <div className="num-analysis-card advice">
+                          <h4>💡 Критические Рекомендации</h4>
+                          <ul>
+                            <li>Определите 2-3 общие ценности как фундамент</li>
+                            <li>Регулярные откровенные разговоры о будущем обязательны</li>
+                            <li>Рассмотрите консультацию специалиста</li>
+                            <li>Фокусируйтесь на том, что объединяет, а не разделяет</li>
+                            <li>Примите: потребуется работа - решите, готовы ли оба</li>
+                          </ul>
+                        </div>
+                      </>
+                    )}
+                  </div>
+
+                  {/* Совместимость по сферам жизни (нумерология) */}
+                  <div className="num-life-areas">
+                    <h4 style={{ textAlign: 'center', marginBottom: '1.5rem', color: 'white' }}>
+                      🌟 Что Числа Говорят о Разных Сферах
+                    </h4>
+                    <div className="num-areas-grid">
+                      <div className="num-area-item">
+                        <span className="area-emoji">💝</span>
+                        <h5>Эмоциональная Связь</h5>
+                        <div className="area-bar">
+                          <div className="area-fill" style={{
+                            width: `${numerologyResult.percentage}%`,
+                            background: '#e91e63'
+                          }}></div>
+                        </div>
+                        <p>{numerologyResult.percentage}%</p>
+                        <p className="area-note">
+                          {numerologyResult.score >= 7 ? 'Глубокое эмоциональное понимание' :
+                           numerologyResult.score >= 5 ? 'Требуется работа над эмпатией' :
+                           'Важно учиться эмоциональному языку друг друга'}
+                        </p>
+                      </div>
+
+                      <div className="num-area-item">
+                        <span className="area-emoji">🎯</span>
+                        <h5>Жизненные Цели</h5>
+                        <div className="area-bar">
+                          <div className="area-fill" style={{
+                            width: `${Math.min(100, numerologyResult.percentage + 5)}%`,
+                            background: '#9c27b0'
+                          }}></div>
+                        </div>
+                        <p>{Math.min(100, numerologyResult.percentage + 5)}%</p>
+                        <p className="area-note">
+                          {numerologyResult.score >= 7 ? 'Идёте в одном направлении' :
+                           numerologyResult.score >= 5 ? 'Параллельные, но не идентичные пути' :
+                           'Необходимо найти общий вектор'}
+                        </p>
+                      </div>
+
+                      <div className="num-area-item">
+                        <span className="area-emoji">💼</span>
+                        <h5>Совместные Проекты</h5>
+                        <div className="area-bar">
+                          <div className="area-fill" style={{
+                            width: `${Math.max(30, numerologyResult.percentage - 10)}%`,
+                            background: '#ff9800'
+                          }}></div>
+                        </div>
+                        <p>{Math.max(30, numerologyResult.percentage - 10)}%</p>
+                        <p className="area-note">
+                          {numerologyResult.score >= 7 ? 'Отличная командная работа' :
+                           numerologyResult.score >= 5 ? 'Возможно при чёткой координации' :
+                           'Лучше работать в разных областях'}
+                        </p>
+                      </div>
+
+                      <div className="num-area-item">
+                        <span className="area-emoji">🏠</span>
+                        <h5>Общий Быт</h5>
+                        <div className="area-bar">
+                          <div className="area-fill" style={{
+                            width: `${numerologyResult.percentage}%`,
+                            background: '#4caf50'
+                          }}></div>
+                        </div>
+                        <p>{numerologyResult.percentage}%</p>
+                        <p className="area-note">
+                          {numerologyResult.score >= 7 ? 'Легко создаёте общий дом' :
+                           numerologyResult.score >= 5 ? 'Нужны договорённости о быте' :
+                           'Разные представления о комфорте'}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Практические советы по циклам */}
+                  <div className="num-cycles-info">
+                    <h4>🔄 Цикличность Отношений</h4>
+                    <p style={{ lineHeight: '1.8', color: 'white', fontSize: '1rem' }}>
+                      В нумерологии каждые отношения проходят через 9-летние циклы. Ваша текущая совместимость ({numerologyResult.score}/10)
+                      показывает базовый потенциал, но важно понимать: отношения эволюционируют.
+                      {numerologyResult.score >= 7 ? ' Ваш высокий показатель даёт отличный старт, но не гарантирует успех без усилий.' :
+                       numerologyResult.score >= 5 ? ' Ваш средний показатель означает, что потребуется работа, но результат возможен.' :
+                       ' Ваш низкий показатель не приговор - многие пары с разными числами создают крепкие союзы через осознанную работу.'}
+                    </p>
+                    <div className="cycles-tips">
+                      <div className="cycle-tip">
+                        <strong>📅 Годы 1-3:</strong> Фаза знакомства. Исследуйте различия, не пытайтесь изменить партнёра.
+                      </div>
+                      <div className="cycle-tip">
+                        <strong>📅 Годы 4-6:</strong> Фаза углубления. Строите общую жизнь. Критический период для конфликтов.
+                      </div>
+                      <div className="cycle-tip">
+                        <strong>📅 Годы 7-9:</strong> Фаза зрелости. Либо глубокая гармония, либо переоценка отношений.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Tarot Cards Section - ПОСЛЕДНИМ в детальном анализе */}
+            {result.yourCard && result.partnerCard && (
+              <div className="tarot-section">
+                <h3 className="tarot-title">🎴 Карты Таро Раскрывают</h3>
+                <p className="tarot-subtitle">Энергии каждого в отношениях</p>
+
+                <div className="tarot-cards-grid">
+                  <div className="partner-card-display">
+                    <div className="partner-label">👤 {result.yourName}</div>
+                    <div className="tarot-card-big">
+                      <div className="card-icon-huge">🎴</div>
+                      <h3>{result.yourCard.name}</h3>
+                      <p className="card-meaning-snippet">{result.yourCard.meaning}</p>
+                    </div>
+                  </div>
+
+                  <div className="heart-divider-big">
+                    💗
+                  </div>
+
+                  <div className="partner-card-display">
+                    <div className="partner-label">💑 {result.partnerName}</div>
+                    <div className="tarot-card-big">
+                      <div className="card-icon-huge">🎴</div>
+                      <h3>{result.partnerCard.name}</h3>
+                      <p className="card-meaning-snippet">{result.partnerCard.meaning}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="card-interpretations">
+                  <div className="card-interp-section">
+                    <h5>👤 {result.yourName}: {result.yourCard.name}</h5>
+                    <p className="card-role"><strong>Ваша Роль в Отношениях:</strong></p>
+                    <p>{result.yourCard.inRelation}</p>
+                    <p className="card-strength"><strong>Ваша Сила:</strong> {result.yourCard.strength}</p>
+                  </div>
+
+                  <div className="card-interp-divider"></div>
+
+                  <div className="card-interp-section">
+                    <h5>💑 {result.partnerName}: {result.partnerCard.name}</h5>
+                    <p className="card-role"><strong>Роль Партнёра в Отношениях:</strong></p>
+                    <p>{result.partnerCard.inRelation}</p>
+                    <p className="card-strength"><strong>Сила Партнёра:</strong> {result.partnerCard.strength}</p>
+                  </div>
+
+                  <div className="card-interp-divider"></div>
+
+                  <div className="combined-interp">
+                    <h5>💫 Динамика Пары</h5>
+                    <p>
+                      {result.yourCard.energy === 'positive' && result.partnerCard.energy === 'positive' &&
+                        `Обе карты несут позитивную энергию! ${result.yourName} привносит ${result.yourCard.strength.toLowerCase()},
+                        а ${result.partnerName} - ${result.partnerCard.strength.toLowerCase()}. Вместе вы создаёте гармоничную,
+                        поддерживающую атмосферу где оба могут процветать. Ваши энергии усиливают друг друга, создавая мощный
+                        синергетический эффект в отношениях.`}
+
+                      {result.yourCard.energy === 'challenging' && result.partnerCard.energy === 'challenging' &&
+                        `Обе карты указывают на вызовы роста. ${result.yourName} работает с темой ${result.yourCard.meaning.toLowerCase()},
+                        ${result.partnerName} - с ${result.partnerCard.meaning.toLowerCase()}. Это не плохо - трудности закаляют!
+                        Ключ в том, чтобы поддерживать друг друга в преодолении этих паттернов, а не усиливать их. Вы можете стать
+                        целителями друг для друга, если готовы работать над собой.`}
+
+                      {result.yourCard.energy !== result.partnerCard.energy &&
+                        `Разные энергии создают динамичный баланс.
+                        ${result.yourCard.energy === 'positive' ? result.yourName : result.partnerName} привносит лёгкость,
+                        позитив и поддержку, помогая
+                        ${result.yourCard.energy === 'challenging' ? result.yourName : result.partnerName} проходить через вызовы.
+                        Один освещает путь, другой углубляет понимание. Это может быть очень продуктивная динамика, где оба учатся
+                        и растут благодаря различиям.`}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Life Areas Compatibility - ОБЩИЙ РАЗДЕЛ */}
+            <div className="life-areas-section">
                 <h3>🌈 Совместимость по Сферам Жизни</h3>
                 <p className="areas-intro">
                   Каждая сфера жизни имеет свою динамику в отношениях. Одна пара может быть отличными
@@ -1378,50 +1622,6 @@ function CompatibilityPage() {
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Numerology Section */}
-            {numerologyResult && (
-              <div className="numerology-section">
-                <h3 className="section-title">🔢 Нумерологическая Совместимость</h3>
-                <p className="method-section-subtitle" style={{ textAlign: 'center', marginBottom: '1.5rem', color: 'white' }}>
-                  Анализ по числам жизненного пути
-                </p>
-                <div className="numerology-content">
-                  <div className="numerology-numbers">
-                    <div className="num-person">
-                      <span className="num-label">Вы</span>
-                      <span className="num-value">{numerologyResult.yourLifePath}</span>
-                    </div>
-                    <span className="num-heart">💕</span>
-                    <div className="num-person">
-                      <span className="num-label">Партнёр</span>
-                      <span className="num-value">{numerologyResult.partnerLifePath}</span>
-                    </div>
-                  </div>
-                  <div className="numerology-score">
-                    <div className="num-score-bar">
-                      <div className="num-score-fill" style={{ width: `${numerologyResult.percentage}%` }}></div>
-                    </div>
-                    <p className="num-score-text">{numerologyResult.score}/10 - {numerologyResult.level}</p>
-                    <p className="num-description">{numerologyResult.description}</p>
-                  </div>
-                </div>
-
-                {/* Дополнительная информация о нумерологии */}
-                <div className="num-details">
-                  <div className="num-detail-card">
-                    <h4>🔮 Значение Чисел</h4>
-                    <p><strong>Число {numerologyResult.yourLifePath}:</strong> {getLifePathMeaning(numerologyResult.yourLifePath)}</p>
-                    <p style={{marginTop: '1rem'}}><strong>Число {numerologyResult.partnerLifePath}:</strong> {getLifePathMeaning(numerologyResult.partnerLifePath)}</p>
-                  </div>
-                  <div className="num-detail-card">
-                    <h4>✨ Взаимодействие</h4>
-                    <p>{getNumerologyInteraction(numerologyResult.yourLifePath, numerologyResult.partnerLifePath, numerologyResult.score)}</p>
-                  </div>
-                </div>
-              </div>
-            )}
 
             <div className="action-buttons">
               <button onClick={reset} className="btn-reset">

@@ -146,6 +146,40 @@ function SpreadEngine({ spread, onComplete, className = '' }) {
       {/* Card Layout */}
       <div className="spread-layout">
         <svg viewBox="0 0 100 100" className="spread-svg">
+          <defs>
+            {/* Градиент для пустых карт */}
+            <linearGradient id="cardGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#667eea" stopOpacity="0.8" />
+              <stop offset="50%" stopColor="#764ba2" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#667eea" stopOpacity="0.8" />
+            </linearGradient>
+
+            {/* Градиент при наведении */}
+            <linearGradient id="hoverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#ffd700" stopOpacity="1">
+                <animate attributeName="stopColor" values="#ffd700;#ffed4e;#ffd700" dur="2s" repeatCount="indefinite" />
+              </stop>
+              <stop offset="50%" stopColor="#ffed4e" stopOpacity="1" />
+              <stop offset="100%" stopColor="#ffd700" stopOpacity="1">
+                <animate attributeName="stopColor" values="#ffd700;#ffed4e;#ffd700" dur="2s" repeatCount="indefinite" />
+              </stop>
+            </linearGradient>
+
+            {/* Градиент для вытянутых карт */}
+            <linearGradient id="drawnGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#e8f5e9" stopOpacity="0.9" />
+              <stop offset="50%" stopColor="#c8e6c9" stopOpacity="0.9" />
+              <stop offset="100%" stopColor="#a5d6a7" stopOpacity="0.9" />
+            </linearGradient>
+
+            {/* Градиент обводки для успешных карт */}
+            <linearGradient id="successGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#27ae60" stopOpacity="1" />
+              <stop offset="50%" stopColor="#2ecc71" stopOpacity="1" />
+              <stop offset="100%" stopColor="#27ae60" stopOpacity="1" />
+            </linearGradient>
+          </defs>
+
           {spread.positions.map((position) => {
             const drawn = drawnCards.find(c => c.position === position.id)
 

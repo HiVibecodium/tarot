@@ -2758,5 +2758,189 @@
     "updatedAt": "2025-11-19T15:00:36.942Z",
     "_id": "e71ff804e233f6129d64140d",
     "createdAt": "2025-11-19T15:00:36.942Z"
+  },
+  {
+    "email": "test-readings-1764928623923@example.com",
+    "password": "$2a$10$kYKY/kSdCn5UK8vkt1eZW.cUTSIYONCYOu1z5/wr4JDAGijDhH7Mm",
+    "displayName": "Test User",
+    "subscriptionTier": "free",
+    "isPremium": false,
+    "subscriptionExpiry": null,
+    "stripeCustomerId": null,
+    "stripeSubscriptionId": null,
+    "birthInfo": {
+      "fullName": null,
+      "birthDate": null,
+      "birthTime": null,
+      "birthCity": null,
+      "birthCountry": null,
+      "timezone": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "astrologyProfile": {
+      "sunSign": null,
+      "moonSign": null,
+      "risingSign": null,
+      "calculated": false
+    },
+    "preferences": {
+      "theme": "auto",
+      "notificationsEnabled": true,
+      "language": "en",
+      "useAstrology": false
+    },
+    "stats": {
+      "totalReadings": 1,
+      "decisionsMade": 1,
+      "currentStreak": 1,
+      "longestStreak": 1,
+      "lastReadingDate": "2025-12-05T09:57:05.157Z"
+    },
+    "isActive": true,
+    "isEmailVerified": false,
+    "dataExportRequested": false,
+    "dataExportRequestedAt": null,
+    "updatedAt": "2025-12-05T09:57:05.319Z",
+    "_id": "128636bed16c2861ec547fb8",
+    "createdAt": "2025-12-05T09:57:04.856Z"
+  },
+  {
+    "email": "test-other-1764928625554@example.com",
+    "password": "$2a$10$IsvzDqlMqDgukKIShMz1O.45kdFu/cOKKo1u.zoF478OBApD0IbIG",
+    "displayName": "Other User",
+    "subscriptionTier": "free",
+    "isPremium": false,
+    "subscriptionExpiry": null,
+    "stripeCustomerId": null,
+    "stripeSubscriptionId": null,
+    "birthInfo": {
+      "fullName": null,
+      "birthDate": null,
+      "birthTime": null,
+      "birthCity": null,
+      "birthCountry": null,
+      "timezone": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "astrologyProfile": {
+      "sunSign": null,
+      "moonSign": null,
+      "risingSign": null,
+      "calculated": false
+    },
+    "preferences": {
+      "theme": "auto",
+      "notificationsEnabled": true,
+      "language": "en",
+      "useAstrology": false
+    },
+    "stats": {
+      "totalReadings": 0,
+      "decisionsMade": 0,
+      "currentStreak": 0,
+      "longestStreak": 0,
+      "lastReadingDate": null
+    },
+    "isActive": true,
+    "isEmailVerified": false,
+    "dataExportRequested": false,
+    "dataExportRequestedAt": null,
+    "updatedAt": "2025-12-05T09:57:05.844Z",
+    "_id": "b603cd266dc90dbb2dff1d01",
+    "createdAt": "2025-12-05T09:57:05.844Z"
+  },
+  {
+    "email": "test-1764929277048@example.com",
+    "password": "$2a$10$aoOicGnrQiQ9PUj1aAQlTu.k/JBTUyY/F9ZRmo0.GWxJbbqW99E/a",
+    "displayName": "Test User",
+    "subscriptionTier": "free",
+    "isPremium": false,
+    "subscriptionExpiry": null,
+    "stripeCustomerId": null,
+    "stripeSubscriptionId": null,
+    "birthInfo": {
+      "fullName": null,
+      "birthDate": null,
+      "birthTime": null,
+      "birthCity": null,
+      "birthCountry": null,
+      "timezone": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "astrologyProfile": {
+      "sunSign": null,
+      "moonSign": null,
+      "risingSign": null,
+      "calculated": false
+    },
+    "preferences": {
+      "theme": "auto",
+      "notificationsEnabled": true,
+      "language": "en",
+      "useAstrology": false
+    },
+    "stats": {
+      "totalReadings": 0,
+      "decisionsMade": 0,
+      "currentStreak": 0,
+      "longestStreak": 0,
+      "lastReadingDate": null
+    },
+    "isActive": true,
+    "isEmailVerified": false,
+    "dataExportRequested": false,
+    "dataExportRequestedAt": null,
+    "updatedAt": "2025-12-05T10:07:57.251Z",
+    "_id": "9f70498d1a71c8325f4a8dc5",
+    "createdAt": "2025-12-05T10:07:57.251Z"
+  },
+  {
+    "email": "jwt-test-1764929277595@example.com",
+    "password": "$2a$10$1lGM3n3KFD/uJuM6kERYluo6fHVJ5qVN/qyMC26.0saifwWFOLnRO",
+    "displayName": "JWT Test User",
+    "subscriptionTier": "free",
+    "isPremium": false,
+    "subscriptionExpiry": null,
+    "stripeCustomerId": null,
+    "stripeSubscriptionId": null,
+    "birthInfo": {
+      "fullName": null,
+      "birthDate": null,
+      "birthTime": null,
+      "birthCity": null,
+      "birthCountry": null,
+      "timezone": null,
+      "latitude": null,
+      "longitude": null
+    },
+    "astrologyProfile": {
+      "sunSign": null,
+      "moonSign": null,
+      "risingSign": null,
+      "calculated": false
+    },
+    "preferences": {
+      "theme": "auto",
+      "notificationsEnabled": true,
+      "language": "en",
+      "useAstrology": false
+    },
+    "stats": {
+      "totalReadings": 0,
+      "decisionsMade": 0,
+      "currentStreak": 0,
+      "longestStreak": 0,
+      "lastReadingDate": null
+    },
+    "isActive": true,
+    "isEmailVerified": false,
+    "dataExportRequested": false,
+    "dataExportRequestedAt": null,
+    "updatedAt": "2025-12-05T10:07:57.715Z",
+    "_id": "e05c4cf20515b685b1145add",
+    "createdAt": "2025-12-05T10:07:57.715Z"
   }
 ]

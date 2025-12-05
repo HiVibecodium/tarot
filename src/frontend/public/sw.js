@@ -1,3 +1,4 @@
+/* eslint-env serviceworker */
 // Simple Service Worker for PWA - Offline Support
 const CACHE_NAME = 'tarot-v1';
 const OFFLINE_URL = '/offline.html';

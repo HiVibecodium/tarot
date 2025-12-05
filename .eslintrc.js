@@ -10,7 +10,10 @@ module.exports = {
   ],
   parserOptions: {
     ecmaVersion: 2021,
-    sourceType: 'module'
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true
+    }
   },
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
@@ -28,6 +31,14 @@ module.exports = {
       env: {
         jest: true
       }
+    },
+    {
+      files: ['src/frontend/**/*.js', 'src/frontend/**/*.jsx'],
+      env: {
+        browser: true,
+        node: false
+      }
     }
-  ]
+  ],
+  ignorePatterns: ['src/frontend/dist/**']
 };

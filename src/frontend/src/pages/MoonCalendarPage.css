@@ -270,6 +270,230 @@
   }
 }
 
+/* Recommendations Section */
+.recommendations-section {
+  margin: 3rem 0;
+}
+
+.recommendations-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+  font-size: 1.8rem;
+}
+
+.recommendation-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.recommendation-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.recommendation-card.highlight {
+  border-color: #f7b731;
+  background: linear-gradient(135deg, rgba(247, 183, 49, 0.05) 0%, rgba(233, 69, 96, 0.05) 100%);
+}
+
+.recommendation-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.rec-emoji {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.recommendation-header h3 {
+  color: var(--text-primary);
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.recommendation-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.rec-column h4 {
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.rec-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rec-column li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.rec-column li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.rec-note {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(102, 126, 234, 0.1);
+  border-left: 4px solid var(--primary-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* Best Days Section */
+.best-days-section {
+  margin: 3rem 0;
+  padding: 2rem;
+  background: var(--card-bg);
+  border-radius: 16px;
+}
+
+.best-days-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+  font-size: 1.8rem;
+}
+
+.best-days-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.best-day-card {
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 2px solid;
+  transition: all 0.3s ease;
+}
+
+.best-day-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.best-day-card.excellent {
+  border-color: #f7b731;
+  background: linear-gradient(135deg, rgba(247, 183, 49, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%);
+}
+
+.best-day-card.good {
+  border-color: #5f27cd;
+  background: linear-gradient(135deg, rgba(95, 39, 205, 0.1) 0%, rgba(102, 126, 234, 0.05) 100%);
+}
+
+.best-day-card.moderate {
+  border-color: #778ca3;
+  background: linear-gradient(135deg, rgba(119, 140, 163, 0.1) 0%, rgba(223, 230, 233, 0.05) 100%);
+}
+
+.best-day-rating {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+.best-day-card h3 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  font-size: 1.25rem;
+}
+
+.best-day-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.best-day-card li {
+  padding: 0.5rem 0;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.best-day-card li strong {
+  color: var(--text-primary);
+}
+
+/* Tips Section */
+.tips-section {
+  margin: 3rem 0;
+}
+
+.tips-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+  font-size: 1.8rem;
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.tip-card {
+  padding: 1.5rem;
+  background: var(--card-bg);
+  border-radius: 12px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.tip-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary-color);
+}
+
+.tip-emoji {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.tip-card h4 {
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.tip-card p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
   .legend-item {
@@ -278,5 +502,43 @@
 
   .next-event-card {
     background: linear-gradient(135deg, rgba(247, 183, 49, 0.15) 0%, rgba(233, 69, 96, 0.15) 100%);
+  }
+
+  .recommendation-card.highlight {
+    background: linear-gradient(135deg, rgba(247, 183, 49, 0.08) 0%, rgba(233, 69, 96, 0.08) 100%);
+  }
+
+  .rec-note {
+    background: rgba(102, 126, 234, 0.15);
+  }
+}
+
+/* Responsive for new sections */
+@media (max-width: 768px) {
+  .recommendation-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .best-days-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tips-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .recommendations-section h2,
+  .best-days-section h2,
+  .tips-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .recommendation-header h3 {
+    font-size: 1.2rem;
+  }
+
+  .rec-emoji {
+    font-size: 2rem;
   }
 }

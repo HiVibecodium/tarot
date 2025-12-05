@@ -75,7 +75,7 @@ function validatePassword(password) {
   }
 
   // Check for special characters (optional)
-  if (PASSWORD_REQUIREMENTS.requireSpecialChars && !/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) {
+  if (PASSWORD_REQUIREMENTS.requireSpecialChars && !/[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/.test(password)) {
     errors.push('Пароль должен содержать хотя бы один специальный символ');
   }
 
@@ -118,7 +118,7 @@ function getPasswordStrength(password) {
   if (/[a-z]/.test(password)) score += 15;
   if (/[A-Z]/.test(password)) score += 15;
   if (/\d/.test(password)) score += 15;
-  if (/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) score += 15;
+  if (/[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/.test(password)) score += 15;
 
   // Penalize weak patterns
   if (WEAK_PASSWORDS.includes(password.toLowerCase())) score -= 50;

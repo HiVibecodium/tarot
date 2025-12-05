@@ -568,6 +568,7 @@
   padding: 2.5rem;
   border-radius: 20px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  margin-top: 3rem;
   margin-bottom: 2rem;
   animation: fadeIn 1.2s ease;
 }
@@ -958,7 +959,9 @@
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
   font-weight: 700;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  color: #fff !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
 }
 
 .numerology-content {
@@ -1356,5 +1359,187 @@
 .num-detail-card p {
   margin: 0.5rem 0;
   line-height: 1.6;
+}
+
+/* Extended Numerology Analysis */
+.num-extended-analysis {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: var(--bg-color);
+  border-radius: 16px;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.num-analysis-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.num-analysis-card {
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 2px solid;
+}
+
+.num-analysis-card.strength {
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(76, 175, 80, 0.15) 100%);
+  border-color: #4caf50;
+}
+
+.num-analysis-card.challenge {
+  background: linear-gradient(135deg, rgba(255, 152, 0, 0.1) 0%, rgba(255, 152, 0, 0.15) 100%);
+  border-color: #ff9800;
+}
+
+.num-analysis-card.advice {
+  background: linear-gradient(135deg, rgba(33, 150, 243, 0.1) 0%, rgba(33, 150, 243, 0.15) 100%);
+  border-color: #2196f3;
+}
+
+.num-analysis-card h4 {
+  margin: 0 0 1rem 0;
+  color: white;
+  font-size: 1.1rem;
+}
+
+.num-analysis-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.num-analysis-card li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  color: white;
+  line-height: 1.6;
+}
+
+.num-analysis-card li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Numerology Life Areas */
+.num-life-areas {
+  margin: 2rem 0;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(102, 126, 234, 0.15);
+}
+
+.num-areas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.num-area-item {
+  text-align: center;
+  padding: 1.5rem;
+  background: var(--card-bg);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.num-area-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  border-color: var(--primary-color);
+}
+
+.num-area-item .area-emoji {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.num-area-item h5 {
+  color: white;
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.num-area-item p {
+  margin: 0.5rem 0;
+  color: white;
+  font-weight: 600;
+}
+
+.num-area-item .area-note {
+  margin-top: 0.75rem;
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 400;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+/* Cycles Info */
+.num-cycles-info {
+  margin-top: 2rem;
+  padding: 2rem;
+  background: var(--card-bg);
+  border-radius: 12px;
+  border-left: 4px solid var(--primary-color);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  border-left: 4px solid var(--primary-color);
+}
+
+.num-cycles-info h4 {
+  margin: 0 0 1rem 0;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.cycles-tips {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.cycle-tip {
+  padding: 1rem;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+  border-radius: 8px;
+  color: white;
+  line-height: 1.6;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.cycle-tip strong {
+  color: white;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1.05rem;
+}
+
+/* Responsive для новых секций */
+@media (max-width: 768px) {
+  .num-analysis-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .num-areas-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .num-extended-analysis {
+    padding: 1rem;
+  }
+
+  .num-life-areas {
+    padding: 1rem;
+  }
 }
 

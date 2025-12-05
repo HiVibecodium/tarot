@@ -17,8 +17,8 @@ function DashboardPage() {
 
   const [expandedSections, setExpandedSections] = useState({
     tarot: true,
-    astrology: false,
-    tools: false
+    astrology: true,
+    tools: true
   })
 
   const handleLogout = async () => {

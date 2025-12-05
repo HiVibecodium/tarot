@@ -54,7 +54,12 @@
       "Bash(npm audit:*)",
       "Bash(node scripts/apply-seo-to-pages.js:*)",
       "Bash(node scripts/apply-seo-improved.js:*)",
-      "Bash(node scripts/apply-seo-simple.js:*)"
+      "Bash(node scripts/apply-seo-simple.js:*)",
+      "Bash(powershell -Command \"(Get-Content CompatibilityPage.css).Length\")",
+      "Bash(powershell -Command \"(Get-Content ''C:\\Users\\siniy\\WebstormProjects\\AI Tarot Decision Assistant\\src\\frontend\\src\\data\\personalityTests.js'').Length\")",
+      "Bash(node validate-tests.js:*)",
+      "Bash(powershell:*)",
+      "Bash(node backup-project.js:*)"
     ],
     "deny": [],
     "ask": []

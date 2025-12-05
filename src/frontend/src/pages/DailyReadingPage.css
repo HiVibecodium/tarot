@@ -432,11 +432,16 @@
 }
 
 .drawing-text {
-  color: white;
-  font-size: 18px;
-  font-weight: 600;
+  color: #1a202c;
+  font-size: 20px;
+  font-weight: 700;
   margin-top: 20px;
+  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
   animation: fadeInOut 2s ease-in-out infinite;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 @keyframes fadeInOut {
