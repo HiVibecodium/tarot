@@ -59,7 +59,14 @@
       "Bash(powershell -Command \"(Get-Content ''C:\\Users\\siniy\\WebstormProjects\\AI Tarot Decision Assistant\\src\\frontend\\src\\data\\personalityTests.js'').Length\")",
       "Bash(node validate-tests.js:*)",
       "Bash(powershell:*)",
-      "Bash(node backup-project.js:*)"
+      "Bash(node backup-project.js:*)",
+      "WebFetch(domain:vercel.com)",
+      "Bash(del \"C:\\Users\\siniy\\WebstormProjects\\AI Tarot Decision Assistant\\api\\package.json\")",
+      "Bash(node scripts/migrate-to-turso.js:*)",
+      "Bash(node scripts/check-turso.js:*)",
+      "Bash(git check-ignore:*)",
+      "Bash(node scripts/add-turso-columns.js:*)",
+      "Bash(set \"VITE_API_URL=/api\")"
     ],
     "deny": [],
     "ask": []

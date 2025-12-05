@@ -4,7 +4,7 @@
  */
 
 const cron = require('node-cron');
-const db = require('../db/json-store');
+const db = require('../db');
 
 class NotificationsService {
   constructor() {
@@ -136,7 +136,7 @@ class NotificationsService {
       console.log(`📬 Notification queued for user ${userId}:`, notification.title);
 
       // Сохраняем в историю уведомлений
-      await db.insert('notifications', {
+      await db.insertOne('notifications', {
         userId,
         notification,
         status: 'queued',

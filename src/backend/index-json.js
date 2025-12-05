@@ -13,7 +13,7 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
-const db = require('./db/json-store');
+const db = require('./db');
 const {
   initSentry,
   getRequestHandler,
@@ -115,6 +115,16 @@ const initDatabase = async () => {
 // ROUTES
 // ========================================
 
+// Determine storage type
+const getStorageType = () => {
+  if (process.env.USE_TURSO === 'true' && process.env.TURSO_DATABASE_URL) {
+    return 'Turso (LibSQL)';
+  } else if (process.env.USE_SUPABASE === 'true' && process.env.SUPABASE_URL) {
+    return 'Supabase';
+  }
+  return 'JSON File Storage';
+};
+
 // Health Check
 app.get('/health', (req, res) => {
   res.status(200).json({
@@ -122,7 +132,7 @@ app.get('/health', (req, res) => {
     message: 'AI Tarot Decision Assistant API',
     timestamp: new Date().toISOString(),
     environment: NODE_ENV,
-    storage: 'JSON File Storage',
+    storage: getStorageType(),
     uptime: process.uptime(),
     features: {
       ai: process.env.AI_ENABLED === 'true',
@@ -354,8 +364,9 @@ const gracefulShutdown = async (signal) => {
 process.on('SIGTERM', gracefulShutdown);
 process.on('SIGINT', gracefulShutdown);
 
-// Start server only if not in test environment
-if (process.env.NODE_ENV !== 'test') {
+// Start server only if not in test/serverless environment
+const isServerless = process.env.VERCEL === '1' || process.env.AWS_LAMBDA_FUNCTION_NAME;
+if (process.env.NODE_ENV !== 'test' && !isServerless) {
   startServer().then(s => { server = s; });
 }
 

@@ -6,12 +6,21 @@
 const fs = require('fs');
 const path = require('path');
 
-// Feedback storage directory
-const FEEDBACK_DIR = path.join(__dirname, '..', '..', '..', 'data', 'feedback');
+// In serverless (Vercel), use /tmp or skip file storage
+const IS_SERVERLESS = process.env.VERCEL === '1' || process.env.AWS_LAMBDA_FUNCTION_NAME;
 
-// Ensure feedback directory exists
-if (!fs.existsSync(FEEDBACK_DIR)) {
-  fs.mkdirSync(FEEDBACK_DIR, { recursive: true });
+// Feedback storage directory - use /tmp in serverless, local data dir otherwise
+const FEEDBACK_DIR = IS_SERVERLESS
+  ? '/tmp/feedback'
+  : path.join(__dirname, '..', '..', '..', 'data', 'feedback');
+
+// Ensure feedback directory exists (only if not serverless or /tmp is writable)
+try {
+  if (!fs.existsSync(FEEDBACK_DIR)) {
+    fs.mkdirSync(FEEDBACK_DIR, { recursive: true });
+  }
+} catch (err) {
+  console.warn('Could not create feedback directory:', err.message);
 }
 
 /**

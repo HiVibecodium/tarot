@@ -1,6 +1,6 @@
 /**
  * Production-ready Logger using Winston
- * Logs to console (dev) and files (production)
+ * Logs to console (dev) and files (production, non-serverless)
  */
 
 const winston = require('winston');
@@ -9,11 +9,16 @@ const fs = require('fs');
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const LOG_LEVEL = process.env.LOG_LEVEL || (NODE_ENV === 'production' ? 'error' : 'info');
+const IS_SERVERLESS = process.env.VERCEL === '1' || process.env.AWS_LAMBDA_FUNCTION_NAME;
 
-// Create logs directory if it doesn't exist
+// Create logs directory if it doesn't exist (skip in serverless)
 const logsDir = path.join(__dirname, '../../logs');
-if (!fs.existsSync(logsDir)) {
-  fs.mkdirSync(logsDir, { recursive: true });
+if (!IS_SERVERLESS && !fs.existsSync(logsDir)) {
+  try {
+    fs.mkdirSync(logsDir, { recursive: true });
+  } catch (err) {
+    console.warn('Could not create logs directory:', err.message);
+  }
 }
 
 // Custom format
@@ -45,8 +50,8 @@ if (NODE_ENV === 'development') {
   );
 }
 
-// File transports (production)
-if (NODE_ENV === 'production') {
+// File transports (production, non-serverless only)
+if (NODE_ENV === 'production' && !IS_SERVERLESS) {
   // Error logs
   transports.push(
     new winston.transports.File({
@@ -67,8 +72,10 @@ if (NODE_ENV === 'production') {
       format: customFormat
     })
   );
+}
 
-  // Console in production (for Docker logs)
+// Console in production (for Docker logs, serverless, etc.)
+if (NODE_ENV === 'production') {
   transports.push(
     new winston.transports.Console({
       format: customFormat

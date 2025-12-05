@@ -4,7 +4,7 @@
  */
 
 const bcrypt = require('bcryptjs');
-const db = require('../db/json-store');
+const db = require('../db');
 
 const COLLECTION_NAME = 'users';
 

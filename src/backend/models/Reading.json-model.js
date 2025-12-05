@@ -3,7 +3,7 @@
  * Represents a tarot reading (daily, decision, purchase)
  */
 
-const db = require('../db/json-store');
+const db = require('../db');
 
 const COLLECTION_NAME = 'readings';
 

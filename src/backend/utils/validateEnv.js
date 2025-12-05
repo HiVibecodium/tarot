@@ -94,6 +94,10 @@ function checkEnv() {
     errors.forEach(error => console.error(`   ${error}`));
     console.error('\n💀 Server cannot start with missing required variables');
     console.error('   Check .env.example for reference\n');
+    // In serverless environment, throw instead of process.exit
+    if (process.env.VERCEL === '1' || process.env.AWS_LAMBDA_FUNCTION_NAME) {
+      throw new Error('Missing required environment variables: ' + errors.join(', '));
+    }
     process.exit(1);
   }
 

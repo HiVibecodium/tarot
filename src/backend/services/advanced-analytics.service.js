@@ -4,7 +4,7 @@
  */
 
 const Reading = require('../models/Reading.json-model');
-const db = require('../db/json-store');
+const db = require('../db');
 
 class AdvancedAnalyticsService {
   /**

@@ -5,7 +5,7 @@
  */
 
 const moonPhasesService = require('./moon-phases.service');
-const db = require('../db/json-store');
+const db = require('../db');
 
 class InsightsIntegrationService {
   /**

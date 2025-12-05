@@ -1,7 +1,7 @@
 [
   {
-    "email": "test-1764930646100@example.com",
-    "password": "$2a$10$gJNffFksmWOzCQa3gU1cFORF3UqL5VyrseO.ZnpUhzYz4Ai05B292",
+    "email": "test-1764932959205@example.com",
+    "password": "$2a$10$Ca8TSLq1TiKXv7LY2OXzduCXhmcr/ps2EQ3L6f7inpbLClsECOWCS",
     "displayName": "Test User",
     "subscriptionTier": "free",
     "isPremium": false,
@@ -41,13 +41,13 @@
     "isEmailVerified": false,
     "dataExportRequested": false,
     "dataExportRequestedAt": null,
-    "updatedAt": "2025-12-05T10:30:46.349Z",
-    "_id": "cf9d3a9469b486bcc0e8cea7",
-    "createdAt": "2025-12-05T10:30:46.349Z"
+    "updatedAt": "2025-12-05T11:09:19.350Z",
+    "_id": "989e04ba39ddd20bbae7e606",
+    "createdAt": "2025-12-05T11:09:19.350Z"
   },
   {
-    "email": "jwt-test-1764930646896@example.com",
-    "password": "$2a$10$MxH.NhodRHrfZUFR4V6sWuCq5IEJhmAb8Ckuf2BoY0toPXsX7YOGm",
+    "email": "jwt-test-1764932959585@example.com",
+    "password": "$2a$10$WjDxJUnPpFUYciapPV2yHe/l6mPbhfYko4JOkdb//ALZZ/oEJ7aoq",
     "displayName": "JWT Test User",
     "subscriptionTier": "free",
     "isPremium": false,
@@ -87,8 +87,8 @@
     "isEmailVerified": false,
     "dataExportRequested": false,
     "dataExportRequestedAt": null,
-    "updatedAt": "2025-12-05T10:30:47.086Z",
-    "_id": "e7c32198f63d944e949ea2bc",
-    "createdAt": "2025-12-05T10:30:47.086Z"
+    "updatedAt": "2025-12-05T11:09:19.677Z",
+    "_id": "ab68f1dce564c63653e75bd5",
+    "createdAt": "2025-12-05T11:09:19.677Z"
   }
 ]

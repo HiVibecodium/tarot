@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const numerologyService = require('../services/numerology.service');
 const { authenticate } = require('../middleware/auth.middleware');
-const db = require('../db/json-store');
+const db = require('../db');
 
 /**
  * POST /api/numerology/calculate

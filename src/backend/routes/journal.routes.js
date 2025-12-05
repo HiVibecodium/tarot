@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { authenticate } = require('../middleware/auth.middleware');
-const db = require('../db/json-store');
+const db = require('../db');
 
 /**
  * POST /api/journal/:readingId/note
