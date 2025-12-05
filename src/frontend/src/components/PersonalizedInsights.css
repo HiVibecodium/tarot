@@ -40,10 +40,144 @@
 
 /* Empty State */
 .personalized-insights.empty {
-  background: rgba(102, 126, 234, 0.03);
-  border-style: dashed;
+  background: linear-gradient(135deg,
+    rgba(102, 126, 234, 0.05) 0%,
+    rgba(118, 75, 162, 0.05) 50%,
+    rgba(240, 147, 251, 0.05) 100%);
+  border-style: solid;
+  border-color: rgba(102, 126, 234, 0.2);
 }
 
+/* Enhanced Empty State */
+.empty-state-enhanced {
+  padding: 1rem;
+}
+
+.empty-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid rgba(102, 126, 234, 0.1);
+}
+
+.empty-icon-large {
+  font-size: 3.5rem;
+  filter: drop-shadow(0 4px 12px rgba(102, 126, 234, 0.3));
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.9; }
+}
+
+.empty-title-block h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.empty-subtitle {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+/* Setup Checklist */
+.setup-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.setup-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: white;
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  border: 2px solid rgba(102, 126, 234, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.setup-item:hover {
+  transform: translateX(8px);
+  border-color: rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.15);
+  background: linear-gradient(135deg, white 0%, rgba(102, 126, 234, 0.03) 100%);
+}
+
+.setup-item-icon {
+  font-size: 2rem;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.setup-item-content {
+  flex: 1;
+}
+
+.setup-item-content h4 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.setup-item-content p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.setup-item-arrow {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+}
+
+.setup-item:hover .setup-item-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Empty Footer */
+.empty-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: rgba(102, 126, 234, 0.05);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.footer-icon {
+  font-size: 1.2rem;
+}
+
+/* Legacy empty state (keep for backwards compatibility) */
 .empty-state {
   text-align: center;
   padding: 2rem;
@@ -85,6 +219,23 @@
 .setup-link:hover {
   background: var(--primary-dark);
   transform: translateY(-2px);
+}
+
+/* Dark mode for empty state */
+[data-theme="dark"] .setup-item,
+.dark .setup-item {
+  background: var(--card-bg, #1e1e2e);
+  border-color: rgba(102, 126, 234, 0.2);
+}
+
+[data-theme="dark"] .setup-item:hover,
+.dark .setup-item:hover {
+  background: linear-gradient(135deg, var(--card-bg, #1e1e2e) 0%, rgba(102, 126, 234, 0.1) 100%);
+}
+
+[data-theme="dark"] .empty-footer,
+.dark .empty-footer {
+  background: rgba(102, 126, 234, 0.1);
 }
 
 /* Header */
@@ -368,6 +519,49 @@
 
   .setup-link {
     width: 100%;
+  }
+
+  /* Enhanced empty state mobile */
+  .empty-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .empty-icon-large {
+    font-size: 3rem;
+  }
+
+  .empty-title-block h3 {
+    font-size: 1.3rem;
+  }
+
+  .setup-item {
+    padding: 1rem;
+  }
+
+  .setup-item-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+
+  .setup-item-content h4 {
+    font-size: 1rem;
+  }
+
+  .setup-item-content p {
+    font-size: 0.85rem;
+  }
+
+  .setup-item-arrow {
+    display: none;
+  }
+
+  .empty-footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
   }
 }
 

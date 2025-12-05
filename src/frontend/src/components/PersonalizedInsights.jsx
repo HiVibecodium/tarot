@@ -43,13 +43,47 @@ const PersonalizedInsights = () => {
   if (!insights || !insights.integration) {
     return (
       <div className="personalized-insights empty">
-        <div className="empty-state">
-          <span className="empty-icon">🔮</span>
-          <h3>Персонализированные Инсайты</h3>
-          <p>Заполните профиль для получения персональных рекомендаций</p>
-          <div className="empty-actions">
-            <a href="/natal-chart" className="setup-link">Натальная карта</a>
-            <a href="/numerology" className="setup-link">Нумерология</a>
+        <div className="empty-state-enhanced">
+          <div className="empty-header">
+            <span className="empty-icon-large">🔮</span>
+            <div className="empty-title-block">
+              <h3>Ваши Персональные Инсайты</h3>
+              <p className="empty-subtitle">Заполните данные для персональных рекомендаций</p>
+            </div>
+          </div>
+
+          <div className="setup-checklist">
+            <a href="/natal-chart" className="setup-item">
+              <div className="setup-item-icon">🌟</div>
+              <div className="setup-item-content">
+                <h4>Натальная карта</h4>
+                <p>Укажите дату, время и место рождения для астрологического анализа</p>
+              </div>
+              <div className="setup-item-arrow">→</div>
+            </a>
+
+            <a href="/numerology" className="setup-item">
+              <div className="setup-item-icon">🔢</div>
+              <div className="setup-item-content">
+                <h4>Нумерология</h4>
+                <p>Рассчитайте числа судьбы по имени и дате рождения</p>
+              </div>
+              <div className="setup-item-arrow">→</div>
+            </a>
+
+            <a href="/profile" className="setup-item">
+              <div className="setup-item-icon">👤</div>
+              <div className="setup-item-content">
+                <h4>Профиль</h4>
+                <p>Добавьте знак зодиака и предпочтения</p>
+              </div>
+              <div className="setup-item-arrow">→</div>
+            </a>
+          </div>
+
+          <div className="empty-footer">
+            <span className="footer-icon">✨</span>
+            <span>После заполнения здесь появятся персональные прогнозы и советы</span>
           </div>
         </div>
       </div>
