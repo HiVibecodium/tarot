@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useSelector } from 'react-redux'
 import PropTypes from 'prop-types'
 import axios from 'axios'
@@ -21,9 +21,18 @@ function SpreadEngine({ spread, onComplete, className = '' }) {
   const [lastDrawnCard, setLastDrawnCard] = useState(null)
   const [soundEnabled, setSoundEnabled] = useState(!isSoundMuted())
 
+  // Refs for cleanup
+  const timersRef = useRef([])
+
   // Load all tarot cards on mount
   useEffect(() => {
     loadCards()
+
+    // Cleanup timers on unmount
+    return () => {
+      timersRef.current.forEach(timer => clearTimeout(timer))
+      timersRef.current = []
+    }
   }, [])
 
   const loadCards = async () => {
@@ -56,7 +65,7 @@ function SpreadEngine({ spread, onComplete, className = '' }) {
     playCardDrawSound()
 
     // Simulate card draw animation
-    setTimeout(() => {
+    const drawTimer = setTimeout(() => {
       // Get cards not yet drawn
       const usedCardIds = drawnCards.map(c => c.cardId)
       const remainingCards = availableCards.filter(c => !usedCardIds.includes(c._id))
@@ -89,15 +98,18 @@ function SpreadEngine({ spread, onComplete, className = '' }) {
       playCardRevealSound()
 
       // Clear last drawn card highlight after animation
-      setTimeout(() => setLastDrawnCard(null), 2000)
+      const highlightTimer = setTimeout(() => setLastDrawnCard(null), 2000)
+      timersRef.current.push(highlightTimer)
 
       // Check if spread complete
       if (drawnCards.length + 1 === spread.cardCount) {
         // Play spread complete sound
-        setTimeout(() => playSpreadCompleteSound(), 300)
+        const completeTimer = setTimeout(() => playSpreadCompleteSound(), 300)
+        timersRef.current.push(completeTimer)
         onComplete?.([...drawnCards, drawnCard])
       }
     }, 800)
+    timersRef.current.push(drawTimer)
   }
 
   const resetSpread = () => {

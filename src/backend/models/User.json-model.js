@@ -180,6 +180,10 @@ class User {
     const docs = await db.find(COLLECTION_NAME, { stripeCustomerId });
     return docs.map(doc => new User(doc));
   }
+
+  static async deleteAll() {
+    return await db.clear(COLLECTION_NAME);
+  }
 }
 
 module.exports = User;

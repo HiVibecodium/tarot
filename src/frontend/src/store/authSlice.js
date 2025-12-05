@@ -3,9 +3,35 @@ import axios from 'axios'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000/api'
 
+// Safe localStorage access (handles private browsing mode)
+const safeGetItem = (key) => {
+  try {
+    return localStorage.getItem(key)
+  } catch {
+    return null
+  }
+}
+
+const safeSetItem = (key, value) => {
+  try {
+    localStorage.setItem(key, value)
+  } catch {
+    // localStorage not available (private browsing)
+  }
+}
+
+const safeRemoveItem = (key) => {
+  try {
+    localStorage.removeItem(key)
+  } catch {
+    // localStorage not available
+  }
+}
+
 // Load token from localStorage
-const token = localStorage.getItem('token')
-const user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null
+const token = safeGetItem('token')
+const storedUser = safeGetItem('user')
+const user = storedUser ? JSON.parse(storedUser) : null
 
 const initialState = {
   user: user,
@@ -24,9 +50,9 @@ export const register = createAsyncThunk(
       const { user, token, refreshToken } = response.data.data
 
       // Store in localStorage
-      localStorage.setItem('token', token)
-      localStorage.setItem('refreshToken', refreshToken)
-      localStorage.setItem('user', JSON.stringify(user))
+      safeSetItem('token', token)
+      safeSetItem('refreshToken', refreshToken)
+      safeSetItem('user', JSON.stringify(user))
 
       return { user, token, refreshToken }
     } catch (error) {
@@ -61,9 +87,9 @@ export const login = createAsyncThunk(
       const { user, token, refreshToken } = response.data.data
 
       // Store in localStorage
-      localStorage.setItem('token', token)
-      localStorage.setItem('refreshToken', refreshToken)
-      localStorage.setItem('user', JSON.stringify(user))
+      safeSetItem('token', token)
+      safeSetItem('refreshToken', refreshToken)
+      safeSetItem('user', JSON.stringify(user))
 
       return { user, token, refreshToken }
     } catch (error) {
@@ -95,9 +121,9 @@ export const logout = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       // Clear localStorage
-      localStorage.removeItem('token')
-      localStorage.removeItem('refreshToken')
-      localStorage.removeItem('user')
+      safeRemoveItem('token')
+      safeRemoveItem('refreshToken')
+      safeRemoveItem('user')
 
       return {}
     } catch (error) {

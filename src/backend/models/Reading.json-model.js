@@ -153,6 +153,10 @@ class Reading {
     };
     return await this.save();
   }
+
+  static async deleteAll() {
+    return await db.clear(COLLECTION_NAME);
+  }
 }
 
 module.exports = Reading;
