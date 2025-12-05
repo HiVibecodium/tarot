@@ -21,9 +21,12 @@ src/frontend/build/
 
 # Database files (local development)
 src/backend/db/data/*.json
-data/
+/data/
 *.db
 *.sqlite
+
+# But keep static data files
+!src/backend/data/
 
 # Logs
 logs/
