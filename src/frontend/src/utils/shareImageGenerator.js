@@ -49,7 +49,7 @@ export async function generateReadingImage(reading) {
   const cardHeight = 250;
   const spacing = 20;
   const totalWidth = (cardWidth * cardCount) + (spacing * (cardCount - 1));
-  let startX = (canvas.width - totalWidth) / 2;
+  const startX = (canvas.width - totalWidth) / 2;
 
   for (let i = 0; i < cardCount; i++) {
     const card = reading.cards[i];

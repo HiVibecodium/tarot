@@ -113,7 +113,7 @@ self.addEventListener('notificationclick', (event) => {
     clients.matchAll({ type: 'window', includeUncontrolled: true })
       .then((windowClients) => {
         // Check if there's already a window open
-        for (let client of windowClients) {
+        for (const client of windowClients) {
           if (client.url.includes(urlToOpen) && 'focus' in client) {
             return client.focus();
           }

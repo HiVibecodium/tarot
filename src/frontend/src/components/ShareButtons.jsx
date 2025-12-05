@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { generateReadingImage, downloadReadingImage, shareReadingImage } from '../utils/shareImageGenerator'
+import { downloadReadingImage, shareReadingImage } from '../utils/shareImageGenerator'
 import './ShareButtons.css'
 
-function ShareButtons({ reading, type = 'reading' }) {
+function ShareButtons({ reading }) {
   const [copied, setCopied] = useState(false)
   const [generating, setGenerating] = useState(false)
 
@@ -17,7 +17,7 @@ function ShareButtons({ reading, type = 'reading' }) {
       text += reading.interpretation?.text || ''
     } else if (reading.type === 'decision') {
       text += `Вопрос: ${reading.context?.question}\n\n`
-      reading.cards.forEach((card, idx) => {
+      reading.cards.forEach((card) => {
         text += `${card.positionName}: ${card.cardName}\n`
       })
     }

@@ -395,9 +395,9 @@ function CompatibilityPage() {
     const moonCompat = details.moon?.score || 0
     const venusCompat = details.venus?.score || 0
 
-    let strengths = []
-    let challenges = []
-    let advice = []
+    const strengths = []
+    const challenges = []
+    const advice = []
 
     // Strengths based on high scores
     if (sunCompat >= 25) {
@@ -571,9 +571,9 @@ function CompatibilityPage() {
 
     // Формирование расширенного текста анализа
     let analysis = ''
-    let strengths = []
-    let challenges = []
-    let recommendations = []
+    const strengths = []
+    const challenges = []
+    const recommendations = []
 
     // Вступление о согласованности методов
     if (isConsistent) {

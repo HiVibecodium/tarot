@@ -115,6 +115,50 @@ const LandingPage = () => {
         </div>
       </section>
 
+      {/* Try Without Registration */}
+      <section className="try-section">
+        <h2 className="section-title">Попробуйте Прямо Сейчас</h2>
+        <p className="section-subtitle">Без регистрации - просто нажмите и пользуйтесь</p>
+
+        <div className="try-grid">
+          <button onClick={() => navigate('/reading/yes-no')} className="try-card">
+            <span className="try-icon">❓</span>
+            <span className="try-title">Да или Нет?</span>
+            <span className="try-desc">Быстрый ответ на вопрос</span>
+          </button>
+
+          <button onClick={() => navigate('/numerology')} className="try-card">
+            <span className="try-icon">🔢</span>
+            <span className="try-title">Нумерология</span>
+            <span className="try-desc">5 расчётов по дате рождения</span>
+          </button>
+
+          <button onClick={() => navigate('/natal-chart')} className="try-card">
+            <span className="try-icon">⭐</span>
+            <span className="try-title">Натальная Карта</span>
+            <span className="try-desc">16 точек интерпретации</span>
+          </button>
+
+          <button onClick={() => navigate('/moon-calendar')} className="try-card">
+            <span className="try-icon">🌙</span>
+            <span className="try-title">Лунный Календарь</span>
+            <span className="try-desc">Фазы и рекомендации</span>
+          </button>
+
+          <button onClick={() => navigate('/cards')} className="try-card">
+            <span className="try-icon">🎴</span>
+            <span className="try-title">Колода Таро</span>
+            <span className="try-desc">78 карт и значения</span>
+          </button>
+
+          <button onClick={() => navigate('/compatibility')} className="try-card">
+            <span className="try-icon">💕</span>
+            <span className="try-title">Совместимость</span>
+            <span className="try-desc">Таро + Астро + Числа</span>
+          </button>
+        </div>
+      </section>
+
       {/* Features Grid */}
       <section className="features-section">
         <h2 className="section-title">Всё для Самопознания</h2>

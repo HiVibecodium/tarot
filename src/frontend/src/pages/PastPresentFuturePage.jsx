@@ -118,7 +118,7 @@ function PastPresentFuturePage() {
         const savedReading = JSON.parse(localReading)
 
         // Проверяем формат - если старый, обогащаем данными
-        let enrichedResult = savedReading.interpretation
+        const enrichedResult = savedReading.interpretation
         if (enrichedResult && enrichedResult.positions) {
           enrichedResult.positions = enrichedResult.positions.map((pos, idx) => {
             // Если нет детальных полей - добавляем их
