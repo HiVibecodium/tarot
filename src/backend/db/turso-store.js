@@ -147,7 +147,8 @@ class TursoStore {
       // Parse JSON fields
       if (['birthInfo', 'astrologyProfile', 'preferences', 'stats', 'cards',
            'userContext', 'spreadData', 'keywords', 'interpretations', 'notification', 'journal',
-           'outcome', 'numerology', 'astrology', 'notificationSettings', 'pushSubscription'].includes(camelKey)) {
+           'outcome', 'numerology', 'astrology', 'notificationSettings', 'pushSubscription',
+           'userFeedback', 'context', 'interpretation'].includes(camelKey)) {
         try {
           result[camelKey] = value ? JSON.parse(value) : (Array.isArray(value) ? [] : {});
         } catch {
@@ -181,7 +182,8 @@ class TursoStore {
       // Stringify JSON fields
       if (['birthInfo', 'astrologyProfile', 'preferences', 'stats', 'cards',
            'userContext', 'spreadData', 'keywords', 'interpretations', 'notification', 'journal',
-           'outcome', 'numerology', 'astrology', 'notificationSettings', 'pushSubscription'].includes(key)) {
+           'outcome', 'numerology', 'astrology', 'notificationSettings', 'pushSubscription',
+           'userFeedback', 'context', 'interpretation'].includes(key)) {
         result[snakeKey] = typeof value === 'string' ? value : JSON.stringify(value || {});
       } else if (['isActive', 'isEmailVerified', 'dataExportRequested'].includes(key)) {
         result[snakeKey] = value ? 1 : 0;
