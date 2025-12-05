@@ -60,6 +60,8 @@ class TursoStore {
         push_subscription TEXT,
         is_active INTEGER DEFAULT 1,
         is_email_verified INTEGER DEFAULT 0,
+        data_export_requested INTEGER DEFAULT 0,
+        data_export_requested_at TEXT,
         created_at TEXT DEFAULT CURRENT_TIMESTAMP,
         updated_at TEXT DEFAULT CURRENT_TIMESTAMP
       )
@@ -151,7 +153,7 @@ class TursoStore {
         } catch {
           result[camelKey] = value;
         }
-      } else if (['isActive', 'isEmailVerified'].includes(camelKey)) {
+      } else if (['isActive', 'isEmailVerified', 'dataExportRequested'].includes(camelKey)) {
         result[camelKey] = Boolean(value);
       } else {
         result[camelKey] = value;
@@ -181,7 +183,7 @@ class TursoStore {
            'userContext', 'spreadData', 'keywords', 'interpretations', 'notification', 'journal',
            'outcome', 'numerology', 'astrology', 'notificationSettings', 'pushSubscription'].includes(key)) {
         result[snakeKey] = typeof value === 'string' ? value : JSON.stringify(value || {});
-      } else if (['isActive', 'isEmailVerified'].includes(key)) {
+      } else if (['isActive', 'isEmailVerified', 'dataExportRequested'].includes(key)) {
         result[snakeKey] = value ? 1 : 0;
       } else if (key === '_passwordModified' || key === 'isPremium') {
         // Skip internal fields
