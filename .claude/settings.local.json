@@ -71,7 +71,9 @@
       "WebFetch(domain:ai-tarot-assistant.vercel.app)",
       "Bash(npx eslint:*)",
       "Bash(del \"C:\\Users\\siniy\\WebstormProjects\\AI Tarot Decision Assistant\\src\\frontend\\src\\config\\sentry.jsx\")",
-      "Bash(findstr:*)"
+      "Bash(findstr:*)",
+      "Bash(node scripts/enrich-cards.js:*)",
+      "Bash(node scripts/enrich-minor-arcana.js:*)"
     ],
     "deny": [],
     "ask": []
