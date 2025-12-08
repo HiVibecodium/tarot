@@ -2,8 +2,11 @@
   "version": 2,
   "framework": null,
   "installCommand": "npm install && npm install --prefix src/frontend && npm install --prefix api",
-  "buildCommand": "cd src/frontend && VITE_API_URL=/api npm run build",
+  "buildCommand": "cd src/frontend && npm run build",
   "outputDirectory": "src/frontend/dist",
+  "env": {
+    "VITE_API_URL": "/api"
+  },
   "functions": {
     "api/*.js": {
       "includeFiles": "{src/backend,api/node_modules}/**"
