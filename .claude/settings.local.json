@@ -70,7 +70,8 @@
       "Bash(grep:*)",
       "WebFetch(domain:ai-tarot-assistant.vercel.app)",
       "Bash(npx eslint:*)",
-      "Bash(del \"C:\\Users\\siniy\\WebstormProjects\\AI Tarot Decision Assistant\\src\\frontend\\src\\config\\sentry.jsx\")"
+      "Bash(del \"C:\\Users\\siniy\\WebstormProjects\\AI Tarot Decision Assistant\\src\\frontend\\src\\config\\sentry.jsx\")",
+      "Bash(findstr:*)"
     ],
     "deny": [],
     "ask": []
