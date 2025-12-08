@@ -84,6 +84,21 @@
   transform: perspective(1000px) scale(0.98);
 }
 
+/* Focus state for keyboard navigation */
+.tarot-card:focus {
+  outline: none;
+}
+
+.tarot-card:focus-visible {
+  outline: 3px solid #667eea;
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+.tarot-card:focus-visible::before {
+  opacity: 1;
+}
+
 .card-front,
 .card-back {
   position: absolute;

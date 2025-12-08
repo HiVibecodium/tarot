@@ -1,17 +1,24 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { getCardVisual } from '../utils/cardVisuals'
 import { getCardImagePath, getFallbackImagePath } from '../utils/cardImages'
 import './TarotCard.css'
 
 function TarotCard({ card, reversed = false, showInterpretation = true }) {
-  const visual = card._id ? getCardVisual(card._id) : null
+  const visual = card?._id ? getCardVisual(card._id) : null
   const [isFlipped, setIsFlipped] = useState(false)
   const [imageError, setImageError] = useState(false)
   const [imageLoaded, setImageLoaded] = useState(false)
 
-  const handleClick = () => {
-    setIsFlipped(!isFlipped)
-  }
+  const handleClick = useCallback(() => {
+    setIsFlipped(prev => !prev)
+  }, [])
+
+  const handleKeyDown = useCallback((e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      setIsFlipped(prev => !prev)
+    }
+  }, [])
 
   const handleImageError = () => {
     setImageError(true)
@@ -36,7 +43,15 @@ function TarotCard({ card, reversed = false, showInterpretation = true }) {
       className={`tarot-card-container ${isFlipped ? 'flipped' : ''}`}
       data-suit={card.suit || 'major'}
     >
-      <div className="tarot-card" onClick={handleClick}>
+      <div
+        className="tarot-card"
+        onClick={handleClick}
+        onKeyDown={handleKeyDown}
+        role="button"
+        tabIndex={0}
+        aria-label={`${card.cardName || card.name}${reversed ? ', reversed' : ''}, click to ${isFlipped ? 'show front' : 'flip'}`}
+        aria-pressed={isFlipped}
+      >
         {/* Card Front */}
         <div className={`card-front ${reversed ? 'reversed' : ''}`}>
           <div className="card-header">
