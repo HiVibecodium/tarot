@@ -60,6 +60,10 @@ temp/
 
 # Backups
 backups/
+*.backup*
+*-Old.jsx
+*-old.jsx
+*.bak
 
 # Misc
 .env.backup
