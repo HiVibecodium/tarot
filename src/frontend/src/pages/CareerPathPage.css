@@ -1,21 +1,70 @@
 .career-path-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  background: linear-gradient(135deg, #0a192f 0%, #112240 30%, #1a365d 60%, #0a192f 100%);
   padding-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Professional stars */
+.career-path-page::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(2px 2px at 12% 22%, rgba(79,172,254,0.9), transparent),
+    radial-gradient(2px 2px at 32% 62%, rgba(0,242,254,0.7), transparent),
+    radial-gradient(1px 1px at 52% 32%, rgba(79,172,254,0.6), transparent),
+    radial-gradient(2px 2px at 72% 82%, rgba(0,242,254,0.8), transparent),
+    radial-gradient(1px 1px at 92% 42%, rgba(79,172,254,0.5), transparent),
+    radial-gradient(3px 3px at 42% 92%, rgba(0,242,254,0.7), transparent);
+  background-size: 260px 260px;
+  animation: stars-career 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes stars-career {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* Blue aurora glow */
+.career-path-page::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 25% 35%, rgba(79, 172, 254, 0.25) 0%, transparent 50%),
+    radial-gradient(ellipse at 75% 65%, rgba(0, 242, 254, 0.2) 0%, transparent 50%);
+  animation: aurora-career 12s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes aurora-career {
+  0%, 100% { opacity: 0.5; transform: translateX(0); }
+  50% { opacity: 0.8; transform: translateX(15px); }
 }
 
 .career-content {
   max-width: 1200px;
   margin: 40px auto;
   padding: 0 20px;
+  position: relative;
+  z-index: 5;
 }
 
 .question-section {
-  background: white;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
   padding: 32px;
   border-radius: 16px;
   margin-bottom: 32px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    0 0 60px rgba(79, 172, 254, 0.15);
+  border: 1px solid rgba(79, 172, 254, 0.2);
 }
 
 .question-section h3 {
@@ -62,10 +111,33 @@
 }
 
 .interpretation-results {
-  background: white;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
   padding: 40px;
   border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    0 0 80px rgba(79, 172, 254, 0.15);
+  border: 1px solid rgba(79, 172, 254, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmer effect */
+.interpretation-results::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(79, 172, 254, 0.05), transparent);
+  animation: shimmer-career 5s ease-in-out infinite;
+}
+
+@keyframes shimmer-career {
+  0% { left: -100%; }
+  50%, 100% { left: 100%; }
 }
 
 .interpretation-results h2 {
