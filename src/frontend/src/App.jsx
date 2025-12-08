@@ -45,6 +45,7 @@ import PersonalityTestsPage from './pages/PersonalityTestsPage'
 import MediumConsultationPage from './pages/MediumConsultationPage'
 import AboutPage from './pages/AboutPage'
 import AchievementsPage from './pages/AchievementsPage'
+import MysticalParticles from './components/MysticalParticles'
 import './App.css'
 
 // Helper function to get readable page name from path
@@ -115,6 +116,14 @@ function App() {
 
   return (
     <div className="app">
+      {/* Mystical background particles - shown on all pages */}
+      <MysticalParticles
+        particleCount={40}
+        starCount={25}
+        showOrbs={true}
+        intensity="medium"
+      />
+
       <Suspense fallback={
         <div className="app-loading">
           <div className="loading-content">
