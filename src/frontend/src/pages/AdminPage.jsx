@@ -9,7 +9,7 @@ import './AdminPage.css'
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000/api'
 
 function AdminPage() {
-  const { token, user } = useSelector((state) => state.auth)
+  const { token } = useSelector((state) => state.auth)
   const navigate = useNavigate()
 
   const [stats, setStats] = useState(null)
@@ -19,6 +19,7 @@ function AdminPage() {
 
   useEffect(() => {
     loadAdminData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const loadAdminData = async () => {

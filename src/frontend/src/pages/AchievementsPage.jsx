@@ -1,22 +1,23 @@
 import { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import AchievementBadge, { checkAchievements, ACHIEVEMENTS } from '../components/AchievementBadge'
+import { checkAchievements, ACHIEVEMENTS } from '../constants/achievements'
 import axios from 'axios'
 import './AchievementsPage.css'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000/api'
 
 function AchievementsPage() {
-  const { token, user: authUser } = useSelector((state) => state.auth)
+  const { token } = useSelector((state) => state.auth)
   const navigate = useNavigate()
-  const [profile, setProfile] = useState(null)
-  const [readings, setReadings] = useState([])
+  const [_profile, setProfile] = useState(null)
+  const [_readings, setReadings] = useState([])
   const [unlockedAchievements, setUnlockedAchievements] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [_loading, setLoading] = useState(true)
 
   useEffect(() => {
     loadData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const loadData = async () => {

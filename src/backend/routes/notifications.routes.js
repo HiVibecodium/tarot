@@ -18,7 +18,7 @@ router.post('/subscribe', authenticate, async (req, res) => {
       });
     }
 
-    const result = await notificationsService.subscribe(req.user.userId, subscription);
+    await notificationsService.subscribe(req.user.userId, subscription);
 
     res.json({
       success: true,

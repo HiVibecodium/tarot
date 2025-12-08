@@ -7,7 +7,7 @@ const request = require('supertest');
 const app = require('../index-json');
 
 describe('Cards API', () => {
-  let allCards;
+  let _allCards;
 
   describe('GET /api/cards', () => {
     it('should return all tarot cards', async () => {
@@ -19,7 +19,7 @@ describe('Cards API', () => {
       expect(Array.isArray(response.body.data)).toBe(true);
 
       // Save for later tests
-      allCards = response.body.data;
+      _allCards = response.body.data;
     });
 
     it('should return exactly 78 tarot cards', async () => {

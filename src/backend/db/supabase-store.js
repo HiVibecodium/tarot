@@ -23,19 +23,19 @@ const TABLE_MAP = {
 
 // Field name mapping (camelCase -> snake_case)
 const toSnakeCase = (str) => str.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`);
-const toCamelCase = (str) => str.replace(/_([a-z])/g, (_, letter) => letter.toUpperCase());
+const _toCamelCase = (str) => str.replace(/_([a-z])/g, (_, letter) => letter.toUpperCase());
 
 // Convert object keys between cases
-const convertKeys = (obj, converter) => {
+const _convertKeys = (obj, converter) => {
   if (obj === null || obj === undefined) return obj;
-  if (Array.isArray(obj)) return obj.map(item => convertKeys(item, converter));
+  if (Array.isArray(obj)) return obj.map(item => _convertKeys(item, converter));
   if (typeof obj !== 'object') return obj;
 
   const converted = {};
   for (const [key, value] of Object.entries(obj)) {
     const newKey = converter(key);
     converted[newKey] = (typeof value === 'object' && value !== null && !Array.isArray(value) && !(value instanceof Date))
-      ? convertKeys(value, converter)
+      ? _convertKeys(value, converter)
       : value;
   }
   return converted;
@@ -430,7 +430,7 @@ class SupabaseStore {
     return await this.loadCollection(name);
   }
 
-  async saveCollection(name, data) {
+  async saveCollection(name, _data) {
     // Not needed for Supabase - individual operations handle persistence
     console.log(`saveCollection called for ${name} - using Supabase, no action needed`);
   }

@@ -316,7 +316,7 @@ class InsightsIntegrationService {
     const insights = await this.getUnifiedInsights(userId);
     if (!insights) return null;
 
-    const { astrology, numerology, moonPhase, integration } = insights;
+    const { integration } = insights;
 
     return {
       title: '🔮 Ваш Персональный Инсайт',

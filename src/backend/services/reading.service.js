@@ -6,12 +6,11 @@
 const Card = require('../models/Card.json-model');
 const Reading = require('../models/Reading.json-model');
 const User = require('../models/User.json-model');
-const { TAROT_ZODIAC_MAP } = require('./astrology.service');
-const { getCombinedReading } = require('./horoscope.service');
+const { TAROT_ZODIAC_MAP: _TAROT_ZODIAC_MAP } = require('./astrology.service');
+const { getCombinedReading: _getCombinedReading } = require('./horoscope.service');
 const { generateDailyPrediction, formatPredictionAsText } = require('./enhanced-interpretation.service');
 const {
   generateDailyHoroscope,
-  getMoonPhase,
   combineTarotWithAstrology,
   selectPersonalizedCard
 } = require('./daily-horoscope.service');

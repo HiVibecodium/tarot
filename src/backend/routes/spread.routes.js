@@ -98,7 +98,7 @@ router.post('/:id/save', authenticate, async (req, res) => {
     const template = getSpreadTemplate(spreadId);
 
     // Create reading object matching existing structure
-    const reading = {
+    const _reading = {
       userId: req.user.userId, // Исправлено с req.user.id на req.user.userId
       type: 'spread',
       spreadType: spreadId,

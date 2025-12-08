@@ -41,8 +41,7 @@ const playTone = (frequency, duration, type = 'sine', volume = 0.3) => {
 export const playCardDrawSound = () => {
   if (isMuted) return
 
-  const ctx = getAudioContext()
-  const now = ctx.currentTime
+  getAudioContext()
 
   // Magic chime sequence
   playTone(523.25, 0.1, 'sine', 0.2) // C5
@@ -56,8 +55,7 @@ export const playCardDrawSound = () => {
 export const playCardRevealSound = () => {
   if (isMuted) return
 
-  const ctx = getAudioContext()
-  const now = ctx.currentTime
+  getAudioContext()
 
   // Triumphant reveal
   playTone(440, 0.08, 'triangle', 0.15) // A4
@@ -71,7 +69,7 @@ export const playCardRevealSound = () => {
 export const playSpreadCompleteSound = () => {
   if (isMuted) return
 
-  const ctx = getAudioContext()
+  getAudioContext()
 
   // Success jingle
   playTone(523.25, 0.1, 'sine', 0.2) // C5

@@ -23,7 +23,7 @@ const ZODIAC_SYMBOLS = {
 function NatalChartWheel({ astroData }) {
   if (!astroData) return null;
 
-  const { sunSign, moonSign, risingSign, planets, houses } = astroData;
+  const { sunSign, moonSign, risingSign, planets: _planets, houses } = astroData;
 
   return (
     <div className="natal-chart-wheel">

@@ -23,6 +23,7 @@ const NumerologyPage = () => {
 
   useEffect(() => {
     loadSavedProfile();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadSavedProfile = async () => {

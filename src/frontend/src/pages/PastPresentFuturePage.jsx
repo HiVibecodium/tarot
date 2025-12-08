@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import axios from 'axios'
-import TarotCard from '../components/TarotCard'
+// TarotCard import removed - using inline card display
 import ShareButtons from '../components/ShareButtons'
 import { DecisionSEO } from '../components/SEO'
 import './PastPresentFuturePage.css'
@@ -16,7 +16,7 @@ const POSITIONS = [
 ]
 
 // Функция для получения детальной информации о карте
-const getCardDetails = (card, position) => {
+const _getCardDetails = (card, position) => {
   const contexts = {
     'past': {
       intro: `Карта ${card.name} в позиции Прошлого раскрывает корни и основы вашего текущего пути.`,
@@ -105,6 +105,7 @@ function PastPresentFuturePage() {
 
     // Проверяем сегодняшний расклад
     checkTodayReading()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname]) // Срабатывает при изменении URL
 
   const checkTodayReading = async () => {
@@ -260,7 +261,7 @@ function PastPresentFuturePage() {
     console.log('Getting interpretation for cards:', drawnCards.map(c => c.name))
 
     // Создаём расширенную интерпретацию для каждой позиции
-    const getCardDetails = (card, position, positionName) => {
+    const getCardDetails = (card, position, _positionName) => {
       const contexts = {
         'past': {
           intro: `Карта ${card.name} в позиции Прошлого раскрывает корни и основы вашего текущего пути.`,
@@ -402,7 +403,7 @@ function PastPresentFuturePage() {
     }
   }
 
-  const resetReading = () => {
+  const _resetReading = () => {
     setStep('intro')
     setCards([])
     setCurrentPosition(0)

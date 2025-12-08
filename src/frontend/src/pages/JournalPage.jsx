@@ -11,7 +11,7 @@ const JournalPage = () => {
 
   const [entries, setEntries] = useState([]);
   const [reflectionEntries, setReflectionEntries] = useState([]);
-  const [allTags, setAllTags] = useState([]);
+  const [_allTags, setAllTags] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const [filters, setFilters] = useState({
@@ -26,6 +26,7 @@ const JournalPage = () => {
 
   useEffect(() => {
     fetchJournalData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters]);
 
   const fetchJournalData = async () => {

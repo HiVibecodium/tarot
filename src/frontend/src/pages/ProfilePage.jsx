@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useToast } from '../hooks/useToast'
 import Toast from '../components/Toast'
-import AchievementBadge, { checkAchievements, ACHIEVEMENTS } from '../components/AchievementBadge'
+import AchievementBadge from '../components/AchievementBadge'
+import { checkAchievements, ACHIEVEMENTS } from '../constants/achievements'
 import { ProfileStatsSkeleton } from '../components/skeletons/LoadingSkeletons'
 import ErrorDisplay from '../components/ErrorDisplay'
 import { ProfileSEO } from '../components/SEO'
@@ -13,7 +14,7 @@ import './ProfilePage.css'
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000/api'
 
 function ProfilePage() {
-  const { token, user: authUser } = useSelector((state) => state.auth)
+  const { token } = useSelector((state) => state.auth)
   const navigate = useNavigate()
   const toast = useToast()
 
@@ -31,6 +32,7 @@ function ProfilePage() {
     loadProfile()
     loadStats()
     loadReadings()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {

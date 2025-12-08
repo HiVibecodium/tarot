@@ -33,6 +33,7 @@ function SpreadEngine({ spread, onComplete, className = '' }) {
       timersRef.current.forEach(timer => clearTimeout(timer))
       timersRef.current = []
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const loadCards = async () => {

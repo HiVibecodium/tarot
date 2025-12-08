@@ -9,7 +9,7 @@ const app = require('../index-json');
 describe('Readings API', () => {
   let testEmail;
   let testToken;
-  let userId;
+  let _userId;
 
   beforeAll(async () => {
     // Create a test user
@@ -24,7 +24,7 @@ describe('Readings API', () => {
       });
 
     testToken = registerResponse.body.data.token;
-    userId = registerResponse.body.data.user.id;
+    _userId = registerResponse.body.data.user.id;
   });
 
   describe('POST /api/readings/daily', () => {

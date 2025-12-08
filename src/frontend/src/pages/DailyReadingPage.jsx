@@ -26,18 +26,18 @@ const getMoodLabel = (mood) => {
 }
 
 function DailyReadingPage() {
-  const { token } = useSelector((state) => state.auth)
+  const { token: _token } = useSelector((state) => state.auth)
   const navigate = useNavigate()
 
   const [reading, setReading] = useState(null)
   const [horoscope, setHoroscope] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
-  const [isNew, setIsNew] = useState(false)
+  const [_isNew, setIsNew] = useState(false)
   const [currentMood, setCurrentMood] = useState('')
-  const [showMoodSelector, setShowMoodSelector] = useState(false)
+  const [_showMoodSelector, setShowMoodSelector] = useState(false)
   const [showDrawAnimation, setShowDrawAnimation] = useState(false)
-  const [readyToDraw, setReadyToDraw] = useState(false)
+  const [_readyToDraw, setReadyToDraw] = useState(false)
 
   const generateDailyReading = async (mood) => {
     // Show card draw animation first

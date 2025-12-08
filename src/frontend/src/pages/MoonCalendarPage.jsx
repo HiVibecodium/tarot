@@ -6,7 +6,7 @@ import './MoonCalendarPage.css';
 
 const MoonCalendarPage = () => {
   const [calendar, setCalendar] = useState(null);
-  const [currentPhase, setCurrentPhase] = useState(null);
+  const [_currentPhase, setCurrentPhase] = useState(null);
   const [nextFullMoon, setNextFullMoon] = useState(null);
   const [loading, setLoading] = useState(true);
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth() + 1);
@@ -14,6 +14,7 @@ const MoonCalendarPage = () => {
 
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedMonth, selectedYear]);
 
   const fetchData = async () => {

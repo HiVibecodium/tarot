@@ -3,7 +3,7 @@
  * Daily and weekly horoscope based on zodiac + tarot
  */
 
-const { ZODIAC_SIGNS } = require('./astrology.service');
+const { ZODIAC_SIGNS: _ZODIAC_SIGNS } = require('./astrology.service');
 
 // Horoscope advice templates by element
 const ELEMENT_ADVICE = {

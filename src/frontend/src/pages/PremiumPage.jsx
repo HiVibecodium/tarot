@@ -19,6 +19,7 @@ function PremiumPage() {
 
   useEffect(() => {
     loadSubscriptionStatus()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const loadSubscriptionStatus = async () => {

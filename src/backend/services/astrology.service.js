@@ -68,7 +68,7 @@ function calculateSunSign(birthDate) {
  * Calculate Moon Sign (simplified - needs birth time)
  * This is approximate without full ephemeris
  */
-function calculateMoonSign(birthDate, birthTime) {
+function calculateMoonSign(birthDate, _birthTime) {
   // Simplified: Moon moves ~13 degrees/day through signs
   // For MVP, we'll use day of month as approximation
   // Real calculation would need ephemeris data
@@ -86,7 +86,7 @@ function calculateMoonSign(birthDate, birthTime) {
  * Calculate Rising Sign (Ascendant)
  * Simplified calculation - real one needs precise time and location
  */
-function calculateRisingSign(birthDate, birthTime, latitude) {
+function calculateRisingSign(birthDate, birthTime, _latitude) {
   // Simplified: Based on birth hour
   // Real calculation needs sidereal time + house system
 
@@ -143,7 +143,7 @@ function getElementName(element) {
  * Main function to calculate full astrology profile
  */
 async function calculateAstrologyProfile(birthInfo) {
-  const { birthDate, birthTime, birthCity, latitude, longitude } = birthInfo;
+  const { birthDate, birthTime, latitude } = birthInfo;
 
   if (!birthDate) {
     return null;

@@ -44,7 +44,7 @@ function initSentry() {
       // release: process.env.npm_package_version,
 
       // BeforeSend hook - filter sensitive data
-      beforeSend(event, hint) {
+      beforeSend(event, _hint) {
         // Don't send events in development (optional)
         if (environment === 'development') {
           console.log('🐛 Sentry event (dev - not sent):', event.message || event.exception);

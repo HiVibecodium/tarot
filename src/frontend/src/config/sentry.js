@@ -48,7 +48,7 @@ export function initSentry() {
       // release: import.meta.env.VITE_APP_VERSION,
 
       // BeforeSend hook - filter sensitive data
-      beforeSend(event, hint) {
+      beforeSend(event, _hint) {
         // Filter out sensitive data from breadcrumbs
         if (event.breadcrumbs) {
           event.breadcrumbs = event.breadcrumbs.map(breadcrumb => {

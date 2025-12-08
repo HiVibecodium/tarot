@@ -42,7 +42,7 @@ class EmailService {
    * Send daily reading reminder
    */
   async sendDailyReminder(user, options = {}) {
-    const { time = '09:00' } = options;
+    const { time: _time = '09:00' } = options;
 
     const html = `
       <!DOCTYPE html>

@@ -172,7 +172,7 @@ const ASPECTS = {
  * Calculate complete natal chart
  */
 function calculateNatalChart(birthData) {
-  const { birthDate, birthTime, birthCity, latitude, longitude, timezone } = birthData;
+  const { birthDate, birthTime, latitude } = birthData;
 
   // Calculate Sun Sign
   const sunSign = calculateSunSign(birthDate);
@@ -369,7 +369,7 @@ function calculateAspects(planetaryPositions) {
       if (angleDiff > 180) angleDiff = 360 - angleDiff;
 
       // Check each aspect type
-      Object.entries(ASPECTS).forEach(([key, aspect]) => {
+      Object.entries(ASPECTS).forEach(([_key, aspect]) => {
         if (Math.abs(angleDiff - aspect.angle) <= aspect.orb) {
           aspects.push({
             planet1: planet1,
@@ -565,7 +565,7 @@ function generateTarotContext(sunSign, moonSign, risingSign) {
 /**
  * Calculate strengths based on chart
  */
-function calculateStrengths(sunSign, moonSign, risingSign) {
+function calculateStrengths(sunSign, moonSign, _risingSign) {
   const strengths = [];
 
   // Element strengths
@@ -588,7 +588,7 @@ function calculateStrengths(sunSign, moonSign, risingSign) {
 /**
  * Calculate challenges
  */
-function calculateChallenges(sunSign, moonSign, risingSign) {
+function calculateChallenges(sunSign, moonSign, _risingSign) {
   const challenges = [];
 
   const elementChallenges = {
@@ -809,7 +809,7 @@ function calculateSunSign(birthDate) {
   return ZODIAC_SIGNS[0];
 }
 
-function calculateMoonSign(birthDate, birthTime) {
+function calculateMoonSign(birthDate, _birthTime) {
   // Simplified moon calculation
   const date = new Date(birthDate);
   const dayOfYear = Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
@@ -833,7 +833,7 @@ function calculateMoonSign(birthDate, birthTime) {
   return ZODIAC_SIGNS[signIndex];
 }
 
-function calculateRisingSign(birthDate, birthTime, latitude) {
+function calculateRisingSign(_birthDate, birthTime, _latitude) {
   if (!birthTime) return null;
 
   const [hours] = birthTime.split(':').map(Number);

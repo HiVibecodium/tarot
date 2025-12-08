@@ -72,7 +72,7 @@ function MoodSelector({
     }
   }
 
-  const selectedMoodData = MOODS.find(m => m.id === selectedMood)
+  const _selectedMoodData = MOODS.find(m => m.id === selectedMood)
 
   return (
     <div className="mood-selector">

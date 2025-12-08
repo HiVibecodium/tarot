@@ -66,7 +66,7 @@ const remainingPentacles = [
 ];
 
 // Helper function to create full interpretation structure
-function createInterpretations(keywords, suit) {
+function createInterpretations(keywords, _suit) {
   const uprightKeys = keywords.upright;
   const reversedKeys = keywords.reversed;
 

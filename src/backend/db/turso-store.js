@@ -133,7 +133,7 @@ class TursoStore {
   }
 
   // Convert row from DB format to app format
-  fromDB(row, tableName) {
+  fromDB(row, _tableName) {
     if (!row) return null;
 
     const result = { _id: row.id };

@@ -186,7 +186,7 @@ const premiumWelcome = (user, subscription) => {
 /**
  * Subscription cancellation email
  */
-const premiumCanceled = (user, subscription) => {
+const premiumCanceled = (user, _subscription) => {
   const content = `
     <h2 style="color: ${colors.gray}; margin-top: 0;">
       👋 Ваша Premium подписка отменена

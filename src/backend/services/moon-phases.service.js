@@ -9,9 +9,9 @@ class MoonPhasesService {
    * Использует алгоритм на основе синодического месяца (29.53 дня)
    */
   calculateMoonPhase(date = new Date()) {
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
+    const _year = date.getFullYear();
+    const _month = date.getMonth() + 1;
+    const _day = date.getDate();
 
     // Известное новолуние: 6 января 2000, 18:14 UTC
     const knownNewMoon = new Date(2000, 0, 6, 18, 14, 0);
@@ -220,7 +220,7 @@ class MoonPhasesService {
    * Находит ближайшее полнолуние
    */
   getNextFullMoon(fromDate = new Date()) {
-    let date = new Date(fromDate);
+    const date = new Date(fromDate);
 
     // Проверяем до 35 дней вперёд (больше лунного месяца)
     for (let i = 0; i < 35; i++) {
@@ -247,7 +247,7 @@ class MoonPhasesService {
    * Находит ближайшее новолуние
    */
   getNextNewMoon(fromDate = new Date()) {
-    let date = new Date(fromDate);
+    const date = new Date(fromDate);
 
     for (let i = 0; i < 35; i++) {
       const phase = this.calculateMoonPhase(date);

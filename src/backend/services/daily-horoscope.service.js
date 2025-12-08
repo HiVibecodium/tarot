@@ -247,7 +247,7 @@ function getCompatibilityToday(zodiacSign, date) {
  */
 function combineTarotWithAstrology(card, userProfile, horoscope) {
   const sunSignValue = typeof userProfile.sunSign === 'object' ? userProfile.sunSign?.sign : userProfile.sunSign;
-  const moonSignValue = typeof userProfile.moonSign === 'object' ? userProfile.moonSign?.sign : userProfile.moonSign;
+  const _moonSignValue = typeof userProfile.moonSign === 'object' ? userProfile.moonSign?.sign : userProfile.moonSign;
   const element = userProfile.element || userProfile.sunSign?.element;
 
   let combinedInterpretation = card.interpretation || '';
@@ -294,7 +294,7 @@ function getPersonalizedCardWeights(userProfile) {
     return null; // No personalization without astrology
   }
 
-  const { sunSign, moonSign, element } = userProfile;
+  const { moonSign, element } = userProfile;
 
   // User's personal Tarot cards get higher weight
   const personalCards = userProfile.sunSign.tarotCards || [];

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import axios from 'axios'
-import TarotCard from '../components/TarotCard'
+// TarotCard import removed - using inline card display
 import ShareButtons from '../components/ShareButtons'
 import './PastPresentFuturePage.css'
 

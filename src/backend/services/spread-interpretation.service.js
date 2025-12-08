@@ -68,7 +68,7 @@ async function interpretSpread(spreadId, cards, question = null, context = {}) {
 /**
  * Generate interpretation for specific position
  */
-function generatePositionInterpretation(card, position, question, context) {
+function generatePositionInterpretation(card, position, question, _context) {
   const { name, reversed } = card;
   const positionContext = position.name;
 
@@ -139,7 +139,7 @@ function getCardMeaningForPosition(card, position) {
 /**
  * Generate overall spread summary
  */
-function generateSpreadSummary(spreadId, interpretations, question) {
+function generateSpreadSummary(spreadId, interpretations, _question) {
   const spreadNames = {
     'celtic-cross': 'Кельтский Крест',
     'relationship': 'Расклад Отношений',
@@ -152,7 +152,7 @@ function generateSpreadSummary(spreadId, interpretations, question) {
   let summary = `Расклад "${spreadNames[spreadId] || spreadId}" показывает:\n\n`;
 
   // Analyze card patterns
-  const cardNames = interpretations.map(i => i.card.name);
+  const _cardNames = interpretations.map(i => i.card.name);
   const reversedCount = interpretations.filter(i => i.card.reversed).length;
 
   if (reversedCount > interpretations.length / 2) {
@@ -177,7 +177,7 @@ function generateSpreadSummary(spreadId, interpretations, question) {
 function generateSpreadAdvice(interpretations) {
   const advicePoints = [];
 
-  interpretations.forEach((interp, index) => {
+  interpretations.forEach((interp, _index) => {
     // Extract key advice from each position
     if (interp.positionName.includes('Совет') || interp.positionName.includes('Итог')) {
       advicePoints.push(`${interp.positionName}: Следуйте мудрости карты ${interp.card.name}`);

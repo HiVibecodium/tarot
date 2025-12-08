@@ -6,7 +6,7 @@
 const express = require('express');
 const router = express.Router();
 const { authenticate: auth, optionalAuth } = require('../../middleware/auth.middleware');
-const { body, param, validationResult } = require('express-validator');
+const { body, validationResult } = require('express-validator');
 const crypto = require('crypto');
 
 const validateRequest = (req, res, next) => {

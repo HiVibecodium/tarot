@@ -26,7 +26,7 @@ const SAMPLE_CARDS = [
 
 function YearSpreadPage() {
   const navigate = useNavigate()
-  const { user } = useSelector((state) => state.auth)
+  const { user: _user } = useSelector((state) => state.auth)
   const [cards, setCards] = useState([])
   const [currentYear] = useState(new Date().getFullYear())
   const [isRevealed, setIsRevealed] = useState(false)

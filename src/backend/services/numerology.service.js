@@ -364,7 +364,7 @@ class NumerologyService {
     }
   }
 
-  calculateAreaScore(baseScore, area) {
+  calculateAreaScore(baseScore, _area) {
     const variance = Math.random() * 2 - 1; // -1 до +1
     const score = Math.max(1, Math.min(10, baseScore + variance));
     return Math.round(score * 10) / 10; // Округление до 1 знака

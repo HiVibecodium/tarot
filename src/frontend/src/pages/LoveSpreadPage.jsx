@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { LoveSpreadSEO } from '../components/SEO'
 import './LoveSpreadPage.css'
 
-const MONTHS = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
+const _MONTHS = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
 
 const SAMPLE_CARDS = [
   { name: 'Влюблённые', description: 'Гармония и выбор сердца' },

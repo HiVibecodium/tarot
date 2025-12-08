@@ -69,7 +69,8 @@
       "Bash(set \"VITE_API_URL=/api\")",
       "Bash(grep:*)",
       "WebFetch(domain:ai-tarot-assistant.vercel.app)",
-      "Bash(npx eslint:*)"
+      "Bash(npx eslint:*)",
+      "Bash(del \"C:\\Users\\siniy\\WebstormProjects\\AI Tarot Decision Assistant\\src\\frontend\\src\\config\\sentry.jsx\")"
     ],
     "deny": [],
     "ask": []

@@ -127,7 +127,7 @@ function CompatibilityPage() {
   const [result, setResult] = useState(null)
   const [calculating, setCalculating] = useState({ person1: false, person2: false })
   const [numerologyResult, setNumerologyResult] = useState(null)
-  const [calculatingNumerology, setCalculatingNumerology] = useState(false)
+  const [_calculatingNumerology, setCalculatingNumerology] = useState(false)
 
   // Calculate natal chart from birth data
   const calculateNatalChart = async (birthDate, birthTime, birthPlace, person) => {

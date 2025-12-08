@@ -6,9 +6,9 @@ import { useToast } from '../hooks/useToast'
 import Toast from '../components/Toast'
 import CityAutocomplete from '../components/CityAutocomplete'
 import NatalChartWheel from '../components/NatalChartWheel'
-import { ZODIAC_DETAILED, PLANET_MEANINGS, HOUSE_MEANINGS, ASPECT_INTERPRETATIONS } from '../utils/zodiacKnowledge'
+import { ZODIAC_DETAILED, HOUSE_MEANINGS } from '../utils/zodiacKnowledge'
 import { MERCURY_IN_SIGNS, VENUS_IN_SIGNS, MARS_IN_SIGNS, JUPITER_IN_SIGNS, SATURN_IN_SIGNS, URANUS_IN_SIGNS, NEPTUNE_IN_SIGNS, PLUTO_IN_SIGNS } from '../utils/planetsInSigns'
-import { ASPECT_INTERPRETATIONS as DETAILED_ASPECTS, getAspectInterpretation } from '../utils/aspectInterpretations'
+import { getAspectInterpretation } from '../utils/aspectInterpretations'
 import { ELEMENT_DETAILED, getElementBalanceAnalysis } from '../utils/elementMeanings'
 import { NatalChartSEO } from '../components/SEO'
 import './NatalChartPage.css'
@@ -1600,7 +1600,6 @@ ${risingData?.element === 'Огонь' ? 'Вы выглядите энергич
                         <strong>{astroData.astrologyProfile?.aspects?.length || 0}</strong>
                         <span style={{fontSize: 11, color: '#999', marginLeft: 6}}>
                           {(() => {
-                            const count = astroData.astrologyProfile?.aspects?.length || 0;
                             const harmonious = astroData.astrologyProfile?.aspects?.filter(a => a.nature === 'harmonious').length || 0;
                             const challenging = astroData.astrologyProfile?.aspects?.filter(a => a.nature === 'challenging').length || 0;
                             return `(${harmonious} ✓ | ${challenging} ⚠)`;

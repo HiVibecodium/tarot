@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 // Use JSON storage for MVP (can switch to MongoDB later)
 const User = require('../models/User.json-model');
-const { validatePassword, getPasswordStrength } = require('../utils/passwordValidator');
+const { validatePassword } = require('../utils/passwordValidator');
 const { sanitizeEmail } = require('../middleware/sanitize.middleware');
 
 // ============================================
@@ -37,7 +37,8 @@ const generateRefreshToken = (userId) => {
  */
 exports.register = async (req, res) => {
   try {
-    let { email, password, displayName } = req.body;
+    let { email } = req.body;
+    const { password, displayName } = req.body;
 
     // Validation
     if (!email || !password) {

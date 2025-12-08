@@ -144,7 +144,7 @@ function sanitizeUserInput(data) {
  */
 const mongoSanitizeMiddleware = mongoSanitize({
   replaceWith: '_',
-  onSanitize: ({ req, key }) => {
+  onSanitize: ({ key }) => {
     console.warn(`⚠️  Potential NoSQL injection blocked: ${key}`);
   }
 });
