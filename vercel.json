@@ -1,8 +1,8 @@
 {
   "version": 2,
   "framework": null,
-  "installCommand": "npm install && npm install --prefix api",
-  "buildCommand": "echo 'Using pre-built dist'",
+  "installCommand": "npm install && npm install --prefix src/frontend && npm install --prefix api",
+  "buildCommand": "cd src/frontend && VITE_API_URL=/api npm run build",
   "outputDirectory": "src/frontend/dist",
   "functions": {
     "api/*.js": {
