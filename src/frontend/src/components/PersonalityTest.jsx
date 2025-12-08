@@ -174,6 +174,7 @@ const PersonalityTest = ({ test, onComplete }) => {
           <div className="result-percentage">{result.percentage}% совпадение</div>
         </div>
 
+        <div className="result-body">
         <p className="result-description">{result.details.description}</p>
         {result.details.meaning && (
           <p className="result-meaning">{result.details.meaning}</p>
@@ -321,6 +322,7 @@ const PersonalityTest = ({ test, onComplete }) => {
             <p className="affirmation-text">"{result.details.affirmation}"</p>
           </div>
         )}
+        </div>
 
         <div className="result-actions">
           <button onClick={restartTest} className="btn-restart">
