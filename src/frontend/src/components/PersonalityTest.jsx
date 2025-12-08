@@ -226,8 +226,9 @@ const PersonalityTest = ({ test, onComplete }) => {
 
         {result.details.zodiacSigns && (
           <div className="result-zodiac">
-            <strong>⭐ Знаки Зодиака:</strong>
-            <p>{result.details.zodiacSigns.join(', ')}</p>
+            <strong>⭐ Знаки вашей стихии:</strong>
+            <p className="zodiac-hint">Эти знаки Зодиака разделяют вашу энергию:</p>
+            <p className="zodiac-signs">{result.details.zodiacSigns.join(', ')}</p>
           </div>
         )}
 
@@ -269,16 +270,21 @@ const PersonalityTest = ({ test, onComplete }) => {
           </div>
         )}
 
-        {(result.details.season || result.details.direction) && (
+        {(result.details.season || result.details.direction || result.details.bodyParts) && (
           <div className="result-nature">
             {result.details.season && (
               <div className="nature-item">
-                <strong>🌿 Сезон:</strong> {result.details.season}
+                <strong>🌿 Ваш сезон силы:</strong> {result.details.season}
               </div>
             )}
             {result.details.direction && (
               <div className="nature-item">
                 <strong>🧭 Направление:</strong> {result.details.direction}
+              </div>
+            )}
+            {result.details.bodyParts && (
+              <div className="nature-item">
+                <strong>🫀 Части тела:</strong> {result.details.bodyParts}
               </div>
             )}
           </div>
@@ -288,6 +294,24 @@ const PersonalityTest = ({ test, onComplete }) => {
           <div className="result-famous">
             <strong>🌟 Знаменитости вашего типа:</strong>
             <p>{result.details.famousPeople.join(', ')}</p>
+          </div>
+        )}
+
+        {result.details.practices && result.details.practices.length > 0 && (
+          <div className="result-section result-practices">
+            <h3>🧘 Практики для вашей стихии:</h3>
+            <ul className="result-list practices-list">
+              {result.details.practices.map((practice, idx) => (
+                <li key={idx}>{practice}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {result.details.bestTime && (
+          <div className="result-best-time">
+            <strong>⏰ Лучшее время:</strong>
+            <p>{result.details.bestTime}</p>
           </div>
         )}
 
