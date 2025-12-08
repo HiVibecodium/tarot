@@ -166,9 +166,12 @@ const PersonalityTest = ({ test, onComplete }) => {
   };
 
   if (showResult && result && result.details) {
+    // Определяем класс для цвета хедера по элементу/типу
+    const elementClass = result.dominant ? `element-${result.dominant.toLowerCase()}` : '';
+
     return (
-      <div className="test-result">
-        <div className="result-header">
+      <div className={`test-result ${elementClass}`}>
+        <div className={`result-header ${elementClass}`}>
           <div className="result-icon">{result.details.emoji || '✨'}</div>
           <h2 className="result-title">{result.details.title || 'Результат'}</h2>
           <div className="result-percentage">{result.percentage}% совпадение</div>

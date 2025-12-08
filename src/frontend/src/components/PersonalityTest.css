@@ -228,6 +228,23 @@
   overflow: hidden;
 }
 
+/* Element-specific header backgrounds */
+.result-header.element-fire {
+  background: linear-gradient(135deg, #f12711 0%, #f5af19 50%, #ff9a44 100%);
+}
+
+.result-header.element-earth {
+  background: linear-gradient(135deg, #134e5e 0%, #2d8f5f 50%, #71b280 100%);
+}
+
+.result-header.element-air {
+  background: linear-gradient(135deg, #bdc3c7 0%, #a8d8ea 50%, #82c4e0 100%);
+}
+
+.result-header.element-water {
+  background: linear-gradient(135deg, #1a2980 0%, #26d0ce 50%, #5b86e5 100%);
+}
+
 .result-header::before {
   content: '';
   position: absolute;
@@ -931,6 +948,23 @@
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
+}
+
+/* Element-specific animated borders */
+.test-result.element-fire::before {
+  background: linear-gradient(135deg, #f12711, #f5af19, #ff9a44, #f12711);
+}
+
+.test-result.element-earth::before {
+  background: linear-gradient(135deg, #134e5e, #2d8f5f, #71b280, #134e5e);
+}
+
+.test-result.element-air::before {
+  background: linear-gradient(135deg, #667eea, #a8d8ea, #82c4e0, #667eea);
+}
+
+.test-result.element-water::before {
+  background: linear-gradient(135deg, #1a2980, #26d0ce, #5b86e5, #1a2980);
 }
 
 @keyframes gradient-border {
