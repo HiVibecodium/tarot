@@ -3,7 +3,7 @@
  * Handles extension lifecycle, API calls, and storage
  */
 
-const API_BASE_URL = 'https://tarot-a2oi.onrender.com/api';
+const API_BASE_URL = 'https://ai-tarot-assistant.vercel.app/api';
 const LOCAL_API = 'http://localhost:4000/api';
 
 // Use local API in development

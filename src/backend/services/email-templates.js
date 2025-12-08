@@ -106,7 +106,7 @@ const emailWrapper = (content) => `
     <div class="footer">
       <p>Это автоматическое письмо от AI Tarot Decision Assistant</p>
       <p>
-        <a href="https://tarot-a2oi.onrender.com" style="color: ${colors.primary}; text-decoration: none;">
+        <a href="https://ai-tarot-assistant.vercel.app" style="color: ${colors.primary}; text-decoration: none;">
           Перейти к приложению
         </a>
       </p>
@@ -154,7 +154,7 @@ const premiumWelcome = (user, subscription) => {
     <hr class="divider">
 
     <div style="text-align: center;">
-      <a href="https://tarot-a2oi.onrender.com/reading/daily" class="button">
+      <a href="https://ai-tarot-assistant.vercel.app/reading/daily" class="button">
         Вытянуть первую карту 🔮
       </a>
     </div>
@@ -230,7 +230,7 @@ const premiumCanceled = (user, _subscription) => {
     </p>
 
     <div style="text-align: center; margin-top: 30px;">
-      <a href="https://tarot-a2oi.onrender.com/settings" class="button">
+      <a href="https://ai-tarot-assistant.vercel.app/settings" class="button">
         Вернуться к Premium
       </a>
     </div>
@@ -303,7 +303,7 @@ const paymentFailed = (user, invoice) => {
     </p>
 
     <div style="text-align: center; margin: 30px 0;">
-      <a href="https://tarot-a2oi.onrender.com/settings/billing" class="button">
+      <a href="https://ai-tarot-assistant.vercel.app/settings/billing" class="button">
         Обновить платёжные данные
       </a>
     </div>
@@ -360,7 +360,7 @@ const paymentSucceeded = (user, invoice) => {
     </p>
 
     <div style="text-align: center; margin: 30px 0;">
-      <a href="https://tarot-a2oi.onrender.com/reading/daily" class="button">
+      <a href="https://ai-tarot-assistant.vercel.app/reading/daily" class="button">
         Вытянуть карту дня 🔮
       </a>
     </div>

@@ -7,7 +7,7 @@ const axios = require('axios');
 const fs = require('fs');
 const path = require('path');
 
-const PRODUCTION_URL = process.env.PRODUCTION_URL || 'https://tarot-a2oi.onrender.com';
+const PRODUCTION_URL = process.env.PRODUCTION_URL || 'https://ai-tarot-assistant.vercel.app';
 const TIMEOUT = 10000;
 
 // Test results
