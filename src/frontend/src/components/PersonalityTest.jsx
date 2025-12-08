@@ -231,6 +231,73 @@ const PersonalityTest = ({ test, onComplete }) => {
           </div>
         )}
 
+        {result.details.compatibility && (
+          <div className="result-section result-compatibility">
+            <h3>💕 Совместимость с Элементами:</h3>
+            <div className="compatibility-grid">
+              <div className="compat-item best">
+                <span className="compat-label">Лучшая:</span>
+                <span className="compat-value">{result.details.compatibility.best}</span>
+              </div>
+              <div className="compat-item good">
+                <span className="compat-label">Хорошая:</span>
+                <span className="compat-value">{result.details.compatibility.good}</span>
+              </div>
+              <div className="compat-item challenging">
+                <span className="compat-label">Сложная:</span>
+                <span className="compat-value">{result.details.compatibility.challenging}</span>
+              </div>
+              <div className="compat-item growth">
+                <span className="compat-label">Для роста:</span>
+                <span className="compat-value">{result.details.compatibility.growth}</span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {result.details.crystals && (
+          <div className="result-crystals">
+            <strong>💎 Ваши Камни:</strong>
+            <p>{result.details.crystals.join(', ')}</p>
+          </div>
+        )}
+
+        {result.details.colors && (
+          <div className="result-colors">
+            <strong>🎨 Ваши Цвета:</strong>
+            <p>{result.details.colors.join(', ')}</p>
+          </div>
+        )}
+
+        {(result.details.season || result.details.direction) && (
+          <div className="result-nature">
+            {result.details.season && (
+              <div className="nature-item">
+                <strong>🌿 Сезон:</strong> {result.details.season}
+              </div>
+            )}
+            {result.details.direction && (
+              <div className="nature-item">
+                <strong>🧭 Направление:</strong> {result.details.direction}
+              </div>
+            )}
+          </div>
+        )}
+
+        {result.details.famousPeople && (
+          <div className="result-famous">
+            <strong>🌟 Знаменитости вашего типа:</strong>
+            <p>{result.details.famousPeople.join(', ')}</p>
+          </div>
+        )}
+
+        {result.details.affirmation && (
+          <div className="result-affirmation">
+            <strong>🔮 Ваша Аффирмация:</strong>
+            <p className="affirmation-text">"{result.details.affirmation}"</p>
+          </div>
+        )}
+
         <div className="result-actions">
           <button onClick={restartTest} className="btn-restart">
             Пройти ещё раз
