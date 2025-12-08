@@ -54,7 +54,7 @@ app.use(helmet({
       scriptSrc: ["'self'", "'unsafe-inline'"], // Needed for Vite in production
       styleSrc: ["'self'", "'unsafe-inline'"],
       imgSrc: ["'self'", "data:", "https:"],
-      connectSrc: ["'self'", "https://tarot-a2oi.onrender.com"],
+      connectSrc: ["'self'", "https://ai-tarot-assistant.vercel.app"],
       fontSrc: ["'self'", "data:"],
       objectSrc: ["'none'"],
       upgradeInsecureRequests: []

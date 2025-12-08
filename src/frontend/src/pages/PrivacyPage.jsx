@@ -69,7 +69,7 @@ function PrivacyPage() {
           <p>Мы используем сервисы:</p>
           <ul>
             <li><strong>Stripe:</strong> Обработка платежей (PCI DSS compliant)</li>
-            <li><strong>Хостинг:</strong> Railway/Render (secure infrastructure)</li>
+            <li><strong>Хостинг:</strong> Vercel (secure infrastructure)</li>
           </ul>
           <p>Эти сервисы имеют свои политики конфиденциальности.</p>
 
