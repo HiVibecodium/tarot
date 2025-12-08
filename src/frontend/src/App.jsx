@@ -4,6 +4,7 @@ import { lazy, Suspense, useEffect } from 'react'
 import analytics from './utils/analytics'
 import Footer from './components/Footer'
 import FeedbackButton from './components/FeedbackButton'
+import ErrorBoundary from './components/ErrorBoundary'
 import LandingPage from './pages/LandingPage'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
@@ -124,16 +125,17 @@ function App() {
         intensity="medium"
       />
 
-      <Suspense fallback={
-        <div className="app-loading">
-          <div className="loading-content">
-            <div className="loading-icon">🔮</div>
-            <div className="loading-spinner"></div>
-            <p className="loading-text">Загрузка...</p>
+      <ErrorBoundary>
+        <Suspense fallback={
+          <div className="app-loading">
+            <div className="loading-content">
+              <div className="loading-icon">🔮</div>
+              <div className="loading-spinner"></div>
+              <p className="loading-text">Загрузка...</p>
+            </div>
           </div>
-        </div>
-      }>
-        <Routes>
+        }>
+          <Routes>
         {/* Public Routes */}
         <Route path="/landing" element={<LandingPage />} />
         <Route
@@ -203,13 +205,14 @@ function App() {
           element={isAuthenticated ? <JournalPage /> : <Navigate to="/login" />}
         />
 
-        {/* Default Route */}
-        <Route
-          path="/"
-          element={<LandingPage />}
-        />
-      </Routes>
-      </Suspense>
+          {/* Default Route */}
+          <Route
+            path="/"
+            element={<LandingPage />}
+          />
+        </Routes>
+        </Suspense>
+      </ErrorBoundary>
 
       {showFooter && <Footer />}
 
