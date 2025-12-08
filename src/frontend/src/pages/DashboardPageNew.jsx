@@ -221,7 +221,7 @@ function DashboardPage() {
 
                 <div className="dashboard-card">
                   <h3>🧪 Тесты Личности</h3>
-                  <p>2 работающих теста</p>
+                  <p>15 психологических тестов</p>
                   <button className="btn-primary" onClick={() => navigate('/tests')}>
                     Пройти
                   </button>
