@@ -228,11 +228,11 @@ function PersonalityTestsPage() {
               >
                 {test.popular && <div className="popular-badge">Популярный</div>}
                 {!isAvailable && <div className="coming-soon-badge">Скоро</div>}
+                <span className={`category-badge ${test.category}`}>
+                  {CATEGORIES[test.category]?.label || test.category}
+                </span>
 
                 <div className="test-card-header">
-                  <span className={`category-badge ${test.category}`}>
-                    {CATEGORIES[test.category]?.label || test.category}
-                  </span>
                   <div className="test-icon-wrapper">
                     <span className="test-icon">{testData.icon}</span>
                   </div>
