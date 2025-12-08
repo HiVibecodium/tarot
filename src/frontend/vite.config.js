@@ -16,10 +16,25 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: undefined
+        manualChunks: {
+          // React core - loaded on every page
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+
+          // Redux - for state management
+          'vendor-redux': ['@reduxjs/toolkit', 'react-redux'],
+
+          // Axios for API calls
+          'vendor-axios': ['axios'],
+
+          // Stripe - loaded only on payment pages
+          'vendor-stripe': ['@stripe/stripe-js', '@stripe/react-stripe-js'],
+
+          // Sentry - error tracking
+          'vendor-sentry': ['@sentry/react'],
+        }
       }
     },
-    chunkSizeWarningLimit: 1000,
+    chunkSizeWarningLimit: 500,
     sourcemap: false,
     minify: 'esbuild'
   }

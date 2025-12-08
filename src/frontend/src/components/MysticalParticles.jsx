@@ -1,9 +1,10 @@
-import { useEffect, useRef, memo } from 'react';
+import { useEffect, useRef, memo, useState } from 'react';
 import './MysticalParticles.css';
 
 /**
  * Mystical Particles Background Effect
  * Creates floating stars, sparkles and mystical orbs
+ * Optimized for mobile devices and respects reduced motion preferences
  */
 const MysticalParticles = memo(function MysticalParticles({
   particleCount = 50,
@@ -12,87 +13,99 @@ const MysticalParticles = memo(function MysticalParticles({
   intensity = 'medium' // 'low', 'medium', 'high'
 }) {
   const containerRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+  // Detect mobile and reduced motion on mount
+  useEffect(() => {
+    const checkMobile = () => window.innerWidth <= 768;
+    const checkReducedMotion = () =>
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    setIsMobile(checkMobile());
+    setPrefersReducedMotion(checkReducedMotion());
+
+    const handleResize = () => setIsMobile(checkMobile());
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     if (!containerRef.current) return;
 
-    const container = containerRef.current;
-    container.innerHTML = '';
+    // Skip animations if user prefers reduced motion
+    if (prefersReducedMotion) {
+      containerRef.current.innerHTML = '';
+      return;
+    }
 
-    // Intensity multipliers
+    const container = containerRef.current;
+    const fragment = document.createDocumentFragment();
+
+    // Reduce particles on mobile for better performance
+    const mobileMultiplier = isMobile ? 0.4 : 1;
     const intensityMultiplier = { low: 0.5, medium: 1, high: 1.5 }[intensity];
-    const actualParticles = Math.floor(particleCount * intensityMultiplier);
-    const actualStars = Math.floor(starCount * intensityMultiplier);
+    const finalMultiplier = mobileMultiplier * intensityMultiplier;
+
+    const actualParticles = Math.floor(particleCount * finalMultiplier);
+    const actualStars = Math.floor(starCount * finalMultiplier);
 
     // Create floating particles (sparkles)
     for (let i = 0; i < actualParticles; i++) {
       const particle = document.createElement('div');
       particle.className = 'mystical-particle';
-
-      // Random position
-      particle.style.left = `${Math.random() * 100}%`;
-      particle.style.top = `${Math.random() * 100}%`;
-
-      // Random animation delay and duration
-      particle.style.animationDelay = `${Math.random() * 5}s`;
-      particle.style.animationDuration = `${3 + Math.random() * 4}s`;
-
-      // Random size (small sparkles)
-      const size = 2 + Math.random() * 4;
-      particle.style.width = `${size}px`;
-      particle.style.height = `${size}px`;
-
-      container.appendChild(particle);
+      particle.style.cssText = `
+        left: ${Math.random() * 100}%;
+        top: ${Math.random() * 100}%;
+        animation-delay: ${Math.random() * 5}s;
+        animation-duration: ${3 + Math.random() * 4}s;
+        width: ${2 + Math.random() * 4}px;
+        height: ${2 + Math.random() * 4}px;
+      `;
+      fragment.appendChild(particle);
     }
 
     // Create twinkling stars
     for (let i = 0; i < actualStars; i++) {
       const star = document.createElement('div');
       star.className = 'mystical-star';
-
-      // Random position
-      star.style.left = `${Math.random() * 100}%`;
-      star.style.top = `${Math.random() * 100}%`;
-
-      // Random animation
-      star.style.animationDelay = `${Math.random() * 3}s`;
-      star.style.animationDuration = `${2 + Math.random() * 2}s`;
-
-      // Random size
       const size = 1 + Math.random() * 2;
-      star.style.width = `${size}px`;
-      star.style.height = `${size}px`;
-
-      container.appendChild(star);
+      star.style.cssText = `
+        left: ${Math.random() * 100}%;
+        top: ${Math.random() * 100}%;
+        animation-delay: ${Math.random() * 3}s;
+        animation-duration: ${2 + Math.random() * 2}s;
+        width: ${size}px;
+        height: ${size}px;
+      `;
+      fragment.appendChild(star);
     }
 
-    // Create mystical orbs (larger glowing circles)
+    // Create mystical orbs (larger glowing circles) - fewer on mobile
     if (showOrbs) {
-      const orbCount = Math.floor(5 * intensityMultiplier);
+      const orbCount = Math.floor((isMobile ? 2 : 5) * intensityMultiplier);
       for (let i = 0; i < orbCount; i++) {
         const orb = document.createElement('div');
         orb.className = 'mystical-orb';
-
-        // Random position
-        orb.style.left = `${10 + Math.random() * 80}%`;
-        orb.style.top = `${10 + Math.random() * 80}%`;
-
-        // Random animation
-        orb.style.animationDelay = `${Math.random() * 10}s`;
-        orb.style.animationDuration = `${15 + Math.random() * 10}s`;
-
-        // Random size
-        const size = 100 + Math.random() * 200;
-        orb.style.width = `${size}px`;
-        orb.style.height = `${size}px`;
-
-        // Random color variant
-        const hue = 240 + Math.random() * 60; // Purple to blue range
-        orb.style.background = `radial-gradient(circle, hsla(${hue}, 70%, 60%, 0.1) 0%, transparent 70%)`;
-
-        container.appendChild(orb);
+        const size = isMobile ? 80 + Math.random() * 100 : 100 + Math.random() * 200;
+        const hue = 240 + Math.random() * 60;
+        orb.style.cssText = `
+          left: ${10 + Math.random() * 80}%;
+          top: ${10 + Math.random() * 80}%;
+          animation-delay: ${Math.random() * 10}s;
+          animation-duration: ${15 + Math.random() * 10}s;
+          width: ${size}px;
+          height: ${size}px;
+          background: radial-gradient(circle, hsla(${hue}, 70%, 60%, 0.1) 0%, transparent 70%);
+        `;
+        fragment.appendChild(orb);
       }
     }
+
+    // Clear and append all at once (more efficient)
+    container.innerHTML = '';
+    container.appendChild(fragment);
 
     // Cleanup
     return () => {
@@ -100,7 +113,12 @@ const MysticalParticles = memo(function MysticalParticles({
         container.innerHTML = '';
       }
     };
-  }, [particleCount, starCount, showOrbs, intensity]);
+  }, [particleCount, starCount, showOrbs, intensity, isMobile, prefersReducedMotion]);
+
+  // Don't render anything if reduced motion is preferred
+  if (prefersReducedMotion) {
+    return null;
+  }
 
   return (
     <div
