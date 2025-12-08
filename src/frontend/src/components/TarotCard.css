@@ -3,6 +3,29 @@
   width: 100%;
   max-width: 300px;
   margin: 0 auto;
+  --card-glow: rgba(102, 126, 234, 0.5);
+  --card-glow-secondary: rgba(118, 75, 162, 0.4);
+}
+
+/* Suit-based color schemes */
+.tarot-card-container[data-suit="wands"] {
+  --card-glow: rgba(255, 107, 53, 0.5);
+  --card-glow-secondary: rgba(255, 154, 0, 0.4);
+}
+
+.tarot-card-container[data-suit="cups"] {
+  --card-glow: rgba(59, 130, 246, 0.5);
+  --card-glow-secondary: rgba(147, 197, 253, 0.4);
+}
+
+.tarot-card-container[data-suit="swords"] {
+  --card-glow: rgba(148, 163, 184, 0.5);
+  --card-glow-secondary: rgba(203, 213, 225, 0.4);
+}
+
+.tarot-card-container[data-suit="pentacles"] {
+  --card-glow: rgba(34, 197, 94, 0.5);
+  --card-glow-secondary: rgba(134, 239, 172, 0.4);
 }
 
 .tarot-card {
@@ -14,12 +37,42 @@
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
 }
 
+/* Mystical glow border */
+.tarot-card::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 15px;
+  background: linear-gradient(
+    45deg,
+    var(--card-glow),
+    var(--card-glow-secondary),
+    var(--card-glow),
+    var(--card-glow-secondary)
+  );
+  background-size: 400% 400%;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.4s ease;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.tarot-card:hover::before {
+  opacity: 1;
+}
+
 /* Enhanced hover with 3D perspective */
 .tarot-card:hover {
   transform: perspective(1000px) rotateY(5deg) rotateX(2deg) translateY(-10px);
   box-shadow:
-    0 20px 40px rgba(102, 126, 234, 0.3),
-    0 0 30px rgba(102, 126, 234, 0.15);
+    0 20px 40px var(--card-glow),
+    0 0 60px var(--card-glow-secondary),
+    0 0 100px rgba(102, 126, 234, 0.1);
 }
 
 .tarot-card-container.flipped .tarot-card {
@@ -43,19 +96,90 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+}
+
+/* Shimmer effect on card front */
+.card-front::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 70%
+  );
+  transform: rotate(45deg) translateX(-100%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+
+.tarot-card:hover .card-front::after {
+  transform: rotate(45deg) translateX(100%);
 }
 
 .card-back {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
   color: white;
   justify-content: center;
   align-items: center;
   transform: rotateY(180deg);
+  position: relative;
+}
+
+/* Mystical pattern on card back */
+.card-back::before {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 8px;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 215, 0, 0.03) 10px,
+      rgba(255, 215, 0, 0.03) 20px
+    );
+}
+
+/* Stars animation on card back */
+.card-back::after {
+  content: '✦ ✧ ✦';
+  position: absolute;
+  top: 20px;
+  font-size: 1rem;
+  letter-spacing: 10px;
+  color: rgba(255, 215, 0, 0.5);
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
 }
 
 .card-back-pattern {
-  font-size: 4rem;
+  font-size: 5rem;
   margin-bottom: 10px;
+  text-shadow: 0 0 30px rgba(102, 126, 234, 0.8), 0 0 60px rgba(118, 75, 162, 0.5);
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.5));
+  }
+  50% {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 20px rgba(118, 75, 162, 0.8));
+  }
 }
 
 .card-front.reversed {
@@ -65,20 +189,39 @@
 .card-header {
   text-align: center;
   margin-bottom: 15px;
-  border-bottom: 2px solid #f0f0f0;
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(90deg, transparent, var(--card-glow), transparent) 1;
   padding-bottom: 10px;
+  position: relative;
 }
 
 .card-header h3 {
-  color: #667eea;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   font-size: 1.3rem;
   margin: 0 0 5px 0;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .reversed-indicator {
   color: #e74c3c;
   font-size: 0.85rem;
   font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(231, 76, 60, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
 }
 
 .card-image {
@@ -157,26 +300,47 @@
 }
 
 .keyword-tag {
-  background: #f0f0ff;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
   color: #667eea;
   padding: 4px 12px;
   border-radius: 12px;
   font-size: 0.8rem;
   font-weight: 500;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  transition: all 0.3s ease;
+}
+
+.keyword-tag:hover {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.2);
 }
 
 .card-interpretation {
   margin-top: 20px;
   padding: 20px;
-  background: #f9f9ff;
-  border-radius: 8px;
-  border-left: 4px solid #667eea;
+  background: linear-gradient(135deg, rgba(249, 249, 255, 1) 0%, rgba(240, 240, 255, 1) 100%);
+  border-radius: 12px;
+  border-left: 4px solid transparent;
+  border-image: linear-gradient(to bottom, #667eea, #764ba2) 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-interpretation::before {
+  content: '✨';
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.2rem;
+  opacity: 0.5;
 }
 
 .card-interpretation p {
   color: #333;
-  line-height: 1.6;
+  line-height: 1.7;
   margin: 0;
+  font-style: italic;
 }
 
 /* Responsive */

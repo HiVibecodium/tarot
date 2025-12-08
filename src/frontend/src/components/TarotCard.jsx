@@ -32,7 +32,10 @@ function TarotCard({ card, reversed = false, showInterpretation = true }) {
   const imagePath = getCardImagePath(card)
 
   return (
-    <div className={`tarot-card-container ${isFlipped ? 'flipped' : ''}`}>
+    <div
+      className={`tarot-card-container ${isFlipped ? 'flipped' : ''}`}
+      data-suit={card.suit || 'major'}
+    >
       <div className="tarot-card" onClick={handleClick}>
         {/* Card Front */}
         <div className={`card-front ${reversed ? 'reversed' : ''}`}>
