@@ -3,6 +3,9 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 import './NotificationSettings.css';
 
+// VAPID публичный ключ (безопасно хранить на клиенте)
+const VAPID_PUBLIC_KEY = import.meta.env.VITE_VAPID_PUBLIC_KEY || 'BB3Pzm3M2W6xXD9I2Sy7QFM1hWIn985yjgdTcmgmMVH9xZwcenNqNfIhAbQrCCeqBZoFpobO-XEfeCOJToExv-s';
+
 // Конвертация VAPID ключа для подписки
 function urlBase64ToUint8Array(base64String) {
   const padding = '='.repeat((4 - base64String.length % 4) % 4);
@@ -123,24 +126,13 @@ const NotificationSettings = () => {
   const subscribeToPush = async () => {
     setSubscribing(true);
     try {
-      // Получаем VAPID ключ с сервера
-      const vapidResponse = await axios.get(
-        `${import.meta.env.VITE_API_URL}/vapid`
-      );
-
-      if (!vapidResponse.data.success) {
-        throw new Error('VAPID key not available');
-      }
-
-      const vapidPublicKey = vapidResponse.data.data.publicKey;
-
       // Получаем registration Service Worker
       const registration = await navigator.serviceWorker.ready;
 
       // Подписываемся на push
       const subscription = await registration.pushManager.subscribe({
         userVisibleOnly: true,
-        applicationServerKey: urlBase64ToUint8Array(vapidPublicKey)
+        applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
       });
 
       // Отправляем подписку на сервер
