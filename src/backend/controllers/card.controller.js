@@ -5,6 +5,11 @@
 
 const Card = require('../models/Card.json-model');
 
+// In-memory cache for cards (they don't change)
+let cardsCache = null;
+let cardsCacheTime = 0;
+const CARDS_CACHE_TTL = 60 * 60 * 1000; // 1 hour
+
 /**
  * @desc    Get all cards
  * @route   GET /api/cards
@@ -12,7 +17,29 @@ const Card = require('../models/Card.json-model');
  */
 exports.getAllCards = async (req, res) => {
   try {
+    // Check cache first
+    const now = Date.now();
+    if (cardsCache && (now - cardsCacheTime) < CARDS_CACHE_TTL) {
+      // Set cache headers
+      res.set('Cache-Control', 'public, max-age=3600'); // 1 hour browser cache
+      res.set('X-Cache', 'HIT');
+
+      return res.status(200).json({
+        success: true,
+        data: cardsCache,
+        count: cardsCache.length
+      });
+    }
+
     const cards = await Card.findAll();
+
+    // Update cache
+    cardsCache = cards;
+    cardsCacheTime = now;
+
+    // Set cache headers
+    res.set('Cache-Control', 'public, max-age=3600');
+    res.set('X-Cache', 'MISS');
 
     res.status(200).json({
       success: true,

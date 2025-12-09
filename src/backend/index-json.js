@@ -13,6 +13,7 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
+const compression = require('compression');
 const db = require('./db');
 const {
   initSentry,
@@ -45,6 +46,17 @@ initSentry();
 // Sentry request handler (must be first middleware)
 app.use(getRequestHandler());
 app.use(getTracingHandler());
+
+// Compression middleware (gzip/deflate for responses)
+app.use(compression({
+  level: 6, // Balanced compression level
+  threshold: 1024, // Only compress responses > 1KB
+  filter: (req, res) => {
+    // Don't compress streaming responses
+    if (req.headers['x-no-compression']) return false;
+    return compression.filter(req, res);
+  }
+}));
 
 // Helmet with relaxed CSP for Vite
 app.use(helmet({
