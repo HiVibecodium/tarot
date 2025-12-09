@@ -3,7 +3,8 @@
  * Daily and weekly horoscope based on zodiac + tarot
  */
 
-const { ZODIAC_SIGNS, getZodiacDetails, TAROT_ZODIAC_MAP } = require('./astrology.service');
+// Note: astrology.service exports are available if needed for extended functionality
+// const { ZODIAC_SIGNS, getZodiacDetails, TAROT_ZODIAC_MAP } = require('./astrology.service');
 
 // Horoscope advice templates by element (enriched)
 const ELEMENT_ADVICE = {
@@ -171,7 +172,7 @@ function generateDailyHoroscope(zodiacSign, element, tarotCard) {
   const energyMessage = elementAdvice.daily.energy[Math.floor(Math.random() * elementAdvice.daily.energy.length)];
   const mood = zodiacAdvice.dailyMood[Math.floor(Math.random() * zodiacAdvice.dailyMood.length)];
 
-  let horoscope = {
+  const horoscope = {
     sign: zodiacSign,
     element: elementAdvice.name,
     elementEmoji: elementAdvice.emoji,
@@ -595,6 +596,7 @@ function getCombinedReading(tarotInterpretation, zodiacSign, element, period = '
   return combined;
 }
 
+// Helper function for element name translation (exported for external use)
 function getElementName(element) {
   const names = {
     fire: 'Огонь',
@@ -613,6 +615,7 @@ module.exports = {
   generateMonthlyHoroscope,
   generateMonthlyHoroscopeText,
   getCombinedReading,
+  getElementName,
   ELEMENT_ADVICE,
   ZODIAC_ADVICE,
   WEEKLY_ENERGIES

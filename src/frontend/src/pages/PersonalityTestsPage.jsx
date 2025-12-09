@@ -35,7 +35,7 @@ function PersonalityTestsPage() {
   const [completedTests, setCompletedTests] = useState([]);
   const [activeCategory, setActiveCategory] = useState('all');
 
-  const availableTests = [
+  const availableTests = useMemo(() => [
     {
       data: ELEMENT_TEST,
       available: true,
@@ -114,13 +114,13 @@ function PersonalityTestsPage() {
       available: true,
       category: 'energy'
     }
-  ];
+  ], []);
 
   // Фильтрация по категории
   const filteredTests = useMemo(() => {
     if (activeCategory === 'all') return availableTests;
     return availableTests.filter(test => test.category === activeCategory);
-  }, [activeCategory]);
+  }, [activeCategory, availableTests]);
 
   // Подсчет тестов по категориям
   const categoryCounts = useMemo(() => {
@@ -129,7 +129,7 @@ function PersonalityTestsPage() {
       counts[test.category] = (counts[test.category] || 0) + 1;
     });
     return counts;
-  }, []);
+  }, [availableTests]);
 
   // Общее количество вопросов
   const totalQuestions = useMemo(() => {
@@ -137,7 +137,7 @@ function PersonalityTestsPage() {
       const questions = test.data.questions?.length || 0;
       return sum + questions;
     }, 0);
-  }, []);
+  }, [availableTests]);
 
   const handleTestComplete = (result) => {
     setCompletedTests([...completedTests, result]);
