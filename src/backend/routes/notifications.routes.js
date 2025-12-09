@@ -1,7 +1,27 @@
 const express = require('express');
 const router = express.Router();
-const { authenticate } = require('../middleware/auth.middleware');
+const { authenticate, optionalAuth } = require('../middleware/auth.middleware');
 const notificationsService = require('../services/notifications.service');
+
+/**
+ * GET /api/notifications/vapid-public-key
+ * Получить публичный VAPID ключ для подписки на push
+ */
+router.get('/vapid-public-key', (req, res) => {
+  const publicKey = notificationsService.getPublicVapidKey();
+
+  if (!publicKey) {
+    return res.status(503).json({
+      success: false,
+      message: 'Push notifications not configured'
+    });
+  }
+
+  res.json({
+    success: true,
+    data: { publicKey }
+  });
+});
 
 /**
  * POST /api/notifications/subscribe

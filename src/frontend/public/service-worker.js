@@ -198,31 +198,44 @@ async function syncReadings() {
 self.addEventListener('push', (event) => {
   console.log('🔔 Push notification received');
 
-  const options = {
-    body: event.data ? event.data.text() : 'Время для вашего ежедневного расклада Таро!',
+  let data = {
+    title: '🔮 AI Tarot',
+    body: 'Время для вашего ежедневного расклада Таро!',
     icon: '/logo192.png',
-    badge: '/logo192.png',
+    data: { url: '/reading/daily' }
+  };
+
+  // Парсим данные из push если есть
+  if (event.data) {
+    try {
+      data = { ...data, ...event.data.json() };
+    } catch (e) {
+      data.body = event.data.text();
+    }
+  }
+
+  const options = {
+    body: data.body,
+    icon: data.icon || '/logo192.png',
+    badge: data.badge || '/logo192.png',
     vibrate: [200, 100, 200],
-    data: {
-      dateOfArrival: Date.now(),
-      primaryKey: 1
-    },
+    tag: data.tag || 'tarot-notification',
+    renotify: true,
+    data: data.data || { url: '/' },
     actions: [
       {
-        action: 'explore',
-        title: 'Открыть расклад',
-        icon: '/icons/checkmark.png'
+        action: 'open',
+        title: 'Открыть'
       },
       {
         action: 'close',
-        title: 'Закрыть',
-        icon: '/icons/close.png'
+        title: 'Закрыть'
       }
     ]
   };
 
   event.waitUntil(
-    self.registration.showNotification('🔮 AI Tarot', options)
+    self.registration.showNotification(data.title, options)
   );
 });
 
@@ -232,11 +245,30 @@ self.addEventListener('notificationclick', (event) => {
 
   event.notification.close();
 
-  if (event.action === 'explore') {
-    event.waitUntil(
-      clients.openWindow('/reading/daily')
-    );
+  // Если закрыть - просто закрываем
+  if (event.action === 'close') {
+    return;
   }
+
+  // Открываем URL из данных уведомления
+  const urlToOpen = event.notification.data?.url || '/';
+
+  event.waitUntil(
+    clients.matchAll({ type: 'window', includeUncontrolled: true })
+      .then((windowClients) => {
+        // Ищем открытое окно и фокусируемся на нём
+        for (const client of windowClients) {
+          if (client.url.includes(self.location.origin) && 'focus' in client) {
+            client.navigate(urlToOpen);
+            return client.focus();
+          }
+        }
+        // Если нет открытого окна - открываем новое
+        if (clients.openWindow) {
+          return clients.openWindow(urlToOpen);
+        }
+      })
+  );
 });
 
 // Message handler (for communication with app)

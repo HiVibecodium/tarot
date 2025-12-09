@@ -71,6 +71,11 @@
   font-weight: 500;
 }
 
+.push-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
 .test-btn {
   padding: 0.5rem 1rem;
   background: var(--primary-color);
@@ -84,6 +89,29 @@
 
 .test-btn:hover {
   background: var(--primary-dark);
+}
+
+.unsubscribe-btn {
+  padding: 0.5rem 1rem;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.unsubscribe-btn:hover:not(:disabled) {
+  background: rgba(244, 67, 54, 0.1);
+  border-color: #f44336;
+  color: #f44336;
+}
+
+.unsubscribe-btn:disabled,
+.permission-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 /* Settings Sections */

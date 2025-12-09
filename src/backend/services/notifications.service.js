@@ -4,12 +4,47 @@
  */
 
 const cron = require('node-cron');
+const webpush = require('web-push');
 const db = require('../db');
+const moonPhasesService = require('./moon-phases.service');
 
 class NotificationsService {
   constructor() {
     this.scheduledJobs = new Map();
     this.isInitialized = false;
+    this.vapidConfigured = false;
+  }
+
+  /**
+   * Конфигурирует VAPID для Web Push
+   */
+  configureVapid() {
+    const publicKey = process.env.VAPID_PUBLIC_KEY;
+    const privateKey = process.env.VAPID_PRIVATE_KEY;
+    const email = process.env.VAPID_EMAIL || 'mailto:support@tarot-assistant.com';
+
+    if (!publicKey || !privateKey) {
+      console.warn('⚠️ VAPID keys not configured - push notifications disabled');
+      console.warn('   Generate keys with: npx web-push generate-vapid-keys');
+      return false;
+    }
+
+    try {
+      webpush.setVapidDetails(email, publicKey, privateKey);
+      this.vapidConfigured = true;
+      console.log('✅ VAPID configured for push notifications');
+      return true;
+    } catch (error) {
+      console.error('❌ Failed to configure VAPID:', error.message);
+      return false;
+    }
+  }
+
+  /**
+   * Получает публичный VAPID ключ для фронтенда
+   */
+  getPublicVapidKey() {
+    return process.env.VAPID_PUBLIC_KEY || null;
   }
 
   /**
@@ -19,6 +54,9 @@ class NotificationsService {
     if (this.isInitialized) return;
 
     console.log('📬 Initializing Notifications Service...');
+
+    // Конфигурируем VAPID
+    this.configureVapid();
 
     // Запускаем ежедневный cron для напоминаний
     // Каждый день в 9:00 по умолчанию
@@ -38,7 +76,43 @@ class NotificationsService {
     });
 
     this.scheduledJobs.set('daily-reminders', job);
+
+    // Проверяем полнолуние каждый день в 10:00
+    const moonJob = cron.schedule('0 10 * * *', async () => {
+      await this.checkAndSendMoonNotifications();
+    });
+
+    this.scheduledJobs.set('moon-alerts', moonJob);
+
     console.log('⏰ Daily reminders scheduler started');
+    console.log('🌕 Moon phase notifications scheduled');
+  }
+
+  /**
+   * Проверяет и отправляет уведомления о полнолунии
+   */
+  async checkAndSendMoonNotifications() {
+    try {
+      const phase = moonPhasesService.calculateMoonPhase(new Date());
+
+      if (phase.phaseName === 'Полнолуние') {
+        console.log('🌕 Full moon detected! Sending notifications...');
+
+        const users = await db.find('users', {
+          'notificationSettings.fullMoonAlert.enabled': true
+        });
+
+        for (const user of users) {
+          if (user.pushSubscription) {
+            await this.sendFullMoonNotification(user);
+          }
+        }
+
+        console.log(`📬 Sent full moon notifications to ${users.length} users`);
+      }
+    } catch (error) {
+      console.error('Error checking moon notifications:', error);
+    }
   }
 
   /**
@@ -127,23 +201,79 @@ class NotificationsService {
   }
 
   /**
-   * Добавляет уведомление в очередь
+   * Отправляет push-уведомление пользователю
    */
-  async queueNotification(userId, notification) {
-    try {
-      // В MVP версии просто логируем
-      // В production здесь будет web-push или Firebase Cloud Messaging
-      console.log(`📬 Notification queued for user ${userId}:`, notification.title);
+  async sendPushToUser(userId, notification) {
+    if (!this.vapidConfigured) {
+      console.warn('⚠️ Cannot send push - VAPID not configured');
+      return { success: false, error: 'VAPID not configured' };
+    }
 
-      // Сохраняем в историю уведомлений
+    try {
+      const user = await db.findOne('users', { _id: userId });
+
+      if (!user?.pushSubscription) {
+        console.log(`⏭️ User ${userId} has no push subscription`);
+        return { success: false, error: 'No subscription' };
+      }
+
+      const payload = JSON.stringify({
+        title: notification.title,
+        body: notification.body,
+        icon: notification.icon || '/logo192.png',
+        badge: notification.badge || '/logo192.png',
+        data: notification.data || {}
+      });
+
+      await webpush.sendNotification(user.pushSubscription, payload);
+
+      console.log(`📱 Push sent to user ${userId}: ${notification.title}`);
+
+      // Сохраняем в историю
       await db.insertOne('notifications', {
         userId,
         notification,
-        status: 'queued',
+        status: 'sent',
+        sentAt: new Date(),
         createdAt: new Date()
       });
 
       return { success: true };
+    } catch (error) {
+      console.error('❌ Push notification failed:', error.message);
+
+      // Если подписка невалидна (410 Gone), удаляем её
+      if (error.statusCode === 410 || error.statusCode === 404) {
+        console.log(`🗑️ Removing invalid subscription for user ${userId}`);
+        await this.unsubscribe(userId);
+      }
+
+      return { success: false, error: error.message };
+    }
+  }
+
+  /**
+   * Добавляет уведомление в очередь и отправляет
+   */
+  async queueNotification(userId, notification) {
+    try {
+      console.log(`📬 Processing notification for user ${userId}:`, notification.title);
+
+      // Пытаемся отправить push
+      const pushResult = await this.sendPushToUser(userId, notification);
+
+      // Сохраняем в историю уведомлений (если push не отправлен)
+      if (!pushResult.success) {
+        await db.insertOne('notifications', {
+          userId,
+          notification,
+          status: 'queued',
+          error: pushResult.error,
+          createdAt: new Date()
+        });
+      }
+
+      return { success: true, pushSent: pushResult.success };
     } catch (error) {
       console.error('Error queueing notification:', error);
       return { success: false, error: error.message };
