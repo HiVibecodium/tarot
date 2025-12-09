@@ -4,10 +4,10 @@ const { authenticate, optionalAuth } = require('../middleware/auth.middleware');
 const notificationsService = require('../services/notifications.service');
 
 /**
- * GET /api/notifications/vapid-public-key
+ * GET /api/notifications/vapid
  * Получить публичный VAPID ключ для подписки на push
  */
-router.get('/vapid-public-key', (req, res) => {
+router.get('/vapid', (req, res) => {
   const publicKey = notificationsService.getPublicVapidKey();
 
   if (!publicKey) {
