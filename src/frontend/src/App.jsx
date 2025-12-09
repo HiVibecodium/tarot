@@ -5,15 +5,22 @@ import analytics from './utils/analytics'
 import Footer from './components/Footer'
 import FeedbackButton from './components/FeedbackButton'
 import ErrorBoundary from './components/ErrorBoundary'
+import MysticalParticles from './components/MysticalParticles'
+import BottomNav from './components/BottomNav'
+import './App.css'
+
+// Critical path pages - loaded immediately
 import LandingPage from './pages/LandingPage'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
-import DashboardPage from './pages/DashboardPage'
-import DailyReadingPage from './pages/DailyReadingPage'
-import DecisionPage from './pages/DecisionPage'
-import ProfilePage from './pages/ProfilePage'
 
-// Lazy load spread pages for code splitting
+// Lazy load all other pages for optimal code splitting
+const DashboardPage = lazy(() => import('./pages/DashboardPage'))
+const DailyReadingPage = lazy(() => import('./pages/DailyReadingPage'))
+const DecisionPage = lazy(() => import('./pages/DecisionPage'))
+const ProfilePage = lazy(() => import('./pages/ProfilePage'))
+
+// Spread pages
 const CelticCrossPage = lazy(() => import('./pages/CelticCrossPage'))
 const RelationshipSpreadPage = lazy(() => import('./pages/RelationshipSpreadPage'))
 const CareerPathPage = lazy(() => import('./pages/CareerPathPage'))
@@ -25,7 +32,7 @@ const FinanceSpreadPage = lazy(() => import('./pages/FinanceSpreadPage'))
 const BirthdaySpreadPage = lazy(() => import('./pages/BirthdaySpreadPage'))
 const PastPresentFuturePage = lazy(() => import('./pages/PastPresentFuturePage'))
 
-// Lazy load heavy pages for better performance
+// Feature pages
 const HistoryPage = lazy(() => import('./pages/HistoryPage'))
 const AnalyticsPage = lazy(() => import('./pages/AnalyticsPage'))
 const NatalChartPage = lazy(() => import('./pages/NatalChartPage'))
@@ -36,19 +43,16 @@ const CardsPage = lazy(() => import('./pages/CardsPage'))
 const LearnPage = lazy(() => import('./pages/LearnPage'))
 const QuizPage = lazy(() => import('./pages/QuizPage'))
 
-// Regular imports for lightweight pages
-import PremiumPage from './pages/PremiumPage'
-import AdminPage from './pages/AdminPage'
-import PrivacyPage from './pages/PrivacyPage'
-import TermsPage from './pages/TermsPage'
-import CompatibilityPage from './pages/CompatibilityPage'
-import PersonalityTestsPage from './pages/PersonalityTestsPage'
-import MediumConsultationPage from './pages/MediumConsultationPage'
-import AboutPage from './pages/AboutPage'
-import AchievementsPage from './pages/AchievementsPage'
-import MysticalParticles from './components/MysticalParticles'
-import BottomNav from './components/BottomNav'
-import './App.css'
+// Secondary pages - lazy loaded
+const PremiumPage = lazy(() => import('./pages/PremiumPage'))
+const AdminPage = lazy(() => import('./pages/AdminPage'))
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage'))
+const TermsPage = lazy(() => import('./pages/TermsPage'))
+const CompatibilityPage = lazy(() => import('./pages/CompatibilityPage'))
+const PersonalityTestsPage = lazy(() => import('./pages/PersonalityTestsPage'))
+const MediumConsultationPage = lazy(() => import('./pages/MediumConsultationPage'))
+const AboutPage = lazy(() => import('./pages/AboutPage'))
+const AchievementsPage = lazy(() => import('./pages/AchievementsPage'))
 
 // Helper function to get readable page name from path
 function getPageName(pathname) {
