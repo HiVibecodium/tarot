@@ -141,12 +141,12 @@
   flex-direction: column;
   align-items: center;
   padding: 2rem 1.5rem;
-  background: white;
+  background: var(--bg-card, white);
   border: 2px solid transparent;
   border-radius: 16px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow, 0 4px 12px rgba(0, 0, 0, 0.08));
 }
 
 .try-card:hover {
@@ -209,11 +209,11 @@
 }
 
 .feature-card {
-  background: white;
+  background: var(--bg-card, white);
   padding: 2rem;
   border-radius: 16px;
   text-align: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow, 0 4px 6px rgba(0, 0, 0, 0.05));
   transition: all 0.3s ease;
 }
 
@@ -260,11 +260,11 @@
 }
 
 .unique-item {
-  background: white;
+  background: var(--bg-card, white);
   padding: 2.5rem;
   border-radius: 16px;
   position: relative;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow, 0 4px 12px rgba(0, 0, 0, 0.08));
 }
 
 .unique-number {
@@ -319,7 +319,7 @@
 .comparison-table table {
   width: 100%;
   border-collapse: collapse;
-  background: white;
+  background: var(--bg-card, white);
   border-radius: 12px;
   overflow: hidden;
 }
@@ -346,7 +346,7 @@
 /* Pricing Section */
 .pricing-section {
   padding: 6rem 2rem;
-  background: white;
+  background: var(--bg-card, white);
 }
 
 .pricing-grid {
@@ -358,8 +358,8 @@
 }
 
 .pricing-card {
-  background: white;
-  border: 2px solid #e0e0e0;
+  background: var(--bg-card, white);
+  border: 2px solid var(--border-color, #e0e0e0);
   border-radius: 16px;
   padding: 2.5rem;
   position: relative;

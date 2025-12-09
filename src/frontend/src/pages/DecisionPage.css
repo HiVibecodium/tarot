@@ -1,7 +1,8 @@
 .decision-page {
   min-height: 100vh;
-  background: #f5f7fa;
+  background: var(--bg-secondary, #f5f7fa);
   padding-bottom: 40px;
+  transition: background-color 0.3s ease;
 }
 
 .decision-content {
@@ -17,23 +18,24 @@
 }
 
 .input-card {
-  background: white;
+  background: var(--bg-card, white);
   border-radius: 16px;
   padding: 40px;
   max-width: 600px;
   width: 100%;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-lg, 0 10px 40px rgba(0, 0, 0, 0.2));
+  transition: background-color 0.3s ease;
 }
 
 .input-card h2 {
-  color: #667eea;
+  color: var(--color-primary, #667eea);
   margin-bottom: 8px;
   text-align: center;
 }
 
 .subtitle {
   text-align: center;
-  color: #666;
+  color: var(--text-secondary, #666);
   margin-bottom: 30px;
 }
 
@@ -44,31 +46,33 @@
 .form-group label {
   display: block;
   font-weight: 500;
-  color: #555;
+  color: var(--text-secondary, #555);
   margin-bottom: 8px;
 }
 
 .form-group textarea {
   width: 100%;
   padding: 12px;
-  border: 2px solid #e0e0e0;
+  border: 2px solid var(--border-color, #e0e0e0);
   border-radius: 8px;
   font-size: 1rem;
   font-family: inherit;
   resize: vertical;
   transition: border-color 0.3s;
+  background: var(--bg-card, white);
+  color: var(--text-primary, #333);
 }
 
 .form-group textarea:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: var(--color-primary, #667eea);
 }
 
 .char-count {
   display: block;
   text-align: right;
   font-size: 0.85rem;
-  color: #999;
+  color: var(--text-muted, #999);
   margin-top: 4px;
 }
 
@@ -81,14 +85,16 @@
 .option-input input {
   flex: 1;
   padding: 10px;
-  border: 2px solid #e0e0e0;
+  border: 2px solid var(--border-color, #e0e0e0);
   border-radius: 6px;
   font-size: 0.95rem;
+  background: var(--bg-card, white);
+  color: var(--text-primary, #333);
 }
 
 .option-input input:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: var(--color-primary, #667eea);
 }
 
 .btn-remove {
@@ -176,45 +182,47 @@
 }
 
 .card-meaning {
-  background: white;
+  background: var(--bg-card, white);
   padding: 16px;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow, 0 2px 10px rgba(0, 0, 0, 0.1));
+  transition: background-color 0.3s ease;
 }
 
 .card-meaning p {
-  color: #333;
+  color: var(--text-primary, #333);
   line-height: 1.6;
   font-size: 0.95rem;
 }
 
 /* Combined Analysis */
 .combined-analysis {
-  background: white;
+  background: var(--bg-card, white);
   padding: 30px;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-md, 0 4px 20px rgba(0, 0, 0, 0.15));
   margin-bottom: 24px;
+  transition: background-color 0.3s ease;
 }
 
 .combined-analysis h3 {
-  color: #667eea;
+  color: var(--color-primary, #667eea);
   margin-bottom: 20px;
   text-align: center;
 }
 
 .analysis-text {
-  background: #f9f9ff;
+  background: var(--bg-secondary, #f9f9ff);
   padding: 20px;
   border-radius: 8px;
-  border-left: 4px solid #667eea;
+  border-left: 4px solid var(--color-primary, #667eea);
 }
 
 .analysis-text pre {
   white-space: pre-wrap;
   font-family: inherit;
   line-height: 1.8;
-  color: #333;
+  color: var(--text-primary, #333);
   margin: 0;
 }
 
@@ -254,7 +262,7 @@
     font-size: 1rem;
   }
 }
-.outcome-tracking { background: white; padding: 40px; border-radius: 16px; max-width: 600px; margin: 40px auto; } .outcome-form { display: flex; flex-direction: column; gap: 20px; } .rating-buttons { display: flex; gap: 12px; } .rating-btn { flex: 1; padding: 12px; border: 2px solid #e0e0e0; background: white; border-radius: 8px; cursor: pointer; transition: all 0.2s; } .rating-btn.active { border-color: #667eea; background: #f0f4ff; } .outcome-actions { display: flex; gap: 12px; }
+.outcome-tracking { background: var(--bg-card, white); padding: 40px; border-radius: 16px; max-width: 600px; margin: 40px auto; } .outcome-form { display: flex; flex-direction: column; gap: 20px; } .rating-buttons { display: flex; gap: 12px; } .rating-btn { flex: 1; padding: 12px; border: 2px solid var(--border-color, #e0e0e0); background: var(--bg-card, white); border-radius: 8px; cursor: pointer; transition: all 0.2s; color: var(--text-primary, #333); } .rating-btn.active { border-color: var(--color-primary, #667eea); background: var(--bg-secondary, #f0f4ff); } .outcome-actions { display: flex; gap: 12px; }
 
 /* Three Card Drawing Animation */
 .three-card-drawing {
@@ -264,10 +272,11 @@
   align-items: center;
   justify-content: center;
   padding: 40px 20px;
-  background: white;
+  background: var(--bg-card, white);
   border-radius: 16px;
   margin: 40px auto;
   max-width: 900px;
+  transition: background-color 0.3s ease;
 }
 
 .drawing-title {
@@ -276,13 +285,13 @@
 }
 
 .drawing-title h2 {
-  color: #667eea;
+  color: var(--color-primary, #667eea);
   margin-bottom: 12px;
   font-size: 24px;
 }
 
 .decision-question-small {
-  color: #666;
+  color: var(--text-secondary, #666);
   font-style: italic;
   font-size: 16px;
 }
@@ -349,7 +358,7 @@
 
 .loading-text {
   text-align: center;
-  color: #666;
+  color: var(--text-secondary, #666);
   margin-top: 20px;
 }
 

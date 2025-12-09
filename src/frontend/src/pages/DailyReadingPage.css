@@ -49,7 +49,7 @@
 }
 
 .reading-header {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--bg-card-transparent, rgba(255, 255, 255, 0.95));
   backdrop-filter: blur(20px);
   padding: 20px 40px;
   display: flex;
@@ -60,6 +60,7 @@
     0 0 60px rgba(102, 126, 234, 0.1);
   position: relative;
   z-index: 10;
+  transition: background-color 0.3s ease;
 }
 
 .reading-header h1 {
@@ -72,17 +73,18 @@
 }
 
 .btn-back {
-  background: #f5f5f5;
-  border: 1px solid #ddd;
+  background: var(--bg-secondary, #f5f5f5);
+  border: 1px solid var(--border-color, #ddd);
   padding: 8px 16px;
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.2s;
   font-size: 0.95rem;
+  color: var(--text-primary, #333);
 }
 
 .btn-back:hover {
-  background: #e0e0e0;
+  background: var(--hover-overlay, #e0e0e0);
 }
 
 .reading-content {
@@ -120,11 +122,12 @@
 
 /* Error State */
 .error-box {
-  background: white;
+  background: var(--bg-card, white);
   padding: 40px;
   border-radius: 12px;
   text-align: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md, 0 4px 20px rgba(0, 0, 0, 0.1));
+  transition: background-color 0.3s ease;
 }
 
 .error-box p {
@@ -165,7 +168,7 @@
 }
 
 .reading-details {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--bg-card-transparent, rgba(255, 255, 255, 0.95));
   backdrop-filter: blur(20px);
   padding: 30px;
   border-radius: 20px;
@@ -175,6 +178,7 @@
     0 0 100px rgba(102, 126, 234, 0.15);
   position: relative;
   overflow: hidden;
+  transition: background-color 0.3s ease;
 }
 
 .reading-details::before {
@@ -206,15 +210,16 @@
 
 .interpretation-text {
   padding: 20px;
-  background: #f9f9ff;
+  background: var(--bg-secondary, #f9f9ff);
   border-radius: 8px;
   margin-bottom: 20px;
-  border-left: 4px solid #667eea;
+  border-left: 4px solid var(--color-primary, #667eea);
+  transition: background-color 0.3s ease;
 }
 
 .interpretation-text p {
   line-height: 1.8;
-  color: #333;
+  color: var(--text-primary, #333);
   font-size: 1.05rem;
 }
 
@@ -297,12 +302,12 @@
   justify-content: center;
   gap: 20px;
   padding-top: 20px;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid var(--border-color, #e0e0e0);
   margin-top: 20px;
 }
 
 .meta-item {
-  color: #666;
+  color: var(--text-secondary, #666);
   font-size: 0.9rem;
 }
 
@@ -390,14 +395,14 @@
 }
 
 .prompt-content h2 {
-  color: #667eea;
+  color: var(--color-primary, #667eea);
   margin: 0 0 12px 0;
   font-size: 28px;
   clear: both;
 }
 
 .prompt-content p {
-  color: #555;
+  color: var(--text-secondary, #555);
   margin: 0 0 24px 0;
   font-size: 16px;
   line-height: 1.6;
@@ -589,12 +594,13 @@
 }
 
 .already-drawn-notice {
-  background: white;
+  background: var(--bg-card, white);
   padding: 40px;
   border-radius: 16px;
   margin: 40px auto;
   max-width: 600px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  box-shadow: var(--shadow-md, 0 8px 24px rgba(0,0,0,0.15));
+  transition: background-color 0.3s ease;
 }
 
 .notice-content {
@@ -607,19 +613,19 @@
 }
 
 .notice-content h3 {
-  color: #667eea;
+  color: var(--color-primary, #667eea);
   margin: 0 0 16px 0;
   font-size: 24px;
 }
 
 .notice-content p {
-  color: #666;
+  color: var(--text-secondary, #666);
   margin: 8px 0;
   line-height: 1.6;
 }
 
 .notice-content .hint {
-  color: #999;
+  color: var(--text-muted, #999);
   font-size: 14px;
   font-style: italic;
   margin-top: 24px;
@@ -649,11 +655,12 @@
 }
 
 .horoscope-card {
-  background: white;
+  background: var(--bg-card, white);
   padding: 20px;
   border-radius: 12px;
   text-align: center;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: var(--shadow, 0 2px 8px rgba(0,0,0,0.05));
+  transition: background-color 0.3s ease;
 }
 
 .horoscope-icon {
@@ -662,30 +669,31 @@
 }
 
 .horoscope-card h4 {
-  color: #333;
+  color: var(--text-primary, #333);
   margin: 0 0 8px 0;
   font-size: 18px;
 }
 
 .horoscope-energy, .horoscope-planet {
-  color: #667eea;
+  color: var(--color-primary, #667eea);
   font-weight: 600;
   font-size: 14px;
   margin-bottom: 8px;
 }
 
 .horoscope-advice {
-  color: #666;
+  color: var(--text-secondary, #666);
   font-size: 14px;
   line-height: 1.6;
   margin: 12px 0 0 0;
 }
 
 .lucky-info {
-  background: white;
+  background: var(--bg-card, white);
   padding: 16px;
   border-radius: 8px;
   margin-top: 16px;
+  transition: background-color 0.3s ease;
 }
 
 .lucky-item {
@@ -693,7 +701,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 8px 0;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--border-color, #f0f0f0);
 }
 
 .lucky-item:last-child {
@@ -701,13 +709,13 @@
 }
 
 .lucky-label {
-  color: #666;
+  color: var(--text-secondary, #666);
   font-weight: 600;
   font-size: 14px;
 }
 
 .lucky-values {
-  color: #667eea;
+  color: var(--color-primary, #667eea);
   font-weight: 600;
   font-size: 14px;
 }

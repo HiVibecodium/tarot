@@ -11,6 +11,7 @@
   --bg-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   --bg-secondary: #f5f7fa;
   --bg-card: #ffffff;
+  --bg-card-transparent: rgba(255, 255, 255, 0.95);
   --bg-elevated: #ffffff;
   --bg-overlay: rgba(255, 255, 255, 0.95);
 
@@ -35,6 +36,9 @@
   --color-warning-light: #feebc8;
   --color-error: #f56565;         /* Red */
   --color-error-light: #fed7d7;
+  --color-danger: #e74c3c;        /* Danger red */
+  --color-danger-light: #ffe0e0;
+  --color-danger-bg: #fff5f5;
   --color-info: #4299e1;          /* Blue */
   --color-info-light: #bee3f8;
 
@@ -66,6 +70,7 @@
   --bg-primary: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
   --bg-secondary: #1a202c;
   --bg-card: #2d3748;             /* Enhanced contrast */
+  --bg-card-transparent: rgba(45, 55, 72, 0.95);
   --bg-elevated: #374151;
   --bg-overlay: rgba(26, 32, 44, 0.95);
 
@@ -90,6 +95,9 @@
   --color-warning-light: #2d3748;
   --color-error: #fc8181;         /* Brighter red */
   --color-error-light: #2d3748;
+  --color-danger: #fc8181;        /* Danger red for dark */
+  --color-danger-light: #4a5568;
+  --color-danger-bg: #3d2a2a;
   --color-info: #63b3ed;          /* Brighter blue */
   --color-info-light: #2d3748;
 
