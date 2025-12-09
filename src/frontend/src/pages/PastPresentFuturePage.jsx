@@ -457,17 +457,17 @@ function PastPresentFuturePage() {
 
         {/* Intro Screen */}
         {step === 'intro' && (
-          <div className="ppf-intro">
-            <div className="intro-card">
+          <div className="ppf-intro animate-fade-in">
+            <div className="intro-card animate-fade-in-scale">
               <div className="intro-icon">⏳</div>
               <h2>Временная Линия Вашей Жизни</h2>
               <p className="intro-description">
                 Три карты раскроют вашу историю: откуда вы пришли, где находитесь сейчас, и куда движетесь.
               </p>
 
-              <div className="positions-preview">
+              <div className="positions-preview stagger-children">
                 {POSITIONS.map(pos => (
-                  <div key={pos.id} className="position-preview" style={{ borderColor: pos.color }}>
+                  <div key={pos.id} className="position-preview card-hover" style={{ borderColor: pos.color }}>
                     <div className="preview-emoji">{pos.emoji}</div>
                     <div className="preview-name">{pos.name}</div>
                     <div className="preview-desc">{pos.description}</div>
@@ -475,7 +475,7 @@ function PastPresentFuturePage() {
                 ))}
               </div>
 
-              <button onClick={startReading} className="btn-start-spread">
+              <button onClick={startReading} className="btn-start-spread btn-interactive animate-soft-pulse">
                 🔮 Начать Расклад
               </button>
             </div>
@@ -484,7 +484,7 @@ function PastPresentFuturePage() {
 
         {/* Drawing Screen */}
         {step === 'drawing' && (
-          <div className="ppf-drawing">
+          <div className="ppf-drawing animate-fade-in">
             <div className="drawing-progress">
               <div className="progress-steps">
                 {POSITIONS.map((pos, idx) => (
@@ -510,7 +510,7 @@ function PastPresentFuturePage() {
                   <p>{POSITIONS[currentPosition].description}</p>
                 </div>
 
-                <div className="card-deck-visual">
+                <div className="card-deck-visual animate-mystical-float">
                   <div className="deck-card">🎴</div>
                   <div className="deck-card">🎴</div>
                   <div className="deck-card">🎴</div>
@@ -519,7 +519,7 @@ function PastPresentFuturePage() {
                 <button
                   onClick={drawCard}
                   disabled={loading}
-                  className="btn-draw"
+                  className="btn-draw btn-interactive btn-ripple"
                   style={{ background: POSITIONS[currentPosition].color }}
                 >
                   {loading ? '⏳ Вытягиваем...' : '✨ Вытянуть Карту'}
@@ -536,11 +536,11 @@ function PastPresentFuturePage() {
             )}
 
             {cards.length > 0 && (
-              <div className="drawn-cards-preview">
+              <div className="drawn-cards-preview animate-fade-in-up">
                 <h4>Вытянутые Карты:</h4>
-                <div className="cards-row">
+                <div className="cards-row stagger-children">
                   {cards.map((card, idx) => (
-                    <div key={idx} className="mini-card">
+                    <div key={idx} className="mini-card animate-card-draw">
                       <div className="mini-card-name">{card.name}</div>
                       <div className="mini-card-position">{POSITIONS[idx].name}</div>
                     </div>
@@ -553,12 +553,12 @@ function PastPresentFuturePage() {
 
         {/* Results Screen */}
         {step === 'result' && result && (
-          <div className="ppf-results">
-            <h2 className="results-title">🌟 Ваша Временная Линия</h2>
+          <div className="ppf-results animate-fade-in">
+            <h2 className="results-title animate-fade-in-down">🌟 Ваша Временная Линия</h2>
 
-            <div className="summary-card-enhanced">
+            <div className="summary-card-enhanced animate-fade-in-scale">
               <div className="summary-header">
-                <div className="summary-icon">🌟</div>
+                <div className="summary-icon animate-glow">🌟</div>
                 <h3>Общая Картина Вашего Пути</h3>
               </div>
 
@@ -566,8 +566,8 @@ function PastPresentFuturePage() {
                 <p>Три мощные карты Таро проливают свет на ваш жизненный путь, показывая откуда вы пришли, где находитесь сейчас, и куда движетесь.</p>
               </div>
 
-              <div className="cards-overview-grid">
-                <div className="overview-card past-overview">
+              <div className="cards-overview-grid stagger-children">
+                <div className="overview-card past-overview card-hover">
                   <div className="overview-position">
                     <span className="overview-emoji">🔮</span>
                     <span className="overview-label">ПРОШЛОЕ</span>
@@ -580,7 +580,7 @@ function PastPresentFuturePage() {
 
                 <div className="overview-arrow">→</div>
 
-                <div className="overview-card present-overview">
+                <div className="overview-card present-overview card-hover">
                   <div className="overview-position">
                     <span className="overview-emoji">⭐</span>
                     <span className="overview-label">НАСТОЯЩЕЕ</span>
@@ -593,7 +593,7 @@ function PastPresentFuturePage() {
 
                 <div className="overview-arrow">→</div>
 
-                <div className="overview-card future-overview">
+                <div className="overview-card future-overview card-hover">
                   <div className="overview-position">
                     <span className="overview-emoji">✨</span>
                     <span className="overview-label">БУДУЩЕЕ</span>
@@ -737,9 +737,9 @@ function PastPresentFuturePage() {
               </div>
             </div>
 
-            <div className="timeline-grid">
+            <div className="timeline-grid stagger-children">
               {result.positions.map((position, idx) => (
-                <div key={idx} className="timeline-result-card" style={{ borderLeftColor: POSITIONS[idx].color }}>
+                <div key={idx} className="timeline-result-card card-hover" style={{ borderLeftColor: POSITIONS[idx].color }}>
                   <div className="timeline-header">
                     <span className="timeline-emoji">{POSITIONS[idx].emoji}</span>
                     <h4>{POSITIONS[idx].name}</h4>
@@ -827,16 +827,16 @@ function PastPresentFuturePage() {
               ))}
             </div>
 
-            <div className="results-actions">
-              <button onClick={() => navigate('/journal')} className="btn-action-result btn-journal">
+            <div className="results-actions stagger-children">
+              <button onClick={() => navigate('/journal')} className="btn-action-result btn-journal btn-interactive">
                 📔 Добавить в Дневник
               </button>
 
-              <button onClick={() => navigate('/history')} className="btn-action-result btn-history">
+              <button onClick={() => navigate('/history')} className="btn-action-result btn-history btn-interactive">
                 📖 История Раскладов
               </button>
 
-              <button onClick={() => navigate('/dashboard')} className="btn-action-result btn-dashboard">
+              <button onClick={() => navigate('/dashboard')} className="btn-action-result btn-dashboard btn-interactive">
                 🏠 Вернуться на Главную
               </button>
             </div>

@@ -1,391 +1,157 @@
-import { useState, useEffect, useCallback } from 'react';
-import { useSelector } from 'react-redux';
-import axios from 'axios';
-import './NotificationSettings.css';
+import { useState, useEffect } from 'react'
+import {
+  isPushSupported,
+  getNotificationPermission,
+  requestNotificationPermission,
+  subscribeToPush,
+  unsubscribeFromPush,
+  isSubscribedToPush,
+  getDailyReminderSettings,
+  scheduleDailyReminder,
+  disableDailyReminder
+} from '../services/pushNotifications'
+import './NotificationSettings.css'
 
-// VAPID публичный ключ (безопасно хранить на клиенте)
-const VAPID_PUBLIC_KEY = import.meta.env.VITE_VAPID_PUBLIC_KEY || 'BB3Pzm3M2W6xXD9I2Sy7QFM1hWIn985yjgdTcmgmMVH9xZwcenNqNfIhAbQrCCeqBZoFpobO-XEfeCOJToExv-s';
-
-// Конвертация VAPID ключа для подписки
-function urlBase64ToUint8Array(base64String) {
-  const padding = '='.repeat((4 - base64String.length % 4) % 4);
-  const base64 = (base64String + padding)
-    .replace(/-/g, '+')
-    .replace(/_/g, '/');
-
-  const rawData = window.atob(base64);
-  const outputArray = new Uint8Array(rawData.length);
-
-  for (let i = 0; i < rawData.length; ++i) {
-    outputArray[i] = rawData.charCodeAt(i);
-  }
-
-  return outputArray;
-}
-
-const NotificationSettings = () => {
-  const { token } = useSelector((state) => state.auth);
-  const [settings, setSettings] = useState({
-    enabled: true,
-    dailyCardReminder: { enabled: false, time: '09:00' },
-    weeklyReminder: { enabled: false },
-    fullMoonAlert: { enabled: false },
-    readingCompleted: { enabled: false }
-  });
-  const [loading, setLoading] = useState(true);
-  const [saving, setSaving] = useState(false);
-  const [pushSupported, setPushSupported] = useState(false);
-  const [pushPermission, setPushPermission] = useState('default');
-  const [pushSubscribed, setPushSubscribed] = useState(false);
-  const [subscribing, setSubscribing] = useState(false);
-
-  const checkExistingSubscription = useCallback(async () => {
-    try {
-      const registration = await navigator.serviceWorker.ready;
-      const subscription = await registration.pushManager.getSubscription();
-      setPushSubscribed(!!subscription);
-    } catch (error) {
-      console.error('Error checking subscription:', error);
-    }
-  }, []);
+function NotificationSettings() {
+  const [permission, setPermission] = useState('default')
+  const [isSubscribed, setIsSubscribed] = useState(false)
+  const [reminderSettings, setReminderSettings] = useState({ enabled: false, hour: 9 })
+  const [loading, setLoading] = useState(false)
+  const [supported, setSupported] = useState(true)
 
   useEffect(() => {
-    checkPushSupport();
-    loadSettings();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    // Check support and current state
+    setSupported(isPushSupported())
+    setPermission(getNotificationPermission())
+    setReminderSettings(getDailyReminderSettings())
 
-  const checkPushSupport = async () => {
-    if ('Notification' in window && 'serviceWorker' in navigator && 'PushManager' in window) {
-      setPushSupported(true);
-      setPushPermission(Notification.permission);
-      await checkExistingSubscription();
-    }
-  };
+    // Check subscription status
+    isSubscribedToPush().then(setIsSubscribed)
+  }, [])
 
-  const loadSettings = async () => {
-    try {
-      const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/notifications/settings`,
-        {
-          headers: { Authorization: `Bearer ${token}` }
-        }
-      );
+  const handleEnableNotifications = async () => {
+    setLoading(true)
 
-      if (response.data.success) {
-        setSettings(response.data.data);
-      }
-    } catch (error) {
-      console.error('Error loading notification settings:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+    // Request permission first
+    const { success, permission: newPermission } = await requestNotificationPermission()
+    setPermission(newPermission)
 
-  const saveSettings = async () => {
-    setSaving(true);
-    try {
-      await axios.put(
-        `${import.meta.env.VITE_API_URL}/notifications/settings`,
-        settings,
-        {
-          headers: { Authorization: `Bearer ${token}` }
-        }
-      );
-      alert('Настройки сохранены!');
-    } catch (error) {
-      console.error('Error saving settings:', error);
-      alert('Ошибка при сохранении настроек');
-    } finally {
-      setSaving(false);
-    }
-  };
-
-  const requestPermission = async () => {
-    if (!pushSupported) {
-      alert('Ваш браузер не поддерживает push-уведомления');
-      return;
+    if (success) {
+      // Subscribe to push
+      const result = await subscribeToPush()
+      setIsSubscribed(result.success)
     }
 
-    try {
-      const permission = await Notification.requestPermission();
-      setPushPermission(permission);
+    setLoading(false)
+  }
 
-      if (permission === 'granted') {
-        // Подписываемся на push
-        await subscribeToPush();
-      } else {
-        alert('Уведомления заблокированы. Разрешите их в настройках браузера.');
-      }
-    } catch (error) {
-      console.error('Error requesting permission:', error);
-      alert('Ошибка при запросе разрешения');
+  const handleDisableNotifications = async () => {
+    setLoading(true)
+    await unsubscribeFromPush()
+    setIsSubscribed(false)
+    disableDailyReminder()
+    setReminderSettings({ ...reminderSettings, enabled: false })
+    setLoading(false)
+  }
+
+  const handleReminderToggle = () => {
+    if (reminderSettings.enabled) {
+      disableDailyReminder()
+      setReminderSettings({ ...reminderSettings, enabled: false })
+    } else {
+      const settings = scheduleDailyReminder(reminderSettings.hour, 0)
+      setReminderSettings(settings)
     }
-  };
+  }
 
-  const subscribeToPush = async () => {
-    setSubscribing(true);
-    try {
-      // Получаем registration Service Worker
-      const registration = await navigator.serviceWorker.ready;
+  const handleTimeChange = (e) => {
+    const hour = parseInt(e.target.value)
+    const settings = scheduleDailyReminder(hour, 0)
+    setReminderSettings(settings)
+  }
 
-      // Подписываемся на push
-      const subscription = await registration.pushManager.subscribe({
-        userVisibleOnly: true,
-        applicationServerKey: urlBase64ToUint8Array(VAPID_PUBLIC_KEY)
-      });
-
-      // Отправляем подписку на сервер
-      await axios.post(
-        `${import.meta.env.VITE_API_URL}/notifications/subscribe`,
-        { subscription: subscription.toJSON() },
-        {
-          headers: { Authorization: `Bearer ${token}` }
-        }
-      );
-
-      setPushSubscribed(true);
-      alert('Push-уведомления включены!');
-    } catch (error) {
-      console.error('Error subscribing to push:', error);
-      alert('Ошибка при подписке на уведомления: ' + error.message);
-    } finally {
-      setSubscribing(false);
-    }
-  };
-
-  const unsubscribeFromPush = async () => {
-    setSubscribing(true);
-    try {
-      const registration = await navigator.serviceWorker.ready;
-      const subscription = await registration.pushManager.getSubscription();
-
-      if (subscription) {
-        await subscription.unsubscribe();
-      }
-
-      // Уведомляем сервер
-      await axios.post(
-        `${import.meta.env.VITE_API_URL}/notifications/unsubscribe`,
-        {},
-        {
-          headers: { Authorization: `Bearer ${token}` }
-        }
-      );
-
-      setPushSubscribed(false);
-      alert('Push-уведомления отключены');
-    } catch (error) {
-      console.error('Error unsubscribing:', error);
-      alert('Ошибка при отключении уведомлений');
-    } finally {
-      setSubscribing(false);
-    }
-  };
-
-  const sendTestNotification = async () => {
-    if (pushPermission !== 'granted') {
-      alert('Сначала разрешите уведомления');
-      return;
-    }
-
-    try {
-      await axios.post(
-        `${import.meta.env.VITE_API_URL}/notifications/test`,
-        {},
-        {
-          headers: { Authorization: `Bearer ${token}` }
-        }
-      );
-
-      // Показать локальное уведомление
-      new Notification('🔮 Таро Помощник', {
-        body: 'Уведомления работают отлично!',
-        icon: '/icons/icon-192x192.png'
-      });
-    } catch (error) {
-      console.error('Error sending test notification:', error);
-    }
-  };
-
-  const updateSetting = (path, value) => {
-    const newSettings = { ...settings };
-    const keys = path.split('.');
-    let current = newSettings;
-
-    for (let i = 0; i < keys.length - 1; i++) {
-      current = current[keys[i]];
-    }
-
-    current[keys[keys.length - 1]] = value;
-    setSettings(newSettings);
-  };
-
-  if (loading) {
-    return <div className="notification-settings loading">Загрузка настроек...</div>;
+  if (!supported) {
+    return (
+      <div className="notification-settings">
+        <div className="notification-unsupported">
+          <span className="notification-icon">🔕</span>
+          <p>Push-уведомления не поддерживаются в вашем браузере</p>
+        </div>
+      </div>
+    )
   }
 
   return (
     <div className="notification-settings">
-      <div className="settings-header">
-        <h3>🔔 Настройки Уведомлений</h3>
-        <p>Настройте напоминания и оповещения</p>
-      </div>
+      <h3 className="notification-title">
+        <span className="notification-icon">🔔</span>
+        Уведомления
+      </h3>
 
-      {!pushSupported && (
-        <div className="push-warning">
-          ⚠️ Ваш браузер не поддерживает push-уведомления
+      {permission === 'denied' ? (
+        <div className="notification-denied">
+          <p>Уведомления заблокированы в настройках браузера.</p>
+          <p className="notification-hint">
+            Разрешите уведомления в настройках браузера, чтобы получать напоминания.
+          </p>
         </div>
-      )}
-
-      {pushSupported && pushPermission === 'denied' && (
-        <div className="push-warning">
-          ⚠️ Уведомления заблокированы в настройках браузера
-        </div>
-      )}
-
-      {pushSupported && pushPermission === 'default' && (
-        <div className="push-request">
-          <button
-            onClick={requestPermission}
-            className="permission-btn"
-            disabled={subscribing}
-          >
-            {subscribing ? 'Подключение...' : '🔔 Включить Push-уведомления'}
-          </button>
-        </div>
-      )}
-
-      {pushSupported && pushPermission === 'granted' && !pushSubscribed && (
-        <div className="push-request">
-          <button
-            onClick={subscribeToPush}
-            className="permission-btn"
-            disabled={subscribing}
-          >
-            {subscribing ? 'Подключение...' : '🔔 Подписаться на уведомления'}
-          </button>
-        </div>
-      )}
-
-      {pushSupported && pushPermission === 'granted' && pushSubscribed && (
-        <div className="push-success">
-          <span>✅ Push-уведомления активны</span>
-          <div className="push-actions">
-            <button onClick={sendTestNotification} className="test-btn">
-              Тест
-            </button>
-            <button
-              onClick={unsubscribeFromPush}
-              className="unsubscribe-btn"
-              disabled={subscribing}
-            >
-              Отключить
-            </button>
-          </div>
-        </div>
-      )}
-
-      <div className="settings-section">
-        <label className="setting-item">
-          <input
-            type="checkbox"
-            checked={settings.enabled}
-            onChange={(e) => updateSetting('enabled', e.target.checked)}
-          />
-          <div className="setting-info">
-            <strong>Включить уведомления</strong>
-            <p>Мастер-переключатель для всех уведомлений</p>
-          </div>
-        </label>
-      </div>
-
-      {settings.enabled && (
+      ) : (
         <>
-          <div className="settings-section">
-            <h4>⏰ Ежедневные Напоминания</h4>
-
-            <label className="setting-item">
-              <input
-                type="checkbox"
-                checked={settings.dailyCardReminder?.enabled}
-                onChange={(e) => updateSetting('dailyCardReminder.enabled', e.target.checked)}
-              />
-              <div className="setting-info">
-                <strong>Напоминание о карте дня</strong>
-                <p>Получайте напоминание вытянуть карту дня</p>
-              </div>
-            </label>
-
-            {settings.dailyCardReminder?.enabled && (
-              <div className="time-picker">
-                <label>Время напоминания:</label>
-                <input
-                  type="time"
-                  value={settings.dailyCardReminder.time}
-                  onChange={(e) => updateSetting('dailyCardReminder.time', e.target.value)}
-                />
-              </div>
-            )}
+          <div className="notification-toggle-row">
+            <div className="toggle-info">
+              <span className="toggle-label">Push-уведомления</span>
+              <span className="toggle-description">
+                Получайте напоминания о раскладах
+              </span>
+            </div>
+            <button
+              className={`toggle-button ${isSubscribed ? 'active' : ''}`}
+              onClick={isSubscribed ? handleDisableNotifications : handleEnableNotifications}
+              disabled={loading}
+            >
+              {loading ? '...' : isSubscribed ? 'Вкл' : 'Выкл'}
+            </button>
           </div>
 
-          <div className="settings-section">
-            <h4>📅 Еженедельные Напоминания</h4>
-
-            <label className="setting-item">
-              <input
-                type="checkbox"
-                checked={settings.weeklyReminder?.enabled}
-                onChange={(e) => updateSetting('weeklyReminder.enabled', e.target.checked)}
-              />
-              <div className="setting-info">
-                <strong>Напоминание о раскладе на неделю</strong>
-                <p>Каждый понедельник в 10:00</p>
+          {isSubscribed && (
+            <div className="reminder-settings">
+              <div className="notification-toggle-row">
+                <div className="toggle-info">
+                  <span className="toggle-label">Ежедневное напоминание</span>
+                  <span className="toggle-description">
+                    Напомним о карте дня
+                  </span>
+                </div>
+                <button
+                  className={`toggle-button ${reminderSettings.enabled ? 'active' : ''}`}
+                  onClick={handleReminderToggle}
+                >
+                  {reminderSettings.enabled ? 'Вкл' : 'Выкл'}
+                </button>
               </div>
-            </label>
-          </div>
 
-          <div className="settings-section">
-            <h4>🌕 Особые События</h4>
-
-            <label className="setting-item">
-              <input
-                type="checkbox"
-                checked={settings.fullMoonAlert?.enabled}
-                onChange={(e) => updateSetting('fullMoonAlert.enabled', e.target.checked)}
-              />
-              <div className="setting-info">
-                <strong>Оповещения о полнолунии</strong>
-                <p>Уведомление в дни полнолуния - лучшее время для раскладов</p>
-              </div>
-            </label>
-
-            <label className="setting-item">
-              <input
-                type="checkbox"
-                checked={settings.readingCompleted?.enabled}
-                onChange={(e) => updateSetting('readingCompleted.enabled', e.target.checked)}
-              />
-              <div className="setting-info">
-                <strong>Уведомления о завершении расклада</strong>
-                <p>Когда расклад готов к просмотру</p>
-              </div>
-            </label>
-          </div>
+              {reminderSettings.enabled && (
+                <div className="time-selector">
+                  <label className="time-label">Время напоминания:</label>
+                  <select
+                    value={reminderSettings.hour}
+                    onChange={handleTimeChange}
+                    className="time-select"
+                  >
+                    {Array.from({ length: 24 }, (_, i) => (
+                      <option key={i} value={i}>
+                        {i.toString().padStart(2, '0')}:00
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              )}
+            </div>
+          )}
         </>
       )}
-
-      <div className="settings-actions">
-        <button
-          onClick={saveSettings}
-          disabled={saving}
-          className="save-btn"
-        >
-          {saving ? 'Сохранение...' : 'Сохранить Настройки'}
-        </button>
-      </div>
     </div>
-  );
-};
+  )
+}
 
-export default NotificationSettings;
+export default NotificationSettings

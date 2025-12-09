@@ -10,6 +10,7 @@ import BottomNav from './components/BottomNav'
 import PWAInstallPrompt from './components/PWAInstallPrompt'
 import OfflineIndicator from './components/OfflineIndicator'
 import './App.css'
+import './styles/animations.css'
 
 // Critical path pages - loaded immediately
 import LandingPage from './pages/LandingPage'

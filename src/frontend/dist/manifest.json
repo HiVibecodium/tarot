@@ -1,24 +1,38 @@
 {
   "name": "AI Tarot Decision Assistant",
-  "short_name": "Tarot Assistant",
-  "description": "Make better decisions with AI-powered tarot guidance",
-  "start_url": "/",
+  "short_name": "Tarot AI",
+  "description": "Make better decisions with AI-powered tarot guidance. Daily readings, spreads, astrology & more.",
+  "start_url": "/dashboard",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#667eea",
+  "background_color": "#1a1a2e",
   "theme_color": "#667eea",
   "orientation": "portrait-primary",
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     },
     {
       "src": "/apple-touch-icon.png",
@@ -26,22 +40,32 @@
       "type": "image/png"
     }
   ],
-  "categories": ["lifestyle", "wellness", "productivity"],
+  "categories": ["lifestyle", "wellness", "productivity", "entertainment"],
   "screenshots": [],
   "shortcuts": [
     {
       "name": "Daily Reading",
       "short_name": "Daily",
-      "description": "Get your daily tarot reading",
+      "description": "Get your daily tarot card reading",
       "url": "/reading/daily",
       "icons": []
     },
     {
-      "name": "Decision Analysis",
-      "short_name": "Decision",
-      "description": "Analyze an important decision",
-      "url": "/decision",
+      "name": "Yes/No Answer",
+      "short_name": "Yes/No",
+      "description": "Get a quick yes or no answer",
+      "url": "/reading/yes-no",
+      "icons": []
+    },
+    {
+      "name": "Past-Present-Future",
+      "short_name": "Timeline",
+      "description": "Explore your timeline with 3 cards",
+      "url": "/reading/past-present-future",
       "icons": []
     }
-  ]
+  ],
+  "related_applications": [],
+  "lang": "ru",
+  "dir": "ltr"
 }
