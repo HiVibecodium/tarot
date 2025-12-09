@@ -8,19 +8,27 @@ const notificationsService = require('../services/notifications.service');
  * Получить публичный VAPID ключ для подписки на push
  */
 router.get('/vapid', (req, res) => {
-  const publicKey = notificationsService.getPublicVapidKey();
+  try {
+    const publicKey = process.env.VAPID_PUBLIC_KEY || null;
 
-  if (!publicKey) {
-    return res.status(503).json({
+    if (!publicKey) {
+      return res.status(503).json({
+        success: false,
+        message: 'Push notifications not configured'
+      });
+    }
+
+    res.json({
+      success: true,
+      data: { publicKey }
+    });
+  } catch (error) {
+    console.error('VAPID endpoint error:', error);
+    res.status(500).json({
       success: false,
-      message: 'Push notifications not configured'
+      message: error.message
     });
   }
-
-  res.json({
-    success: true,
-    data: { publicKey }
-  });
 });
 
 /**
