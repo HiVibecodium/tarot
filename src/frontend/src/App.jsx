@@ -7,6 +7,8 @@ import FeedbackButton from './components/FeedbackButton'
 import ErrorBoundary from './components/ErrorBoundary'
 import MysticalParticles from './components/MysticalParticles'
 import BottomNav from './components/BottomNav'
+import PWAInstallPrompt from './components/PWAInstallPrompt'
+import OfflineIndicator from './components/OfflineIndicator'
 import './App.css'
 
 // Critical path pages - loaded immediately
@@ -226,6 +228,10 @@ function App() {
 
       {/* Feedback Button - показывается на всех страницах кроме landing/login/register */}
       {showFooter && <FeedbackButton />}
+
+      {/* PWA Components */}
+      <OfflineIndicator />
+      {isAuthenticated && <PWAInstallPrompt />}
     </div>
   )
 }

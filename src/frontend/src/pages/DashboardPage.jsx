@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { logout } from '../store/authSlice'
@@ -6,6 +6,7 @@ import { useTheme } from '../hooks/useTheme'
 import Onboarding from '../components/Onboarding'
 import MoonPhase from '../components/MoonPhase'
 import PersonalizedInsights from '../components/PersonalizedInsights'
+import PullToRefresh from '../components/PullToRefresh'
 import '../styles/dashboard.css'
 import '../styles/hero-section.css'
 
@@ -33,7 +34,16 @@ function DashboardPage() {
     }))
   }
 
+  // Pull to refresh handler - reload page data
+  const handleRefresh = useCallback(async () => {
+    // Simulate data refresh with a small delay
+    await new Promise(resolve => setTimeout(resolve, 500))
+    // Force re-render by updating state
+    setExpandedSections(prev => ({ ...prev }))
+  }, [])
+
   return (
+    <PullToRefresh onRefresh={handleRefresh}>
     <div className="dashboard">
       <Onboarding />
 
@@ -368,6 +378,7 @@ function DashboardPage() {
         </div>
       </main>
     </div>
+    </PullToRefresh>
   )
 }
 
