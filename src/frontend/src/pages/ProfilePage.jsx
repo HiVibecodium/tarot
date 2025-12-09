@@ -9,6 +9,7 @@ import { checkAchievements, ACHIEVEMENTS } from '../constants/achievements'
 import { ProfileStatsSkeleton } from '../components/skeletons/LoadingSkeletons'
 import ErrorDisplay from '../components/ErrorDisplay'
 import { ProfileSEO } from '../components/SEO'
+import NotificationSettings from '../components/NotificationSettings'
 import './ProfilePage.css'
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000/api'
@@ -257,6 +258,9 @@ function ProfilePage() {
             </div>
           </div>
         )}
+
+        {/* Notification Settings Section */}
+        <NotificationSettings />
 
         {/* Achievements Section */}
         <div className="profile-card">
