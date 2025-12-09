@@ -12,12 +12,10 @@
       "includeFiles": "{src/backend,api/node_modules}/**"
     }
   },
-  "routes": [
-    { "src": "/api/vapid", "dest": "/api/vapid.js" },
-    { "src": "/api/(.*)", "dest": "/api/index.js" },
-    { "src": "/debug", "dest": "/api/debug.js" },
-    { "src": "/health", "dest": "/api/index.js" },
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/index.html" }
+  "rewrites": [
+    { "source": "/api/vapid", "destination": "/api/vapid.js" },
+    { "source": "/api/:path*", "destination": "/api/index.js" },
+    { "source": "/debug", "destination": "/api/debug.js" },
+    { "source": "/health", "destination": "/api/index.js" }
   ]
 }
