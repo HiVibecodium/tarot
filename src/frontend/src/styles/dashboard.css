@@ -432,14 +432,17 @@
 @media (max-width: 768px) {
   .dashboard-content-new {
     padding: 1rem;
+    padding-bottom: 100px; /* Space for bottom nav */
   }
 
   .quick-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .dashboard-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .category-header {
@@ -451,11 +454,12 @@
   }
 
   .category-content {
-    padding: 1.5rem;
+    padding: 1rem;
   }
 
   .stats-grid-main {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
 
   .user-info {
@@ -465,5 +469,85 @@
   .user-info span {
     width: 100%;
     text-align: center;
+  }
+
+  /* Mobile-optimized cards */
+  .dashboard-card {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+
+  .dashboard-card h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .dashboard-card p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .dashboard-card .btn-primary {
+    width: 100%;
+    padding: 0.875rem;
+    font-size: 1rem;
+  }
+
+  /* Featured card on mobile */
+  .dashboard-card.featured {
+    border-width: 2px;
+  }
+
+  .card-badge {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  /* Disable hover transform on touch devices */
+  .dashboard-card:hover {
+    transform: none;
+  }
+
+  .dashboard-card:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+
+  /* Stats on mobile */
+  .stat-item {
+    padding: 1rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+  }
+
+  .stat-value {
+    font-size: 1.75rem;
+  }
+
+  /* Section titles */
+  .section-title-main {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Small mobile screens */
+@media (max-width: 375px) {
+  .dashboard-content-new {
+    padding: 0.75rem;
+  }
+
+  .quick-grid {
+    gap: 0.75rem;
+  }
+
+  .dashboard-card {
+    padding: 1rem;
+  }
+
+  .stats-grid-main {
+    grid-template-columns: 1fr;
   }
 }

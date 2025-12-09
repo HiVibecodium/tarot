@@ -1,0 +1,171 @@
+/* Swipeable Cards Component */
+.swipeable-cards {
+  position: relative;
+  width: 100%;
+  padding: 20px 0;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+.swipeable-cards-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  will-change: transform;
+}
+
+.swipeable-card-content {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+/* Navigation arrows */
+.swipe-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: var(--bg-card, white);
+  color: var(--text-primary, #333);
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.swipe-arrow:hover:not(.disabled) {
+  background: var(--primary-color, #667eea);
+  color: white;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.swipe-arrow:active:not(.disabled) {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.swipe-arrow.disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.swipe-arrow-left {
+  left: 10px;
+}
+
+.swipe-arrow-right {
+  right: 10px;
+}
+
+/* Hide arrows on touch devices */
+@media (hover: none) {
+  .swipe-arrow {
+    display: none;
+  }
+}
+
+/* Card counter */
+.swipeable-cards-counter {
+  text-align: center;
+  padding: 10px;
+  font-size: 14px;
+  color: var(--text-secondary, #666);
+  font-weight: 500;
+}
+
+/* Dot indicators */
+.swipeable-cards-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+}
+
+.indicator-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background: var(--border-color, #e0e0e0);
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+.indicator-dot.active {
+  background: var(--primary-color, #667eea);
+  transform: scale(1.2);
+}
+
+.indicator-dot:hover:not(.active) {
+  background: var(--text-secondary, #999);
+}
+
+/* Swipe hint */
+.swipe-hint {
+  display: none;
+  text-align: center;
+  padding: 8px;
+  font-size: 12px;
+  color: var(--text-muted, #999);
+  animation: fadeInOut 3s ease-in-out;
+}
+
+.swipe-hint-icon {
+  margin-right: 4px;
+}
+
+/* Show hint only on touch devices */
+@media (hover: none) {
+  .swipe-hint {
+    display: block;
+  }
+}
+
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0; }
+  20%, 80% { opacity: 1; }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .swipeable-cards {
+    padding: 10px 0;
+  }
+
+  .swipeable-cards-container {
+    min-height: 250px;
+  }
+
+  .swipeable-card-content {
+    max-width: 260px;
+  }
+
+  .indicator-dot {
+    width: 8px;
+    height: 8px;
+  }
+}
+
+/* Dark theme */
+[data-theme="dark"] .swipe-arrow {
+  background: var(--bg-card, #2d3748);
+  color: var(--text-primary, #e2e8f0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .indicator-dot {
+  background: var(--border-color, #4a5568);
+}
+
+[data-theme="dark"] .indicator-dot.active {
+  background: var(--primary-color, #90cdf4);
+}

@@ -1,0 +1,76 @@
+/* Pull to Refresh Component */
+.pull-to-refresh-container {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.pull-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--bg-secondary, #f5f7fa) 0%, transparent 100%);
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.pull-indicator.visible {
+  opacity: 1;
+}
+
+.pull-indicator-icon {
+  font-size: 24px;
+  color: var(--primary-color, #667eea);
+  transition: transform 0.1s ease;
+}
+
+.pull-indicator-icon span {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+
+.pull-indicator-icon span.ready {
+  transform: rotate(180deg);
+  color: var(--success-color, #48bb78);
+}
+
+.refresh-spinner {
+  display: inline-block;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.pull-indicator-text {
+  font-size: 12px;
+  color: var(--text-secondary, #666);
+  font-weight: 500;
+}
+
+.pull-to-refresh-content {
+  will-change: transform;
+}
+
+/* Dark theme */
+[data-theme="dark"] .pull-indicator {
+  background: linear-gradient(180deg, var(--bg-secondary, #2d3748) 0%, transparent 100%);
+}
+
+/* Only show on touch devices */
+@media (hover: hover) {
+  .pull-indicator {
+    display: none !important;
+  }
+}
