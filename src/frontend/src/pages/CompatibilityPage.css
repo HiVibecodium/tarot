@@ -57,7 +57,7 @@
 }
 
 .input-card {
-  background: white;
+  background: var(--bg-card, white);
   padding: 3rem;
   border-radius: 24px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
@@ -92,7 +92,7 @@
 
 .input-card > p {
   text-align: center;
-  color: #666;
+  color: var(--text-secondary, #666);
   margin-bottom: 1.5rem;
   font-size: 1.05rem;
 }
@@ -108,12 +108,12 @@
 .mode-btn {
   padding: 0.75rem 1.5rem;
   border: 2px solid #fce4ec;
-  background: white;
+  background: var(--bg-card, white);
   border-radius: 25px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  color: #666;
+  color: var(--text-secondary, #666);
 }
 
 .mode-btn.active {
@@ -297,7 +297,7 @@
 }
 
 .result-header {
-  background: white;
+  background: var(--bg-card, white);
   padding: 2rem;
   border-radius: 16px;
   text-align: center;
@@ -307,12 +307,12 @@
 
 .result-header h3 {
   font-size: 2rem;
-  color: #2d3748;
+  color: var(--text-primary, #2d3748);
   margin-bottom: 0.5rem;
 }
 
 .result-header p {
-  color: #999;
+  color: var(--text-muted, #999);
   margin: 0;
 }
 
@@ -345,7 +345,7 @@
 .percentage-label {
   display: block;
   font-size: 0.9rem;
-  color: #666;
+  color: var(--text-secondary, #666);
 }
 
 .level-badge {
@@ -374,13 +374,13 @@
 .level-description {
   text-align: center;
   font-size: 1.2rem;
-  color: #666;
+  color: var(--text-secondary, #666);
   margin-bottom: 2rem;
 }
 
 /* Tarot Section */
 .tarot-section {
-  background: white;
+  background: var(--bg-card, white);
   padding: 2.5rem;
   border-radius: 20px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
@@ -397,7 +397,7 @@
 
 .tarot-subtitle {
   text-align: center;
-  color: #999;
+  color: var(--text-muted, #999);
   margin-bottom: 2rem;
 }
 
@@ -459,7 +459,7 @@
 }
 
 .card-meaning {
-  color: #666;
+  color: var(--text-secondary, #666);
   font-size: 1.05rem;
   margin-bottom: 1rem;
 }
@@ -513,7 +513,7 @@
 }
 
 .card-interp-section h5 {
-  color: #2d3748;
+  color: var(--text-primary, #2d3748);
   margin: 0 0 0.75rem 0;
   font-size: 1.1rem;
 }
@@ -525,7 +525,7 @@
 }
 
 .card-interp-section p {
-  color: #666;
+  color: var(--text-secondary, #666);
   line-height: 1.8;
   margin-bottom: 0.75rem;
 }
@@ -543,7 +543,7 @@
 }
 
 .combined-interp {
-  background: white;
+  background: var(--bg-card, white);
   padding: 1.5rem;
   border-radius: 8px;
   margin-top: 1.5rem;
@@ -556,7 +556,7 @@
 }
 
 .combined-interp p {
-  color: #666;
+  color: var(--text-secondary, #666);
   line-height: 1.9;
   margin: 0;
   font-size: 1.05rem;
@@ -564,7 +564,7 @@
 
 /* Planetary Breakdown */
 .planetary-breakdown {
-  background: white;
+  background: var(--bg-card, white);
   padding: 2.5rem;
   border-radius: 20px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
@@ -582,7 +582,7 @@
 
 .breakdown-subtitle {
   text-align: center;
-  color: #999;
+  color: var(--text-muted, #999);
   margin-bottom: 1rem;
 }
 
@@ -596,7 +596,7 @@
 
 .planets-explanation p {
   margin: 0;
-  color: #666;
+  color: var(--text-secondary, #666);
   line-height: 1.7;
   font-size: 1.05rem;
 }
@@ -632,7 +632,7 @@
 }
 
 .planet-info h5 {
-  color: #2d3748;
+  color: var(--text-primary, #2d3748);
   margin: 0 0 0.75rem 0;
   font-size: 1.1rem;
 }
@@ -657,13 +657,13 @@
 }
 
 .planet-info .score-text {
-  color: #999;
+  color: var(--text-muted, #999);
   font-size: 0.9rem;
   margin: 0 0 0.75rem 0;
 }
 
 .planet-description {
-  color: #666;
+  color: var(--text-secondary, #666);
   font-size: 0.95rem;
   line-height: 1.7;
   margin: 0;
@@ -678,7 +678,7 @@
 }
 
 .analysis-card {
-  background: white;
+  background: var(--bg-card, white);
   padding: 2rem;
   border-radius: 16px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
@@ -709,7 +709,7 @@
 .analysis-card ul {
   margin: 0;
   padding-left: 1.5rem;
-  color: #666;
+  color: var(--text-secondary, #666);
   line-height: 1.8;
 }
 
@@ -720,7 +720,7 @@
 
 /* Life Areas Section */
 .life-areas-section {
-  background: white;
+  background: var(--bg-card, white);
   padding: 2.5rem;
   border-radius: 20px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
@@ -736,7 +736,7 @@
 
 .areas-intro {
   text-align: center;
-  color: #666;
+  color: var(--text-secondary, #666);
   line-height: 1.8;
   margin-bottom: 2rem;
   font-size: 1.05rem;
@@ -772,7 +772,7 @@
 }
 
 .area-card h5 {
-  color: #2d3748;
+  color: var(--text-primary, #2d3748);
   margin: 0 0 1rem 0;
   font-size: 1.05rem;
 }
@@ -800,7 +800,7 @@
 }
 
 .area-desc {
-  color: #999;
+  color: var(--text-muted, #999);
   font-size: 0.85rem;
   margin: 0;
   line-height: 1.5;
@@ -808,7 +808,7 @@
 
 /* Recommendations Section */
 .recommendations-section {
-  background: white;
+  background: var(--bg-card, white);
   padding: 2.5rem;
   border-radius: 20px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
@@ -844,7 +844,7 @@
 .rec-card ul {
   margin: 0;
   padding-left: 1.25rem;
-  color: #666;
+  color: var(--text-secondary, #666);
   line-height: 1.8;
 }
 
@@ -870,7 +870,7 @@
 }
 
 .btn-reset {
-  background: white;
+  background: var(--bg-card, white);
   border: 2px solid #e91e63;
   color: #e91e63;
 }
@@ -1077,7 +1077,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 1.5rem 2rem;
-  background: white;
+  background: var(--bg-card, white);
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   min-width: 120px;
@@ -1129,7 +1129,7 @@
 }
 
 .integrated-text {
-  background: white;
+  background: var(--bg-card, white);
   padding: 2rem;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -1176,7 +1176,7 @@
 }
 
 .section-divider span {
-  background: white;
+  background: var(--bg-card, white);
   padding: 0 2rem;
   color: #7f8c8d;
   font-weight: 600;
@@ -1306,7 +1306,7 @@
 }
 
 .astro-detail-card {
-  background: white;
+  background: var(--bg-card, white);
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -1445,7 +1445,7 @@
 .num-area-item {
   text-align: center;
   padding: 1.5rem;
-  background: var(--card-bg);
+  background: var(--bg-card);
   border-radius: 12px;
   transition: all 0.3s ease;
   border: 2px solid transparent;
@@ -1489,7 +1489,7 @@
 .num-cycles-info {
   margin-top: 2rem;
   padding: 2rem;
-  background: var(--card-bg);
+  background: var(--bg-card);
   border-radius: 12px;
   border-left: 4px solid var(--primary-color);
   border: 1px solid rgba(102, 126, 234, 0.2);

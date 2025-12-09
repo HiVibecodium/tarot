@@ -11,7 +11,7 @@
 }
 
 .question-section {
-  background: white;
+  background: var(--bg-card, white);
   padding: 32px;
   border-radius: 16px;
   margin-bottom: 32px;
@@ -30,7 +30,7 @@
 .form-group label {
   display: block;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary, #333);
   margin-bottom: 8px;
 }
 
@@ -56,7 +56,7 @@
 }
 
 .interpretation-results {
-  background: white;
+  background: var(--bg-card, white);
   padding: 40px;
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0,0,0,0.1);
@@ -115,7 +115,7 @@
 
 .arcana-badge {
   background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
-  color: #333;
+  color: var(--text-primary, #333);
   padding: 3px 10px;
   border-radius: 12px;
   font-size: 10px;
@@ -155,7 +155,7 @@
 }
 
 .position-interpretation p {
-  color: #555;
+  color: var(--text-secondary, #555);
   line-height: 1.6;
   font-size: 14px;
 }
@@ -174,13 +174,13 @@
 }
 
 .relationship-advice p {
-  color: #555;
+  color: var(--text-secondary, #555);
   line-height: 1.7;
 }
 
 /* Loading State */
 .interpretation-loading {
-  background: white;
+  background: var(--bg-card, white);
   padding: 60px 40px;
   border-radius: 16px;
   text-align: center;

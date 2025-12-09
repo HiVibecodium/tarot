@@ -48,7 +48,7 @@
 .filter-toggle-btn,
 .export-btn {
   padding: 0.75rem 1.5rem;
-  background: var(--card-bg);
+  background: var(--bg-card);
   border: 2px solid var(--border-color);
   border-radius: 8px;
   cursor: pointer;
@@ -65,7 +65,7 @@
 
 /* Filters */
 .filters-section {
-  background: var(--card-bg);
+  background: var(--bg-card);
   padding: 1.5rem;
   border-radius: 12px;
   margin-bottom: 2rem;
@@ -135,7 +135,7 @@
 }
 
 .reflection-card {
-  background: white;
+  background: var(--bg-card, white);
   padding: 1.25rem;
   border-radius: 12px;
   border-left: 4px solid var(--primary-color);
@@ -207,10 +207,10 @@
 }
 
 .journal-entry {
-  background: var(--card-bg);
+  background: var(--bg-card);
   padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow, 0 2px 8px rgba(0, 0, 0, 0.05));
   transition: all 0.3s ease;
 }
 
@@ -403,7 +403,7 @@
 }
 
 .benefit-card {
-  background: var(--card-bg);
+  background: var(--bg-card);
   padding: 1.5rem;
   border-radius: 12px;
   text-align: center;
@@ -513,7 +513,7 @@
 }
 
 .cta-btn:not(.primary):not(.outline) {
-  background: var(--card-bg);
+  background: var(--bg-card);
   color: var(--text-primary);
   border-color: var(--border-color);
 }
@@ -536,7 +536,7 @@
 
 /* Tips Section */
 .tips-section {
-  background: var(--card-bg);
+  background: var(--bg-card);
   padding: 2rem;
   border-radius: 12px;
   border: 2px solid var(--border-color);
@@ -607,9 +607,3 @@
   }
 }
 
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-  .reflection-card {
-    background: var(--card-bg-dark);
-  }
-}

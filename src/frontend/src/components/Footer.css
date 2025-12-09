@@ -1,8 +1,9 @@
 .app-footer {
-  background: white;
-  border-top: 2px solid #e0e0e0;
+  background: var(--bg-card, white);
+  border-top: 2px solid var(--border-color, #e0e0e0);
   padding: 40px 20px 20px;
   margin-top: 60px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .footer-content {
@@ -21,7 +22,7 @@
 }
 
 .footer-section h4 {
-  color: #333;
+  color: var(--text-primary, #333);
   margin: 0 0 16px 0;
   font-size: 14px;
   font-weight: 600;
@@ -30,7 +31,7 @@
 }
 
 .footer-section p {
-  color: #666;
+  color: var(--text-secondary, #666);
   margin: 0;
   font-size: 14px;
   line-height: 1.6;
@@ -38,7 +39,7 @@
 
 .footer-section a {
   display: block;
-  color: #666;
+  color: var(--text-secondary, #666);
   text-decoration: none;
   margin-bottom: 8px;
   font-size: 14px;
@@ -53,9 +54,9 @@
   max-width: 1200px;
   margin: 0 auto;
   padding-top: 24px;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid var(--border-color, #e0e0e0);
   text-align: center;
-  color: #999;
+  color: var(--text-muted, #999);
   font-size: 13px;
 }
 
@@ -65,7 +66,7 @@
 
 .footer-version {
   font-size: 11px;
-  color: #ccc;
+  color: var(--text-muted, #ccc);
 }
 
 /* Mobile */

@@ -59,7 +59,7 @@
 .numerology-form-container {
   max-width: 600px;
   margin: 0 auto 3rem;
-  background: var(--card-bg);
+  background: var(--bg-card);
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -134,7 +134,7 @@
 
 /* Number Card */
 .number-card {
-  background: var(--card-bg);
+  background: var(--bg-card);
   border-radius: 16px;
   padding: 2rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -250,7 +250,7 @@
 
 /* Recommendations */
 .recommendations-section {
-  background: var(--card-bg);
+  background: var(--bg-card);
   border-radius: 16px;
   padding: 2rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -322,7 +322,7 @@
 }
 
 .compatibility-form {
-  background: var(--card-bg);
+  background: var(--bg-card);
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -337,7 +337,7 @@
 }
 
 .compatibility-result {
-  background: var(--card-bg);
+  background: var(--bg-card);
   padding: 3rem;
   border-radius: 16px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
@@ -430,22 +430,23 @@
 }
 
 /* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  .number-card {
-    background: var(--card-bg-dark);
-  }
+[data-theme="dark"] .number-card,
+[data-theme="dark"] .numerology-form-container,
+[data-theme="dark"] .compatibility-form,
+[data-theme="dark"] .compatibility-result,
+[data-theme="dark"] .recommendations-section,
+[data-theme="dark"] .compatibility-header,
+[data-theme="dark"] .compatibility-score-section,
+[data-theme="dark"] .compatibility-areas,
+[data-theme="dark"] .detail-section,
+[data-theme="dark"] .compatibility-warning {
+  background: var(--bg-card);
+}
 
-  .numerology-form-container,
-  .compatibility-form,
-  .compatibility-result,
-  .recommendations-section {
-    background: var(--card-bg-dark);
-  }
-
-  .number-traits,
-  .recommendation-block {
-    background: var(--bg-dark);
-  }
+[data-theme="dark"] .number-traits,
+[data-theme="dark"] .recommendation-block,
+[data-theme="dark"] .person-card {
+  background: var(--bg-secondary);
 }
 
 /* Affirmation Section */
@@ -543,7 +544,7 @@
 .compatibility-warning {
   text-align: center;
   padding: 3rem 2rem;
-  background: var(--card-bg);
+  background: var(--bg-card);
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -559,7 +560,7 @@
 }
 
 .compatibility-header {
-  background: var(--card-bg);
+  background: var(--bg-card);
   padding: 2rem;
   border-radius: 16px;
   margin-bottom: 2rem;
@@ -619,7 +620,7 @@
 
 .compatibility-score-section {
   text-align: center;
-  background: var(--card-bg);
+  background: var(--bg-card);
   padding: 2rem;
   border-radius: 16px;
   margin-bottom: 2rem;
@@ -627,7 +628,7 @@
 }
 
 .compatibility-areas {
-  background: var(--card-bg);
+  background: var(--bg-card);
   padding: 2rem;
   border-radius: 16px;
   margin-bottom: 2rem;
@@ -689,7 +690,7 @@
 }
 
 .detail-section {
-  background: var(--card-bg);
+  background: var(--bg-card);
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

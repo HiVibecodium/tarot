@@ -101,7 +101,7 @@
   align-items: center;
   gap: 1rem;
   padding: 1.25rem;
-  background: white;
+  background: var(--bg-card, white);
   border-radius: 12px;
   text-decoration: none;
   color: inherit;
@@ -114,7 +114,7 @@
   transform: translateX(8px);
   border-color: rgba(102, 126, 234, 0.3);
   box-shadow: 0 4px 16px rgba(102, 126, 234, 0.15);
-  background: linear-gradient(135deg, white 0%, rgba(102, 126, 234, 0.03) 100%);
+  background: linear-gradient(135deg, var(--bg-card, white) 0%, rgba(102, 126, 234, 0.03) 100%);
 }
 
 .setup-item-icon {
@@ -224,13 +224,13 @@
 /* Dark mode for empty state */
 [data-theme="dark"] .setup-item,
 .dark .setup-item {
-  background: var(--card-bg, #1e1e2e);
+  background: var(--bg-card, #1e1e2e);
   border-color: rgba(102, 126, 234, 0.2);
 }
 
 [data-theme="dark"] .setup-item:hover,
 .dark .setup-item:hover {
-  background: linear-gradient(135deg, var(--card-bg, #1e1e2e) 0%, rgba(102, 126, 234, 0.1) 100%);
+  background: linear-gradient(135deg, var(--bg-card, #1e1e2e) 0%, rgba(102, 126, 234, 0.1) 100%);
 }
 
 [data-theme="dark"] .empty-footer,
@@ -294,10 +294,10 @@
 
 /* Insight Cards */
 .insight-card {
-  background: white;
+  background: var(--bg-card, white);
   border-radius: 16px;
   padding: 1.5rem;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow, 0 2px 12px rgba(0, 0, 0, 0.08));
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: 2px solid transparent;
 }
@@ -457,7 +457,7 @@
   align-items: center;
   gap: 0.6rem;
   padding: 0.7rem 1.2rem;
-  background: white;
+  background: var(--bg-card, white);
   border-radius: 24px;
   font-size: 0.95rem;
   color: var(--text-primary);
@@ -565,16 +565,4 @@
   }
 }
 
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-  .insight-card,
-  .main-insight,
-  .opportunity-item,
-  .focus-chip {
-    background: var(--card-bg-dark);
-  }
-
-  .focus-areas {
-    background: rgba(0, 0, 0, 0.2);
-  }
-}
+/* Dark mode handled by CSS variables */

@@ -73,7 +73,7 @@
 }
 
 .question-hint {
-  color: #666;
+  color: var(--text-secondary, #666);
   font-size: 14px;
   margin-bottom: 16px;
 }
@@ -85,7 +85,7 @@
 .form-group label {
   display: block;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary, #333);
   margin-bottom: 8px;
 }
 
@@ -168,7 +168,7 @@
 
 .position-interpretation {
   padding: 20px;
-  background: #f8f9fa;
+  background: var(--bg-secondary, #f8f9fa);
   border-radius: 12px;
   border-left: 3px solid #00f2fe;
 }
@@ -192,7 +192,7 @@
 
 .arcana-badge {
   background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
-  color: #333;
+  color: var(--text-primary, #333);
   padding: 3px 10px;
   border-radius: 12px;
   font-size: 10px;
@@ -256,7 +256,7 @@
 
 /* Loading State */
 .interpretation-loading {
-  background: white;
+  background: var(--bg-card, white);
   padding: 60px 40px;
   border-radius: 16px;
   text-align: center;

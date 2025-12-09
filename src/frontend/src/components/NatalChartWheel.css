@@ -4,9 +4,9 @@
   max-width: 500px;
   margin: 30px auto;
   padding: 20px;
-  background: white;
+  background: var(--bg-card, white);
   border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md, 0 4px 20px rgba(0, 0, 0, 0.1));
 }
 
 .chart-svg {
@@ -21,7 +21,7 @@
   flex-direction: column;
   gap: 10px;
   padding: 15px;
-  background: #f9f9ff;
+  background: var(--bg-secondary, #f9f9ff);
   border-radius: 8px;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .legend-text {
-  color: #333;
+  color: var(--text-primary, #333);
   font-weight: 500;
 }
 
@@ -65,7 +65,7 @@
   width: 100%;
   height: auto;
   filter: drop-shadow(0 4px 12px rgba(102, 126, 234, 0.15));
-  background: white;
+  background: var(--bg-card, white);
   border-radius: 50%;
 }
 
@@ -86,7 +86,7 @@
   align-items: center;
   gap: 8px;
   padding: 8px 16px;
-  background: white;
+  background: var(--bg-card, white);
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
@@ -98,7 +98,7 @@
 
 .legend-text {
   font-size: 13px;
-  color: #666;
+  color: var(--text-secondary, #666);
   font-weight: 500;
 }
 

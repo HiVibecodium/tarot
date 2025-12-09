@@ -12,7 +12,7 @@
 
 /* Premium Active State */
 .premium-active {
-  background: white;
+  background: var(--bg-card, white);
   border-radius: 12px;
   padding: 32px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -35,12 +35,12 @@
 }
 
 .success-badge p {
-  color: #666;
+  color: var(--text-secondary, #666);
   margin: 0;
 }
 
 .subscription-info {
-  background: #f7f9fc;
+  background: var(--bg-secondary, #f7f9fc);
   border-radius: 8px;
   padding: 20px;
   margin-bottom: 24px;
@@ -48,7 +48,7 @@
 
 .subscription-info h3 {
   margin: 0 0 16px 0;
-  color: #333;
+  color: var(--text-primary, #333);
 }
 
 .info-row {
@@ -68,14 +68,14 @@
 }
 
 .premium-features {
-  background: #f7f9fc;
+  background: var(--bg-secondary, #f7f9fc);
   border-radius: 8px;
   padding: 20px;
 }
 
 .premium-features h3 {
   margin: 0 0 16px 0;
-  color: #333;
+  color: var(--text-primary, #333);
 }
 
 .premium-features ul {
@@ -97,7 +97,7 @@
 }
 
 .pricing-card {
-  background: white;
+  background: var(--bg-card, white);
   border-radius: 16px;
   padding: 40px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
@@ -124,12 +124,12 @@
 .price .amount {
   font-size: 48px;
   font-weight: 700;
-  color: #333;
+  color: var(--text-primary, #333);
 }
 
 .price .period {
   font-size: 20px;
-  color: #666;
+  color: var(--text-secondary, #666);
 }
 
 .features-list {
@@ -140,7 +140,7 @@
 .features-list h3 {
   text-align: center;
   margin: 0 0 24px 0;
-  color: #333;
+  color: var(--text-primary, #333);
 }
 
 .features-list ul {
@@ -193,7 +193,7 @@
   margin-top: 24px;
   padding-top: 24px;
   border-top: 1px solid #e0e0e0;
-  color: #666;
+  color: var(--text-secondary, #666);
   font-size: 14px;
 }
 
@@ -203,7 +203,7 @@
 
 /* Comparison Table */
 .comparison {
-  background: white;
+  background: var(--bg-card, white);
   border-radius: 12px;
   padding: 32px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -212,7 +212,7 @@
 .comparison h3 {
   text-align: center;
   margin: 0 0 24px 0;
-  color: #333;
+  color: var(--text-primary, #333);
 }
 
 .comparison-table {
@@ -228,9 +228,9 @@
 }
 
 .comparison-table th {
-  background: #f7f9fc;
+  background: var(--bg-secondary, #f7f9fc);
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary, #333);
 }
 
 .comparison-table tr:last-child td {

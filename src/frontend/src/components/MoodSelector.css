@@ -5,7 +5,7 @@
 .mood-label {
   display: block;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary, #333);
   margin-bottom: 12px;
   font-size: 14px;
 }
@@ -23,7 +23,7 @@
   gap: 4px;
   padding: 12px 8px;
   border: 2px solid #e0e0e0;
-  background: white;
+  background: var(--bg-card, white);
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s;
@@ -46,7 +46,7 @@
 
 .mood-text {
   font-size: 11px;
-  color: #666;
+  color: var(--text-secondary, #666);
 }
 
 .mood-btn.selected .mood-text {
@@ -58,14 +58,14 @@
 .energy-selector {
   margin-top: 20px;
   padding: 16px;
-  background: #f8f9fa;
+  background: var(--bg-secondary, #f8f9fa);
   border-radius: 8px;
 }
 
 .energy-label {
   display: block;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary, #333);
   margin-bottom: 12px;
   font-size: 14px;
 }
@@ -85,7 +85,7 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: white;
+  background: var(--bg-card, white);
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   border: 3px solid #667eea;
@@ -95,7 +95,7 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: white;
+  background: var(--bg-card, white);
   cursor: pointer;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   border: 3px solid #667eea;
@@ -112,17 +112,17 @@
 .toggle-advanced {
   margin-top: 12px;
   padding: 8px 12px;
-  background: white;
+  background: var(--bg-card, white);
   border: 1px solid #ddd;
   border-radius: 6px;
   cursor: pointer;
   font-size: 13px;
-  color: #666;
+  color: var(--text-secondary, #666);
   transition: all 0.2s;
 }
 
 .toggle-advanced:hover {
-  background: #f8f9fa;
+  background: var(--bg-secondary, #f8f9fa);
   border-color: #667eea;
 }
 
@@ -134,7 +134,7 @@
 .tags-label {
   display: block;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary, #333);
   margin-bottom: 8px;
   font-size: 13px;
 }
@@ -147,7 +147,7 @@
 
 .tag-option {
   padding: 6px 12px;
-  background: white;
+  background: var(--bg-card, white);
   border: 1px solid #ddd;
   border-radius: 16px;
   cursor: pointer;
@@ -173,7 +173,7 @@
 .notes-label {
   display: block;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary, #333);
   margin-bottom: 8px;
   font-size: 13px;
 }

@@ -549,7 +549,7 @@
 }
 
 .drawing-text {
-  color: #1a202c;
+  color: var(--text-primary, #1a202c);
   font-size: 20px;
   font-weight: 700;
   margin-top: 20px;
@@ -813,7 +813,7 @@
 
 .btn-spread-suggest {
   padding: 1rem 1.5rem;
-  background: white;
+  background: var(--bg-card, white);
   border: 2px solid var(--primary-color);
   border-radius: 12px;
   color: var(--primary-color);

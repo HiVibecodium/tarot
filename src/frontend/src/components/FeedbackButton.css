@@ -54,7 +54,7 @@
 
 /* Modal Content */
 .feedback-modal {
-  background: var(--card-bg, #fff);
+  background: var(--bg-card, #fff);
   border-radius: 16px;
   padding: 32px;
   max-width: 500px;
@@ -305,26 +305,26 @@
 }
 
 /* Dark Mode Support */
-.dark-theme .feedback-modal {
-  background: var(--card-bg-dark, #2c2c2c);
+[data-theme="dark"] .feedback-modal {
+  background: var(--bg-card);
 }
 
-.dark-theme .feedback-close:hover {
+[data-theme="dark"] .feedback-close:hover {
   background: rgba(255, 255, 255, 0.1);
 }
 
-.dark-theme .feedback-field textarea,
-.dark-theme .feedback-field input {
-  background: var(--bg-secondary-dark, #1a1a1a);
-  color: var(--text-primary-dark, #e0e0e0);
-  border-color: var(--border-color-dark, #444);
+[data-theme="dark"] .feedback-field textarea,
+[data-theme="dark"] .feedback-field input {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
 }
 
-.dark-theme .feedback-type-option {
-  background: var(--bg-secondary-dark, #1a1a1a);
-  border-color: var(--border-color-dark, #444);
+[data-theme="dark"] .feedback-type-option {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
 }
 
-.dark-theme .feedback-type-selector input[type="radio"]:checked + .feedback-type-option {
+[data-theme="dark"] .feedback-type-selector input[type="radio"]:checked + .feedback-type-option {
   background: rgba(102, 126, 234, 0.2);
 }

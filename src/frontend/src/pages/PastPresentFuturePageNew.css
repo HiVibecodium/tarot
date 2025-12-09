@@ -37,7 +37,7 @@
 }
 
 .intro-card {
-  background: white;
+  background: var(--bg-card, white);
   padding: 3rem;
   border-radius: 24px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -133,7 +133,7 @@
 }
 
 .drawing-progress {
-  background: white;
+  background: var(--bg-card, white);
   padding: 2rem;
   border-radius: 16px;
   margin-bottom: 2rem;
@@ -195,7 +195,7 @@
 }
 
 .current-draw {
-  background: white;
+  background: var(--bg-card, white);
   padding: 3rem;
   border-radius: 16px;
   text-align: center;
@@ -298,7 +298,7 @@
 
 .mini-card {
   padding: 1rem;
-  background: white;
+  background: var(--bg-card, white);
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   min-width: 120px;
@@ -317,7 +317,7 @@
 
 /* Results Screen */
 .ppf-results {
-  background: white;
+  background: var(--bg-card, white);
   padding: 3rem;
   border-radius: 24px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -362,7 +362,7 @@
 }
 
 .timeline-result-card {
-  background: white;
+  background: var(--bg-card, white);
   padding: 2rem;
   border-radius: 16px;
   border-left: 4px solid;
@@ -424,7 +424,7 @@
   border-radius: 12px;
   font-size: 0.85rem;
   font-weight: 600;
-  background: white;
+  background: var(--bg-card, white);
 }
 
 .timeline-interpretation {
@@ -497,7 +497,7 @@
 
 .btn-cta-suggest {
   padding: 1rem 2rem;
-  background: white;
+  background: var(--bg-card, white);
   border: 2px solid var(--primary-color);
   border-radius: 12px;
   color: var(--primary-color);

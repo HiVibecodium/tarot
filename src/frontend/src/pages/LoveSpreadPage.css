@@ -129,7 +129,7 @@
 
 .intro-card > p {
   text-align: center;
-  color: #666;
+  color: var(--text-secondary, #666);
   margin-bottom: 2rem;
   font-size: 1.1rem;
   line-height: 1.6;
@@ -184,7 +184,7 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem;
-  background: white;
+  background: var(--bg-card, white);
   border-radius: 8px;
 }
 
@@ -194,7 +194,7 @@
 
 .preview-item strong {
   display: block;
-  color: #333;
+  color: var(--text-primary, #333);
 }
 
 .preview-item p {
@@ -230,7 +230,7 @@
 }
 
 .spread-title {
-  background: white;
+  background: var(--bg-card, white);
   padding: 2rem;
   border-radius: 16px;
   text-align: center;
@@ -251,7 +251,7 @@
 }
 
 .love-card {
-  background: white;
+  background: var(--bg-card, white);
   border-radius: 16px;
   padding: 1.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -325,14 +325,14 @@
 }
 
 .card-desc {
-  color: #666;
+  color: var(--text-secondary, #666);
   font-size: 0.95rem;
   margin: 0;
 }
 
 /* Summary */
 .love-summary {
-  background: white;
+  background: var(--bg-card, white);
   padding: 2.5rem;
   border-radius: 16px;
   margin-bottom: 2rem;
@@ -382,7 +382,7 @@
 
 .summary-card p {
   margin: 0;
-  color: #666;
+  color: var(--text-secondary, #666);
   line-height: 1.6;
 }
 
@@ -405,7 +405,7 @@
 }
 
 .btn-reset {
-  background: white;
+  background: var(--bg-card, white);
   border: 2px solid #e91e63;
   color: #e91e63;
 }
@@ -418,7 +418,7 @@
 .btn-home {
   background: #f5f5f5;
   border: 2px solid #ddd;
-  color: #666;
+  color: var(--text-secondary, #666);
 }
 
 .btn-home:hover {

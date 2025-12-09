@@ -2,7 +2,7 @@
 
 .about-page {
   min-height: 100vh;
-  background: #f5f7fa;
+  background: var(--bg-secondary, #f5f7fa);
 }
 
 /* Hero */
@@ -99,7 +99,7 @@
 }
 
 .feature-card {
-  background: white;
+  background: var(--bg-card, white);
   padding: 2rem;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
@@ -136,7 +136,7 @@
 
 .feature-card h3 {
   text-align: center;
-  color: #2d3748;
+  color: var(--text-primary, #2d3748);
   margin-bottom: 1rem;
   font-size: 1.5rem;
 }
@@ -165,7 +165,7 @@
 
 .feature-list li {
   padding: 0.5rem 0;
-  color: #666;
+  color: var(--text-secondary, #666);
   border-bottom: 1px solid #f0f0f0;
 }
 
@@ -228,7 +228,7 @@
 }
 
 .tech-card {
-  background: white;
+  background: var(--bg-card, white);
   padding: 2rem;
   border-radius: 16px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
@@ -251,7 +251,7 @@
   background: #f0f0f0;
   border-radius: 20px;
   font-size: 0.9rem;
-  color: #666;
+  color: var(--text-secondary, #666);
   font-weight: 500;
 }
 
@@ -276,7 +276,7 @@
 
 .value-card {
   padding: 2rem;
-  background: white;
+  background: var(--bg-card, white);
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   text-align: center;
@@ -294,7 +294,7 @@
 }
 
 .value-card p {
-  color: #666;
+  color: var(--text-secondary, #666);
   margin: 0;
   line-height: 1.6;
 }
@@ -339,7 +339,7 @@
 }
 
 .btn-cta-primary {
-  background: white;
+  background: var(--bg-card, white);
   color: #f5576c;
   border: none;
 }

@@ -23,7 +23,7 @@
 }
 
 .spread-modal {
-  background: white;
+  background: var(--bg-card, white);
   border-radius: 16px;
   max-width: 900px;
   width: 100%;
@@ -50,7 +50,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 24px 32px;
-  border-bottom: 2px solid #f0f0f0;
+  border-bottom: 2px solid var(--border-color, #f0f0f0);
 }
 
 .modal-header h2 {
@@ -63,8 +63,8 @@
   width: 36px;
   height: 36px;
   border: none;
-  background: #f8f9fa;
-  color: #666;
+  background: var(--bg-secondary, #f8f9fa);
+  color: var(--text-secondary, #666);
   font-size: 24px;
   border-radius: 50%;
   cursor: pointer;
@@ -76,8 +76,8 @@
 }
 
 .btn-close:hover {
-  background: #e9ecef;
-  color: #333;
+  background: var(--border-color, #e9ecef);
+  color: var(--text-primary, #333);
   transform: scale(1.1);
 }
 
@@ -101,7 +101,7 @@
 
 .modal-context {
   display: inline-block;
-  background: #f8f9fa;
+  background: var(--bg-secondary, #f8f9fa);
   padding: 8px 16px;
   border-radius: 8px;
   margin-right: 12px;
@@ -114,7 +114,7 @@
 }
 
 .modal-date {
-  color: #999;
+  color: var(--text-muted, #999);
   font-size: 14px;
   margin-bottom: 24px;
 }
@@ -134,13 +134,13 @@
 }
 
 .modal-summary p {
-  color: #555;
+  color: var(--text-secondary, #555);
   line-height: 1.7;
   margin: 0;
 }
 
 .modal-cards h3 {
-  color: #333;
+  color: var(--text-primary, #333);
   font-size: 1.1rem;
   margin: 0 0 16px 0;
 }
@@ -197,26 +197,26 @@
 
 .modal-card-name {
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary, #333);
   font-size: 13px;
   margin-bottom: 4px;
 }
 
 .modal-card-position {
   font-size: 11px;
-  color: #999;
+  color: var(--text-muted, #999);
   font-style: italic;
 }
 
 .modal-interpretation h3,
 .modal-positions h3 {
-  color: #333;
+  color: var(--text-primary, #333);
   font-size: 1.1rem;
   margin: 0 0 16px 0;
 }
 
 .modal-interpretation p {
-  color: #555;
+  color: var(--text-secondary, #555);
   line-height: 1.7;
 }
 
@@ -227,7 +227,7 @@
 }
 
 .modal-position-item {
-  background: #f8f9fa;
+  background: var(--bg-secondary, #f8f9fa);
   padding: 16px;
   border-radius: 12px;
   border-left: 3px solid #667eea;
@@ -260,14 +260,14 @@
 }
 
 .position-card-name {
-  color: #333;
+  color: var(--text-primary, #333);
   font-weight: 600;
   margin-bottom: 8px;
   font-size: 14px;
 }
 
 .position-meaning {
-  color: #555;
+  color: var(--text-secondary, #555);
   line-height: 1.6;
   margin: 0;
   font-size: 13px;
@@ -275,7 +275,7 @@
 
 .modal-footer {
   padding: 20px 32px;
-  border-top: 2px solid #f0f0f0;
+  border-top: 2px solid var(--border-color, #f0f0f0);
   display: flex;
   justify-content: flex-end;
 }

@@ -125,7 +125,7 @@ body {
 .auth-link {
   text-align: center;
   margin-top: 20px;
-  color: #666;
+  color: var(--text-secondary, #666);
 }
 
 .auth-link a {
@@ -226,7 +226,7 @@ body {
 }
 
 .btn-back:hover {
-  background: white;
+  background: var(--bg-card, white);
 }
 
 .dashboard-content {

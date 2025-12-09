@@ -117,7 +117,7 @@
   font-family: inherit;
   resize: vertical;
   transition: all 0.3s ease;
-  background: white;
+  background: var(--bg-card, white);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
@@ -311,7 +311,7 @@
 
 .arcana-badge {
   background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
-  color: #333;
+  color: var(--text-primary, #333);
   padding: 6px 14px;
   border-radius: 20px;
   font-size: 11px;
@@ -376,7 +376,7 @@
 
 /* Loading State для интерпретации */
 .interpretation-loading {
-  background: white;
+  background: var(--bg-card, white);
   padding: 60px 40px;
   border-radius: 16px;
   text-align: center;

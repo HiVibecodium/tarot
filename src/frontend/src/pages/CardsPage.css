@@ -20,7 +20,7 @@
 .card-item {
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
-  background: white;
+  background: var(--bg-card, white);
   border-radius: 12px;
   padding: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -35,7 +35,7 @@
   text-align: center;
   margin-top: 12px;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary, #333);
 }
 
 /* Modal */
@@ -54,7 +54,7 @@
 }
 
 .modal-content {
-  background: white;
+  background: var(--bg-card, white);
   border-radius: 16px;
   padding: 32px;
   max-width: 500px;
@@ -71,7 +71,7 @@
   background: none;
   border: none;
   font-size: 32px;
-  color: #666;
+  color: var(--text-secondary, #666);
   cursor: pointer;
   padding: 0;
   width: 32px;
@@ -82,18 +82,18 @@
 }
 
 .modal-close:hover {
-  color: #333;
+  color: var(--text-primary, #333);
 }
 
 .modal-content h2 {
   margin: 0 0 8px 0;
-  color: #333;
+  color: var(--text-primary, #333);
   text-align: center;
 }
 
 .card-meta {
   text-align: center;
-  color: #666;
+  color: var(--text-secondary, #666);
   margin: 0 0 24px 0;
   font-size: 14px;
 }
@@ -104,7 +104,7 @@
 
 .interpretations-section h3 {
   margin: 16px 0 8px 0;
-  color: #333;
+  color: var(--text-primary, #333);
   font-size: 16px;
 }
 

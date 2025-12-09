@@ -46,7 +46,7 @@
 }
 
 .intro-card {
-  background: white;
+  background: var(--bg-card, white);
   padding: 3rem;
   border-radius: 24px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
@@ -74,7 +74,7 @@
 
 .intro-card > p {
   text-align: center;
-  color: #666;
+  color: var(--text-secondary, #666);
   margin-bottom: 2rem;
   font-size: 1.1rem;
   line-height: 1.6;
@@ -143,7 +143,7 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem;
-  background: white;
+  background: var(--bg-card, white);
   border-radius: 8px;
 }
 
@@ -153,7 +153,7 @@
 
 .preview-item strong {
   display: block;
-  color: #333;
+  color: var(--text-primary, #333);
 }
 
 .preview-item p {
@@ -187,7 +187,7 @@
 }
 
 .personal-year-banner {
-  background: white;
+  background: var(--bg-card, white);
   padding: 2rem;
   border-radius: 16px;
   text-align: center;
@@ -203,7 +203,7 @@
 }
 
 .personal-year-banner p {
-  color: #666;
+  color: var(--text-secondary, #666);
   margin: 0;
 }
 
@@ -215,7 +215,7 @@
 }
 
 .birthday-card {
-  background: white;
+  background: var(--bg-card, white);
   border-radius: 16px;
   padding: 1.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -291,14 +291,14 @@
 }
 
 .card-interpretation {
-  color: #666;
+  color: var(--text-secondary, #666);
   font-size: 0.95rem;
   margin: 0;
 }
 
 /* Wisdom */
 .year-wisdom {
-  background: white;
+  background: var(--bg-card, white);
   padding: 2.5rem;
   border-radius: 16px;
   margin-bottom: 2rem;
@@ -348,7 +348,7 @@
 
 .wisdom-card p {
   margin: 0;
-  color: #666;
+  color: var(--text-secondary, #666);
   line-height: 1.6;
 }
 
@@ -371,7 +371,7 @@
 }
 
 .btn-reset {
-  background: white;
+  background: var(--bg-card, white);
   border: 2px solid #f5576c;
   color: #f5576c;
 }

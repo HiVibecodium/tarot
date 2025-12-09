@@ -1,5 +1,5 @@
 .guided-interpretation {
-  background: white;
+  background: var(--bg-card, white);
   border-radius: 16px;
   padding: 24px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
@@ -19,7 +19,7 @@
 
 .guided-header h3 {
   font-size: 22px;
-  color: #333;
+  color: var(--text-primary, #333);
   margin: 0;
 }
 
@@ -38,7 +38,7 @@
 
 .close-btn:hover {
   background: #e0e0e0;
-  color: #666;
+  color: var(--text-secondary, #666);
 }
 
 /* Progress */
@@ -91,13 +91,13 @@
 .step-question {
   font-size: 16px;
   font-weight: 600;
-  color: #333;
+  color: var(--text-primary, #333);
   margin-bottom: 8px;
 }
 
 .step-hint {
   font-size: 14px;
-  color: #666;
+  color: var(--text-secondary, #666);
   font-style: italic;
   margin-bottom: 16px;
 }
@@ -122,7 +122,7 @@
 .card-keywords-display {
   margin: 16px 0;
   padding: 16px;
-  background: #f8f9fa;
+  background: var(--bg-secondary, #f8f9fa);
   border-radius: 8px;
 }
 
@@ -152,7 +152,7 @@
 
 .keyword-tag {
   padding: 4px 12px;
-  background: white;
+  background: var(--bg-card, white);
   border: 1px solid #667eea;
   border-radius: 16px;
   font-size: 12px;
@@ -184,9 +184,9 @@
 }
 
 .prev-btn {
-  background: white;
+  background: var(--bg-card, white);
   border: 2px solid #e0e0e0;
-  color: #666;
+  color: var(--text-secondary, #666);
 }
 
 .prev-btn:hover:not(:disabled) {
@@ -200,13 +200,13 @@
 }
 
 .skip-btn {
-  background: white;
+  background: var(--bg-card, white);
   border: 1px solid #ddd;
   color: #999;
 }
 
 .skip-btn:hover {
-  background: #f8f9fa;
+  background: var(--bg-secondary, #f8f9fa);
 }
 
 .next-btn {
@@ -240,7 +240,7 @@
 
 .card-keywords {
   font-size: 14px;
-  color: #666;
+  color: var(--text-secondary, #666);
   font-style: italic;
 }
 
@@ -250,13 +250,13 @@
 
 .user-insights h4 {
   font-size: 18px;
-  color: #333;
+  color: var(--text-primary, #333);
   margin-bottom: 16px;
 }
 
 .insight-item {
   padding: 12px;
-  background: #f8f9fa;
+  background: var(--bg-secondary, #f8f9fa);
   border-radius: 8px;
   margin-bottom: 12px;
 }
@@ -292,7 +292,7 @@
 }
 
 .restart-guided-btn {
-  background: white;
+  background: var(--bg-card, white);
   border: 2px solid #667eea;
   color: #667eea;
 }

@@ -84,7 +84,7 @@
 }
 
 .btn-hero.primary {
-  background: white;
+  background: var(--bg-card, white);
   color: #667eea;
 }
 
@@ -180,7 +180,7 @@
 /* Features Section */
 .features-section {
   padding: 6rem 2rem;
-  background: var(--bg-color);
+  background: var(--bg-secondary, #f5f7fa);
 }
 
 .section-title {
@@ -307,7 +307,7 @@
 /* Comparison Table */
 .comparison-section {
   padding: 6rem 2rem;
-  background: var(--bg-color);
+  background: var(--bg-secondary, #f5f7fa);
 }
 
 .comparison-table {
@@ -443,7 +443,7 @@
 }
 
 .plan-cta.secondary {
-  background: white;
+  background: var(--bg-card, white);
   border: 2px solid var(--primary-color);
   color: var(--primary-color);
 }
@@ -474,7 +474,7 @@
 
 .btn-cta {
   padding: 1.25rem 3rem;
-  background: white;
+  background: var(--bg-card, white);
   color: #667eea;
   border: none;
   border-radius: 12px;

@@ -1,14 +1,15 @@
 /* Error Display Styles */
 
 .error-display {
-  background: white;
+  background: var(--bg-card, white);
   border-radius: 12px;
   padding: 30px;
   max-width: 600px;
   margin: 40px auto;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md, 0 4px 20px rgba(0, 0, 0, 0.1));
   text-align: center;
   border-left: 4px solid #e74c3c;
+  transition: background-color 0.3s ease;
 }
 
 .error-display.severity-warning {
@@ -29,13 +30,13 @@
 }
 
 .error-title {
-  color: #333;
+  color: var(--text-primary, #333);
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
 
 .error-message {
-  color: #666;
+  color: var(--text-secondary, #666);
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 15px;
@@ -46,7 +47,7 @@
   padding: 0;
   margin: 15px 0 0 0;
   text-align: left;
-  background: #f9f9f9;
+  background: var(--bg-secondary, #f9f9f9);
   padding: 15px 20px;
   border-radius: 8px;
 }
@@ -94,13 +95,13 @@
 }
 
 .btn-secondary {
-  background: white;
+  background: var(--bg-card, white);
   color: #667eea;
   border: 2px solid #667eea;
 }
 
 .btn-secondary:hover {
-  background: #f9f9ff;
+  background: var(--bg-secondary, #f9f9ff);
 }
 
 .btn-premium {
@@ -146,12 +147,13 @@
 }
 
 .error-page-content {
-  background: white;
+  background: var(--bg-card, white);
   border-radius: 16px;
   padding: 60px 40px;
   max-width: 500px;
   text-align: center;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
 }
 
 .error-page-icon {
@@ -160,13 +162,13 @@
 }
 
 .error-page-title {
-  color: #333;
+  color: var(--text-primary, #333);
   font-size: 2rem;
   margin-bottom: 15px;
 }
 
 .error-page-message {
-  color: #666;
+  color: var(--text-secondary, #666);
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 30px;

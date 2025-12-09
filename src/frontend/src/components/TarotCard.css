@@ -107,11 +107,12 @@
   backface-visibility: hidden;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  background: white;
+  background: var(--bg-card, white);
   padding: 20px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  transition: background-color 0.3s ease;
 }
 
 /* Shimmer effect on card front */
@@ -334,12 +335,13 @@
 .card-interpretation {
   margin-top: 20px;
   padding: 20px;
-  background: linear-gradient(135deg, rgba(249, 249, 255, 1) 0%, rgba(240, 240, 255, 1) 100%);
+  background: var(--bg-secondary, linear-gradient(135deg, rgba(249, 249, 255, 1) 0%, rgba(240, 240, 255, 1) 100%));
   border-radius: 12px;
   border-left: 4px solid transparent;
   border-image: linear-gradient(to bottom, #667eea, #764ba2) 1;
   position: relative;
   overflow: hidden;
+  transition: background-color 0.3s ease;
 }
 
 .card-interpretation::before {
@@ -352,7 +354,7 @@
 }
 
 .card-interpretation p {
-  color: #333;
+  color: var(--text-primary, #333);
   line-height: 1.7;
   margin: 0;
   font-style: italic;

@@ -19,7 +19,7 @@
   position: relative;
   max-width: 500px;
   width: 90%;
-  background: white;
+  background: var(--bg-card, white);
   border-radius: 16px;
   padding: 2rem;
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.3);
@@ -48,7 +48,7 @@
 .social-share-content h2 {
   margin: 0 0 1.5rem;
   font-size: 1.5rem;
-  color: #333;
+  color: var(--text-primary, #333);
 }
 
 .share-create {
@@ -58,7 +58,7 @@
 
 .share-create p {
   margin-bottom: 1.5rem;
-  color: #666;
+  color: var(--text-secondary, #666);
 }
 
 .share-link {
@@ -70,10 +70,11 @@
 .share-link input {
   flex: 1;
   padding: 0.875rem;
-  border: 2px solid #e0e0e0;
+  border: 2px solid var(--border-color, #e0e0e0);
   border-radius: 8px;
   font-size: 1rem;
-  background: #f5f7fa;
+  background: var(--bg-secondary, #f5f7fa);
+  color: var(--text-primary, #333);
 }
 
 .share-link input:focus {

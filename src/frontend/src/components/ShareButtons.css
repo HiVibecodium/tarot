@@ -4,14 +4,14 @@
   gap: 8px;
   flex-wrap: wrap;
   padding: 16px;
-  background: #f8f9fa;
+  background: var(--bg-secondary, #f8f9fa);
   border-radius: 8px;
   margin-top: 16px;
 }
 
 .share-label {
   font-weight: 600;
-  color: #666;
+  color: var(--text-secondary, #666);
   font-size: 14px;
   margin-right: 8px;
 }
