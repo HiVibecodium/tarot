@@ -101,7 +101,8 @@ export function useApiCache(key, fetchFn, options = {}) {
     } catch (err) {
       setError(err);
       onError?.(err);
-      throw err;
+      // Don't re-throw - error is stored in state for consumers
+      return null;
     } finally {
       setLoading(false);
       pendingRef.current = null;

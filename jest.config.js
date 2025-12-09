@@ -7,10 +7,16 @@ module.exports = {
   // Test environment
   testEnvironment: 'node',
 
-  // Test files pattern
+  // Test files pattern - only backend tests
   testMatch: [
-    '**/__tests__/**/*.test.js',
-    '**/?(*.)+(spec|test).js'
+    '<rootDir>/src/backend/**/__tests__/**/*.test.js',
+    '<rootDir>/src/backend/**/?(*.)+(spec|test).js'
+  ],
+
+  // Ignore frontend tests
+  testPathIgnorePatterns: [
+    '/node_modules/',
+    '<rootDir>/src/frontend/'
   ],
 
   // Coverage directory
