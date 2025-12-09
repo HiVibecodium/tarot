@@ -82,7 +82,10 @@
       "WebSearch",
       "WebFetch(domain:vc.ru)",
       "WebFetch(domain:magya-online.ru)",
-      "WebFetch(domain:skywork.ai)"
+      "WebFetch(domain:skywork.ai)",
+      "Bash(git show:*)",
+      "Bash(git ls-remote:*)",
+      "Bash(git fetch:*)"
     ],
     "deny": [],
     "ask": []
