@@ -125,7 +125,7 @@ const NotificationSettings = () => {
     try {
       // Получаем VAPID ключ с сервера
       const vapidResponse = await axios.get(
-        `${import.meta.env.VITE_API_URL}/notifications/vapid`
+        `${import.meta.env.VITE_API_URL}/vapid`
       );
 
       if (!vapidResponse.data.success) {

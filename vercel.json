@@ -13,6 +13,7 @@
     }
   },
   "routes": [
+    { "src": "/api/vapid", "dest": "/api/vapid.js" },
     { "src": "/api/(.*)", "dest": "/api/index.js" },
     { "src": "/debug", "dest": "/api/debug.js" },
     { "src": "/health", "dest": "/api/index.js" },
