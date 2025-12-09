@@ -47,6 +47,7 @@ import MediumConsultationPage from './pages/MediumConsultationPage'
 import AboutPage from './pages/AboutPage'
 import AchievementsPage from './pages/AchievementsPage'
 import MysticalParticles from './components/MysticalParticles'
+import BottomNav from './components/BottomNav'
 import './App.css'
 
 // Helper function to get readable page name from path
@@ -215,6 +216,9 @@ function App() {
       </ErrorBoundary>
 
       {showFooter && <Footer />}
+
+      {/* Bottom Navigation - mobile only */}
+      <BottomNav />
 
       {/* Feedback Button - показывается на всех страницах кроме landing/login/register */}
       {showFooter && <FeedbackButton />}

@@ -85,7 +85,8 @@
       "WebFetch(domain:skywork.ai)",
       "Bash(git show:*)",
       "Bash(git ls-remote:*)",
-      "Bash(git fetch:*)"
+      "Bash(git fetch:*)",
+      "WebFetch(domain:localhost)"
     ],
     "deny": [],
     "ask": []

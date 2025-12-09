@@ -296,7 +296,27 @@ a,
 @media (max-width: 768px) {
   /* Add bottom padding to prevent content hiding behind bottom nav */
   .app {
-    padding-bottom: 80px;
+    padding-bottom: 90px;
+  }
+
+  /* Pages need extra bottom padding for bottom nav */
+  .dashboard,
+  .daily-reading-page,
+  .decision-page,
+  .history-page,
+  .analytics-page,
+  .profile-page,
+  .cards-page,
+  .learn-page,
+  .compatibility-page,
+  .tests-page,
+  .numerology-page,
+  .moon-calendar-page,
+  .journal-page,
+  .natal-chart-page,
+  .premium-page,
+  .achievements-page {
+    padding-bottom: 100px;
   }
 
   /* Floating action button on mobile */
@@ -351,9 +371,192 @@ a,
   position: sticky;
   right: 0;
   padding: 0.5rem;
-  background: linear-gradient(to left, var(--bg-color), transparent);
+  background: linear-gradient(to left, var(--bg-secondary, #f5f7fa), transparent);
   color: var(--text-secondary);
   font-size: 1.5rem;
+}
+
+/* ==========================================
+   MOBILE TAROT CARDS
+   ========================================== */
+
+@media (max-width: 768px) {
+  /* Smaller cards on mobile */
+  .tarot-card-container {
+    max-width: 200px;
+  }
+
+  .tarot-card-image.small {
+    width: 70px;
+    height: 105px;
+  }
+
+  .tarot-card-image.medium {
+    width: 100px;
+    height: 150px;
+  }
+
+  .tarot-card-image.large {
+    width: 140px;
+    height: 210px;
+  }
+
+  /* Card grids should scroll horizontally */
+  .cards-spread,
+  .spread-cards,
+  .month-cards {
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+
+  .cards-spread > *,
+  .spread-cards > *,
+  .month-cards > * {
+    flex-shrink: 0;
+    scroll-snap-align: center;
+  }
+
+  /* Card interpretation - more readable */
+  .card-interpretation {
+    padding: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .card-interpretation p {
+    line-height: 1.6;
+  }
+
+  /* Keywords - smaller on mobile */
+  .keyword-tag {
+    font-size: 0.75rem;
+    padding: 3px 8px;
+  }
+
+  /* Card header */
+  .card-header h3 {
+    font-size: 1rem;
+  }
+
+  /* Disable hover effects on touch */
+  .tarot-card:hover {
+    transform: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .tarot-card:active {
+    transform: scale(0.98);
+  }
+}
+
+/* ==========================================
+   MOBILE FORMS ENHANCED
+   ========================================== */
+
+@media (max-width: 768px) {
+  /* Larger touch targets for form elements */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="date"],
+  input[type="time"],
+  select,
+  textarea {
+    min-height: 50px;
+    font-size: 16px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: var(--bg-card, white);
+    color: var(--text-primary, #333);
+    border: 2px solid var(--border-color, #e0e0e0);
+    width: 100%;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  }
+
+  /* Better select dropdown */
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23667eea' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+  }
+
+  /* Date/time inputs */
+  input[type="date"],
+  input[type="time"],
+  input[type="datetime-local"] {
+    padding-right: 12px;
+  }
+
+  /* Textarea */
+  textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  /* Form labels */
+  .form-group label,
+  label {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-primary, #333);
+  }
+
+  /* Form buttons */
+  .form-group button,
+  form button[type="submit"],
+  .btn-primary {
+    width: 100%;
+    min-height: 50px;
+    font-size: 1rem;
+    border-radius: 12px;
+  }
+
+  /* Error messages */
+  .error-message,
+  .form-error {
+    font-size: 0.9rem;
+    padding: 12px;
+    margin-top: 8px;
+  }
+
+  /* Birth date/time inputs */
+  .birth-inputs,
+  .date-time-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* City autocomplete */
+  .city-autocomplete-wrapper {
+    width: 100%;
+  }
+
+  .city-suggestions {
+    max-height: 200px;
+    font-size: 1rem;
+  }
+
+  .city-suggestion-item {
+    padding: 14px 16px;
+  }
 }
 
 /* ==========================================
