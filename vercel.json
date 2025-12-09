@@ -48,6 +48,7 @@
     { "source": "/api/vapid", "destination": "/api/vapid.js" },
     { "source": "/api/:path*", "destination": "/api/index.js" },
     { "source": "/debug", "destination": "/api/debug.js" },
-    { "source": "/health", "destination": "/api/index.js" }
+    { "source": "/health", "destination": "/api/index.js" },
+    { "source": "/((?!api|assets|images|_next).*)", "destination": "/index.html" }
   ]
 }
