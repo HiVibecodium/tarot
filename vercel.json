@@ -45,10 +45,10 @@
     }
   },
   "rewrites": [
-    { "source": "/api/vapid", "destination": "/api/vapid.js" },
-    { "source": "/api/:path*", "destination": "/api/index.js" },
-    { "source": "/debug", "destination": "/api/debug.js" },
-    { "source": "/health", "destination": "/api/index.js" },
+    { "source": "/api/vapid", "destination": "/api/vapid" },
+    { "source": "/api/:path*", "destination": "/api/index" },
+    { "source": "/debug", "destination": "/api/debug" },
+    { "source": "/health", "destination": "/api/index" },
     { "source": "/((?!api|assets|images|_next).*)", "destination": "/index.html" }
   ]
 }
